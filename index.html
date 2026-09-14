@@ -1796,5 +1796,37 @@ const auth = firebase.auth();
 
 })();
 </script>
+<!-- Modal Crear / Editar Usuario -->
+<div class="modal fade" id="modalUsuario" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title" id="modalUsuarioTitle">Agregar Usuario</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formUsuario">
+          <input type="hidden" id="userId">
+          <div class="mb-3">
+            <label class="form-label">Nombre Completo</label>
+            <input type="text" id="userNombre" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Correo Electrónico</label>
+            <input type="email" id="userEmail" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Rol de Usuario</label>
+            <select id="userRol" class="form-select" required>
+              <option value="encargado">Encargado</option>
+              <option value="admin">Administrador</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Guardar Usuario</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
