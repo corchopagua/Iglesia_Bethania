@@ -971,7 +971,7 @@ const auth = firebase.auth();
       }
 
       const rolUsuario = (currentUserData.rol || currentUserData.Rol || '').toLowerCase();
-if(rolUsuario === 'admin'){
+      if(rolUsuario === 'admin'){
         document.getElementById('tabBtnUsuarios').classList.remove('d-none');
         cargarUsuariosAdmin();
       } else {
