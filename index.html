@@ -590,9 +590,6 @@
     <button class="nav-pill d-none" id="tabBtnUsuarios" data-tab="usuarios" type="button">
       <i class="bi bi-shield-lock"></i><span class="txt">Usuarios (Admin)</span>
     </button>
-    <button id="tabBtnUsuarios" class="btn btn-outline-light ms-2 d-none" onclick="showTab('usuarios')">
-  👥 Usuarios
-</button>
   </div>
 </div>
 
@@ -831,25 +828,13 @@
   <!-- PESTAÑA 7: GESTIÓN DE USUARIOS (SÓLO ADMIN) -->
   <div class="tab-pane d-none" id="tab-usuarios">
     <div class="card-panel mb-3">
-      <div class="section-title"><i class="bi bi-person-gear"></i> Crear Nuevo Usuario Encargado</div>
-      <div class="section-hint">Agrega a las personas del equipo que tendrán acceso al sistema.</div>
-      <form id="formAdminCrearUsuario">
-        <div class="row g-2">
-          <div class="col-12 col-md-4">
-            <label class="form-label">Nombre</label>
-            <input type="text" id="adminUserNombre" class="form-control" required placeholder="Ej. Maria Lopez">
-          </div>
-          <div class="col-12 col-md-4">
-            <label class="form-label">Correo electrónico</label>
-            <input type="email" id="adminUserEmail" class="form-control" required placeholder="maria@iglesia.com">
-          </div>
-          <div class="col-12 col-md-4">
-            <label class="form-label">Contraseña</label>
-            <input type="password" id="adminUserPass" class="form-control" required placeholder="******">
-          </div>
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <div>
+          <div class="section-title mb-0"><i class="bi bi-person-gear"></i> Gestión de Usuarios</div>
+          <div class="section-hint mb-0">Agrega o administra los usuarios del sistema.</div>
         </div>
-        <button type="submit" class="btn btn-primary-app w-100 mt-3">Registrar Usuario</button>
-      </form>
+        <button class="btn btn-primary-app" onclick="abrirModalUsuario()"><i class="bi bi-person-plus-fill"></i> Crear Usuario</button>
+      </div>
     </div>
 
     <div class="card-panel">
@@ -869,7 +854,7 @@
 
 </div>
 
-<!-- MODAL PERFIL -->
+<!-- MODAL PERFIL NIÑO -->
 <div class="modal fade" id="modalPerfil" tabindex="-1">
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <div class="modal-content">
@@ -878,6 +863,43 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body" id="modalPerfilBody"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CREAR/EDITAR USUARIO (CRUD COMPLETO) -->
+<div class="modal fade" id="modalUsuario" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-navy text-white" style="background-color: var(--navy);">
+        <h5 class="modal-title text-white" id="modalUsuarioTitle">Agregar Usuario</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formUsuario">
+          <input type="hidden" id="userId">
+          <div class="mb-3">
+            <label class="form-label">Nombre Completo</label>
+            <input type="text" id="userNombre" class="form-control" required placeholder="Ej. Maria Lopez">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Correo Electrónico</label>
+            <input type="email" id="userEmail" class="form-control" required placeholder="maria@iglesia.com">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Contraseña <span id="userPassHint" class="text-muted small">(Dejar en blanco para no modificar al editar)</span></label>
+            <input type="password" id="userPass" class="form-control" placeholder="******">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Rol de Usuario</label>
+            <select id="userRol" class="form-select" required>
+              <option value="encargado">Encargado</option>
+              <option value="admin">Administrador</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary-app w-100" id="btnGuardarModalUser">Guardar Usuario</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>
@@ -917,6 +939,7 @@ const auth = firebase.auth();
   let globalRegistros = [];
   let currentUserData = null;
   let isRegisterMode = false;
+  let modalUsuarioInstancia = null;
 
   function normalizar(str){ return (str || '').toString().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim(); }
   function hoyKey(){ return new Date().toLocaleDateString('sv-SE'); }
@@ -1046,27 +1069,85 @@ const auth = firebase.auth();
 
   document.getElementById('btnLogout').addEventListener('click', ()=> auth.signOut());
 
-  // CRUD DE USUARIOS DESDE PANEL ADMIN
-  document.getElementById('formAdminCrearUsuario').addEventListener('submit', async (e)=>{
-    e.preventDefault();
-    const name = document.getElementById('adminUserNombre').value.trim();
-    const email = document.getElementById('adminUserEmail').value.trim();
-    const pass = document.getElementById('adminUserPass').value;
+  // CRUD COMPLETO DE USUARIOS (DESDE PANEL ADMIN Y MODAL)
+  document.addEventListener('DOMContentLoaded', () => {
+    const modalUserEl = document.getElementById('modalUsuario');
+    if (modalUserEl) {
+      modalUsuarioInstancia = new bootstrap.Modal(modalUserEl);
+    }
+  });
 
-    try{
-      const secondaryApp = firebase.initializeApp(firebaseConfig, "Secondary");
-      const res = await secondaryApp.auth().createUserWithEmailAndPassword(email, pass);
-      await db.collection('usuarios').doc(res.user.uid).set({
-        nombre: name,
-        email: email,
-        rol: 'encargado'
-      });
-      secondaryApp.delete();
-      document.getElementById('formAdminCrearUsuario').reset();
-      mostrarToast('Usuario encargado creado correctamente', 'success');
+  window.abrirModalUsuario = function() {
+    document.getElementById('formUsuario').reset();
+    document.getElementById('userId').value = '';
+    document.getElementById('modalUsuarioTitle').textContent = 'Agregar Usuario';
+    document.getElementById('userPass').required = true;
+    document.getElementById('userPassHint').style.display = 'none';
+    if (!modalUsuarioInstancia) {
+      modalUsuarioInstancia = new bootstrap.Modal(document.getElementById('modalUsuario'));
+    }
+    modalUsuarioInstancia.show();
+  };
+
+  window.editarUsuarioAdmin = async function(uid) {
+    try {
+      const doc = await db.collection('usuarios').doc(uid).get();
+      if (!doc.exists) return alert('El usuario no existe.');
+      const u = doc.data();
+
+      document.getElementById('userId').value = uid;
+      document.getElementById('userNombre').value = u.nombre || '';
+      document.getElementById('userEmail').value = u.email || '';
+      document.getElementById('userRol').value = u.rol || 'encargado';
+      document.getElementById('userPass').value = '';
+      document.getElementById('userPass').required = false;
+      document.getElementById('userPassHint').style.display = 'inline';
+      document.getElementById('modalUsuarioTitle').textContent = 'Editar Usuario';
+
+      if (!modalUsuarioInstancia) {
+        modalUsuarioInstancia = new bootstrap.Modal(document.getElementById('modalUsuario'));
+      }
+      modalUsuarioInstancia.show();
+    } catch(err) {
+      alert('Error al cargar datos del usuario: ' + err.message);
+    }
+  };
+
+  document.getElementById('formUsuario').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const uid = document.getElementById('userId').value;
+    const name = document.getElementById('userNombre').value.trim();
+    const email = document.getElementById('userEmail').value.trim();
+    const pass = document.getElementById('userPass').value;
+    const rol = document.getElementById('userRol').value;
+
+    try {
+      if (uid) {
+        // ACTUALIZAR USUARIO
+        await db.collection('usuarios').doc(uid).update({
+          nombre: name,
+          email: email,
+          rol: rol
+        });
+        mostrarToast('Usuario actualizado con éxito', 'success');
+      } else {
+        // CREAR USUARIO
+        if (!pass) return alert('Por favor ingresa una contraseña.');
+        const secondaryApp = firebase.initializeApp(firebaseConfig, "SecondaryAppUser");
+        const res = await secondaryApp.auth().createUserWithEmailAndPassword(email, pass);
+        await db.collection('usuarios').doc(res.user.uid).set({
+          nombre: name,
+          email: email,
+          rol: rol
+        });
+        secondaryApp.delete();
+        mostrarToast('Usuario creado correctamente', 'success');
+      }
+
+      if (modalUsuarioInstancia) modalUsuarioInstancia.hide();
       cargarUsuariosAdmin();
-    }catch(err){
-      alert('Error creando usuario: ' + err.message);
+    } catch(err) {
+      alert('Error en la operación de usuario: ' + err.message);
     }
   });
 
@@ -1082,7 +1163,8 @@ const auth = firebase.auth();
           <td>${escapeHtml(u.email)}</td>
           <td><span class="badge ${u.rol==='admin'?'bg-primary':'bg-secondary'}">${u.rol}</span></td>
           <td>
-            <button class="btn btn-sm btn-outline-danger" onclick="eliminarUsuarioAdmin('${uid}')"><i class="bi bi-trash"></i></button>
+            <button class="btn btn-sm btn-outline-primary me-1" onclick="editarUsuarioAdmin('${uid}')" title="Editar usuario"><i class="bi bi-pencil-fill"></i></button>
+            <button class="btn btn-sm btn-outline-danger" onclick="eliminarUsuarioAdmin('${uid}')" title="Eliminar usuario"><i class="bi bi-trash"></i></button>
           </td>
         </tr>
       `;
@@ -1091,9 +1173,13 @@ const auth = firebase.auth();
 
   window.eliminarUsuarioAdmin = async function(uid){
     if(!confirm('¿Eliminar registro de usuario de la lista?')) return;
-    await db.collection('usuarios').doc(uid).delete();
-    cargarUsuariosAdmin();
-    mostrarToast('Usuario eliminado', 'danger');
+    try {
+      await db.collection('usuarios').doc(uid).delete();
+      cargarUsuariosAdmin();
+      mostrarToast('Usuario eliminado', 'danger');
+    } catch(err) {
+      alert('Error al eliminar usuario: ' + err.message);
+    }
   };
 
   // LISTENERS EN TIEMPO REAL
@@ -1796,37 +1882,5 @@ const auth = firebase.auth();
 
 })();
 </script>
-<!-- Modal Crear / Editar Usuario -->
-<div class="modal fade" id="modalUsuario" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header bg-dark text-white">
-        <h5 class="modal-title" id="modalUsuarioTitle">Agregar Usuario</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <form id="formUsuario">
-          <input type="hidden" id="userId">
-          <div class="mb-3">
-            <label class="form-label">Nombre Completo</label>
-            <input type="text" id="userNombre" class="form-control" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Correo Electrónico</label>
-            <input type="email" id="userEmail" class="form-control" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Rol de Usuario</label>
-            <select id="userRol" class="form-select" required>
-              <option value="encargado">Encargado</option>
-              <option value="admin">Administrador</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-primary w-100">Guardar Usuario</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
 </body>
 </html>
