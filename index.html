@@ -42,11 +42,11 @@
     -webkit-tap-highlight-color:transparent;
     padding-bottom:2.5rem;
   }
-  h1,h2,h3,h4,h5,.brand,.nav-pill,.btn,.stat-num{
+  h1,h2,h3,h4,h5,.brand,.nav-pill,.btn,.stat-num,.tv-num{
     font-family:'Poppins',system-ui,sans-serif;
   }
 
-  /* ---------- Encabezado ---------- */
+  /* Header */
   .topbar{
     background:var(--navy);
     color:#fff;
@@ -73,7 +73,7 @@
     margin-top:.1rem;
   }
 
-  /* ---------- Navegación por pestañas ---------- */
+  /* Navigation */
   .tab-shell{
     position:sticky;
     top:0;
@@ -149,14 +149,14 @@
     box-shadow:0 0 0 .2rem rgba(44,79,124,.15);
   }
 
-  /* ---------- Buscador ---------- */
+  /* Search */
   .search-wrap{position:relative; margin-bottom:.85rem;}
   .search-wrap .bi-search{
     position:absolute; left:.9rem; top:50%; transform:translateY(-50%); color:var(--muted);
   }
   .search-wrap input{padding-left:2.5rem; height:3.1rem; font-size:1.05rem;}
 
-  /* ---------- Chips de filtro semáforo ---------- */
+  /* Chips */
   .chip-row{display:flex; gap:.4rem; flex-wrap:wrap; margin-bottom:1rem;}
   .chip{
     border:1px solid var(--border);
@@ -169,7 +169,7 @@
   }
   .chip.active{background:var(--navy); color:#fff; border-color:var(--navy);}
 
-  /* ---------- Tarjetas de niños ---------- */
+  /* Kid Cards */
   .kid-card{
     display:flex;
     align-items:center;
@@ -223,10 +223,6 @@
     color:var(--muted); font-size:.82rem;
     white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
   }
-  .kid-tags{margin-top:.25rem; display:flex; gap:.3rem; flex-wrap:wrap;}
-  .tag{font-size:.72rem; font-weight:600; border-radius:20px; padding:.1rem .5rem;}
-  .tag-allergy{background:#FCEBD9; color:#B4550A;}
-  .tag-time{background:#E8EEF6; color:var(--navy);}
 
   .btn-action{
     flex:0 0 auto;
@@ -243,12 +239,11 @@
   .btn-in:active{background:var(--success-dark);}
   .btn-out{background:var(--danger);}
   .btn-out:active{background:var(--danger-dark);}
-  .btn-action .bi{font-size:1.1rem;}
 
   .empty-state{text-align:center; color:var(--muted); padding:2.2rem 1rem;}
   .empty-state .bi{font-size:2.2rem; color:var(--border); display:block; margin-bottom:.5rem;}
 
-  /* ---------- Estadísticas / disponibilidad de códigos ---------- */
+  /* Stats */
   .stat-row{display:flex; gap:.6rem; margin-bottom:1rem;}
   .stat-box{
     flex:1; background:var(--surface); border:1px solid var(--border);
@@ -271,7 +266,7 @@
     border-radius:12px; padding:.85rem 1rem; margin-bottom:1rem; font-size:.88rem;
   }
 
-  /* ---------- Botón principal ---------- */
+  /* Buttons */
   .btn-primary-app{
     background:var(--navy); border:none; color:#fff; font-weight:700;
     padding:.85rem 1.1rem; border-radius:10px; min-height:50px;
@@ -279,7 +274,7 @@
   .btn-primary-app:hover, .btn-primary-app:active{background:var(--navy-light); color:#fff;}
   .btn-primary-app:disabled{background:#A9B4C2;}
 
-  /* ---------- Fotos en formularios ---------- */
+  /* Photo Picker */
   .foto-picker{
     display:flex; align-items:center; gap:.75rem;
     border:1px dashed var(--border);
@@ -295,7 +290,7 @@
   }
   .foto-picker .foto-btns{display:flex; flex-direction:column; gap:.3rem; flex:1;}
 
-  /* ---------- Tabla de reporte ---------- */
+  /* Table */
   .table-report{font-size:.85rem;}
   .table-report th{background:#F0F3F8; color:var(--navy); font-weight:700; white-space:nowrap; border-bottom:none;}
   .table-report td{vertical-align:middle;}
@@ -304,7 +299,7 @@
 
   .list-registrados{max-height:420px; overflow-y:auto;}
 
-  /* ---------- Banner último ingreso (para imprimir ticket) ---------- */
+  /* Banner */
   .banner-ultimo{
     background:var(--warn-bg);
     border:1px solid #F0DFA0;
@@ -319,7 +314,7 @@
   .banner-ultimo .txt{flex:1; font-size:.9rem;}
   .banner-ultimo strong{color:var(--navy);}
 
-  /* ---------- Toast ---------- */
+  /* Toast */
   .toast-app{
     position:fixed; left:50%; bottom:1.2rem; transform:translateX(-50%) translateY(20px);
     background:var(--navy); color:#fff; padding:.75rem 1.1rem; border-radius:12px;
@@ -332,7 +327,7 @@
   .toast-app.toast-success{background:var(--success-dark);}
   .toast-app.toast-danger{background:var(--danger-dark);}
 
-  /* ---------- Modal de perfil ---------- */
+  /* Profile */
   .perfil-fotos{display:flex; gap:1rem; margin-bottom:1rem;}
   .perfil-foto{
     width:88px; height:88px; border-radius:14px;
@@ -340,7 +335,6 @@
     display:flex; align-items:center; justify-content:center;
     color:var(--muted); font-size:1.8rem; flex:0 0 auto;
   }
-  .perfil-foto-label{font-size:.72rem; color:var(--muted); text-align:center; margin-top:.25rem; font-weight:600;}
   .semaforo-pill{
     display:inline-flex; align-items:center; gap:.4rem;
     font-size:.8rem; font-weight:700; padding:.25rem .7rem; border-radius:20px;
@@ -349,19 +343,132 @@
   .semaforo-pill.amarillo{background:var(--warn-bg); color:#8A6400;}
   .semaforo-pill.rojo{background:#FDEAEA; color:var(--danger-dark);}
   .semaforo-pill.gris{background:#EEF0F3; color:var(--muted);}
-  .campo-lectura{padding:.4rem 0; border-bottom:1px solid #F0F1F4;}
-  .campo-lectura .lbl{font-size:.74rem; color:var(--muted); font-weight:600; text-transform:none;}
-  .campo-lectura .val{font-size:.95rem; color:var(--ink); font-weight:600;}
-  .historial-mini{max-height:180px; overflow-y:auto; font-size:.82rem;}
-  .historial-mini table{margin-bottom:0;}
 
-  @media (max-width:420px){
-    .nav-pill span.txt{display:none;}
-    .nav-pill{padding:.85rem .5rem;}
-    .kid-meta{font-size:.76rem;}
+  /* Home */
+  .welcome-hero{
+    background:linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    color:#fff;
+    border-radius:var(--radius);
+    padding:2.5rem 1.5rem;
+    text-align:center;
+    margin-bottom:1.5rem;
+    box-shadow:0 10px 30px rgba(30,58,95,0.15);
   }
+  .welcome-hero h1{font-weight:800; font-size:2rem; margin-bottom:.5rem;}
+  .welcome-hero p{color:#B9C7DA; max-width:600px; margin:0 auto; font-size:1.05rem;}
+  
+  .home-card-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:1rem;
+  }
+  .home-card{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:1.5rem;
+    text-align:left;
+    cursor:pointer;
+    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+  }
+  .home-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.06);
+    border-color:var(--navy-light);
+  }
+  .home-card-icon{
+    width:52px; height:52px;
+    border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.6rem;
+  }
+  .icon-blue{background:#EAF0F8; color:var(--navy);}
+  .icon-green{background:#E4F6E8; color:var(--success-dark);}
+  .icon-red{background:#FDEAEA; color:var(--danger-dark);}
+  .icon-purple{background:#F3E8FF; color:#7C3AED;}
+  .icon-dark{background:#1E293B; color:#38BDF8;}
 
-  /* ---------- Ticket imprimible ---------- */
+  .home-card h3{font-size:1.15rem; font-weight:700; margin:0; color:var(--navy);}
+  .home-card p{font-size:.85rem; color:var(--muted); margin:0;}
+
+  /* Monitor TV */
+  .tv-container{
+    background:#0F172A;
+    color:#F8FAFC;
+    border-radius:var(--radius);
+    padding:2rem 1.5rem;
+    min-height:80vh;
+  }
+  .tv-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:2px solid #334155;
+    padding-bottom:1.2rem;
+    margin-bottom:1.5rem;
+  }
+  .tv-title{font-size:1.8rem; font-weight:800; color:#38BDF8; display:flex; align-items:center; gap:.7rem;}
+  .tv-clock{font-size:1.4rem; font-weight:700; color:#94A3B8; font-family:monospace;}
+
+  .tv-stat-card{
+    background:#1E293B;
+    border:1px solid #334155;
+    border-radius:16px;
+    padding:1.5rem;
+    text-align:center;
+  }
+  .tv-num{font-size:3.5rem; font-weight:800; line-height:1;}
+  .tv-num-green{color:#4ADE80;}
+  .tv-num-red{color:#F87171;}
+  .tv-label{font-size:1rem; color:#94A3B8; font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-top:.5rem;}
+
+  .tv-section-title{
+    font-size:1.25rem; font-weight:700; color:#F1F5F9; margin-bottom:1rem; display:flex; align-items:center; gap:.5rem;
+  }
+  .tv-grid-adentro{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+    gap:.85rem;
+    max-height:450px;
+    overflow-y:auto;
+    padding-right:5px;
+  }
+  .tv-kid-card{
+    background:#1E293B;
+    border-left:4px solid #4ADE80;
+    border-radius:10px;
+    padding:.8rem 1rem;
+    display:flex;
+    align-items:center;
+    gap:.8rem;
+  }
+  .tv-code{background:#334155; color:#38BDF8; font-weight:800; font-size:1.1rem; padding:.2rem .6rem; border-radius:6px;}
+  .tv-name{font-weight:700; font-size:1.05rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+
+  .tv-feed{
+    background:#1E293B;
+    border:1px solid #334155;
+    border-radius:16px;
+    padding:1rem;
+    max-height:450px;
+    overflow-y:auto;
+  }
+  .tv-feed-item{
+    padding:.75rem .5rem;
+    border-bottom:1px solid #334155;
+    display:flex;
+    align-items:center;
+    gap:.8rem;
+    font-size:.95rem;
+  }
+  .tv-feed-item:last-child{border-bottom:none;}
+  .tv-badge-in{background:rgba(74,222,128,0.15); color:#4ADE80; padding:.2rem .6rem; border-radius:6px; font-weight:700; font-size:.8rem;}
+  .tv-badge-out{background:rgba(248,113,113,0.15); color:#F87171; padding:.2rem .6rem; border-radius:6px; font-weight:700; font-size:.8rem;}
+
+  /* Ticket */
   #areaTicket{display:none;}
   body.imprimiendo-ticket #areaTicket{display:block;}
   .ticket-copy{
@@ -380,7 +487,6 @@
   .ticket-hora{font-size:.85rem; color:var(--muted); margin-top:.4rem;}
   .ticket-nota{font-size:.75rem; color:var(--muted); margin-top:.6rem;}
 
-  /* ---------- Impresión ---------- */
   @media print{
     body.imprimiendo-ticket .topbar,
     body.imprimiendo-ticket .tab-shell,
@@ -400,16 +506,17 @@
 </head>
 <body>
 
-<!-- ================= ENCABEZADO ================= -->
 <div class="topbar">
   <div class="brand"><i class="bi bi-heart-fill"></i> Iglesia Bethania · Área B-Kids</div>
   <div class="subtitle">Control de ingreso y salida de niños · <span id="fechaHoyTexto"></span></div>
 </div>
 
-<!-- ================= PESTAÑAS ================= -->
 <div class="tab-shell">
   <div class="nav-pill-group" role="tablist">
-    <button class="nav-pill active" data-tab="registro" type="button">
+    <button class="nav-pill active" data-tab="inicio" type="button">
+      <i class="bi bi-house-door"></i><span class="txt">Inicio</span>
+    </button>
+    <button class="nav-pill" data-tab="registro" type="button">
       <i class="bi bi-person-plus"></i><span class="txt">Registro</span>
     </button>
     <button class="nav-pill" data-tab="checkin" type="button">
@@ -419,6 +526,9 @@
       <i class="bi bi-box-arrow-right"></i><span class="txt">Check&#8209;Out</span>
       <span class="badge-count" id="badgeAdentro">0</span>
     </button>
+    <button class="nav-pill" data-tab="estados" type="button">
+      <i class="bi bi-tv"></i><span class="txt">Estados TV</span>
+    </button>
     <button class="nav-pill" data-tab="reporte" type="button">
       <i class="bi bi-clipboard-data"></i><span class="txt">Reporte</span>
     </button>
@@ -427,9 +537,58 @@
 
 <div class="container-app">
 
-  <!-- ================= TAB: REGISTRO ================= -->
-  <div class="tab-pane" id="tab-registro">
+  <!-- HOME -->
+  <div class="tab-pane" id="tab-inicio">
+    <div class="welcome-hero">
+      <h1>¡Bienvenidos a B-Kids!</h1>
+      <p>Sistema integrado en la nube para control de asistencia y monitoreo en tiempo real de Iglesia Bethania.</p>
+    </div>
 
+    <div class="home-card-grid">
+      <div class="home-card" onclick="irATab('registro')">
+        <div class="home-card-icon icon-blue"><i class="bi bi-person-plus-fill"></i></div>
+        <div>
+          <h3>Registro de Niños</h3>
+          <p>Asigna un código único (1-1000) e ingresa fotos y datos de contacto.</p>
+        </div>
+      </div>
+
+      <div class="home-card" onclick="irATab('checkin')">
+        <div class="home-card-icon icon-green"><i class="bi bi-box-arrow-in-right"></i></div>
+        <div>
+          <h3>Check-In (Entrada)</h3>
+          <p>Busca rápidamente al niño para ingresarlo e imprimir el ticket del papá.</p>
+        </div>
+      </div>
+
+      <div class="home-card" onclick="irATab('checkout')">
+        <div class="home-card-icon icon-red"><i class="bi bi-box-arrow-right"></i></div>
+        <div>
+          <h3>Check-Out (Salida)</h3>
+          <p>Valida el código entregado por el padre y autoriza la salida segura.</p>
+        </div>
+      </div>
+
+      <div class="home-card" onclick="irATab('estados')">
+        <div class="home-card-icon icon-dark"><i class="bi bi-tv-fill"></i></div>
+        <div>
+          <h3>Pantalla TV (Estados)</h3>
+          <p>Modo de monitoreo gigante en tiempo real diseñado para televisores.</p>
+        </div>
+      </div>
+
+      <div class="home-card" onclick="irATab('reporte')">
+        <div class="home-card-icon icon-purple"><i class="bi bi-bar-chart-line-fill"></i></div>
+        <div>
+          <h3>Reportes y Excel</h3>
+          <p>Consulta el historial diario de asistencias y exporta datos fácilmente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REGISTRO -->
+  <div class="tab-pane d-none" id="tab-registro">
     <div class="codigos-box">
       <div class="top-line">
         <span id="codigosUsadosTxt">0 / 1000 códigos usados</span>
@@ -439,13 +598,13 @@
     </div>
     <div id="alertaLlenoRegistro" class="alerta-lleno d-none">
       <i class="bi bi-exclamation-triangle-fill"></i>
-      Ya se usaron los 1000 códigos disponibles. Para registrar un niño nuevo, primero deben <strong>liberar el código</strong> de un niño en 🔴 rojo (inactivo hace más de 2 meses).
+      Ya se usaron los 1000 códigos disponibles. Para registrar un niño nuevo, liberá un código en 🔴 rojo.
       <button class="btn btn-sm btn-outline-danger mt-2 w-100" id="btnIrInactivos">Ver niños inactivos (🔴)</button>
     </div>
 
     <div class="card-panel mb-3">
       <div class="section-title"><i class="bi bi-person-plus"></i> Registrar niño</div>
-      <div class="section-hint">Se hace una sola vez por niño. El código que se le asigne es el que se imprime y se entrega físicamente al padre en cada Check&#8209;In.</div>
+      <div class="section-hint">Se hace una sola vez por niño. El código asignado es el que se imprime en cada Check-In.</div>
 
       <form id="formRegistro">
         <div class="row g-3">
@@ -528,7 +687,7 @@
     </div>
   </div>
 
-  <!-- ================= TAB: CHECK-IN ================= -->
+  <!-- CHECK-IN -->
   <div class="tab-pane d-none" id="tab-checkin">
     <div class="card-panel">
       <div class="section-title"><i class="bi bi-box-arrow-in-right"></i> Entrada rápida</div>
@@ -544,7 +703,7 @@
     </div>
   </div>
 
-  <!-- ================= TAB: CHECK-OUT ================= -->
+  <!-- CHECK-OUT -->
   <div class="tab-pane d-none" id="tab-checkout">
     <div class="card-panel">
       <div class="section-title"><i class="bi bi-box-arrow-right"></i> Salida</div>
@@ -557,7 +716,43 @@
     </div>
   </div>
 
-  <!-- ================= TAB: REPORTE ================= -->
+  <!-- MONITOR TV -->
+  <div class="tab-pane d-none" id="tab-estados">
+    <div class="tv-container">
+      <div class="tv-header">
+        <div class="tv-title"><i class="bi bi-tv-fill"></i> B-KIDS · MONITOREO EN VIVO</div>
+        <div class="tv-clock" id="tvReloj">00:00:00</div>
+      </div>
+
+      <div class="row g-4 mb-4">
+        <div class="col-12 col-md-6">
+          <div class="tv-stat-card">
+            <div class="tv-num tv-num-green" id="tvNumAdentro">0</div>
+            <div class="tv-label">Niños adentro en este momento</div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="tv-stat-card">
+            <div class="tv-num tv-num-red" id="tvNumSalieron">0</div>
+            <div class="tv-label">Niños entregados hoy</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-12 col-lg-7">
+          <div class="tv-section-title"><i class="bi bi-person-check-fill text-success"></i> Niños actualmente adentro</div>
+          <div class="tv-grid-adentro" id="tvGridAdentro"></div>
+        </div>
+        <div class="col-12 col-lg-5">
+          <div class="tv-section-title"><i class="bi bi-activity text-info"></i> Actividad reciente</div>
+          <div class="tv-feed" id="tvFeedActividad"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORTE -->
   <div class="tab-pane d-none" id="tab-reporte">
     <div class="card-panel">
       <div class="d-flex justify-content-between align-items-end flex-wrap gap-2 mb-3">
@@ -605,48 +800,58 @@
 
 </div>
 
-<!-- ================= MODAL PERFIL / CRUD ================= -->
+<!-- MODAL PERFIL -->
 <div class="modal fade" id="modalPerfil" tabindex="-1">
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalPerfilTitulo">Perfil del niño</h5>
+        <h5 class="modal-title">Perfil del niño</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
-      <div class="modal-body" id="modalPerfilBody"><!-- contenido dinámico --></div>
+      <div class="modal-body" id="modalPerfilBody"></div>
     </div>
   </div>
 </div>
 
 <div class="toast-app" id="toastApp"></div>
-
-<!-- ================= ÁREA DE TICKET (solo aparece al imprimir) ================= -->
 <div id="areaTicket"></div>
 
+<!-- LIBRERÍAS DE FIREBASE (Compat SDKs para HTML directo) -->
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
+// =====================================================
+// INICIALIZACIÓN DE FIREBASE CON TUS CLAVES
+// =====================================================
+const firebaseConfig = {
+  apiKey: "AIzaSyBwpTxcul2UGLPsMPBtRaYFFvakgHzky7c",
+  authDomain: "iglesiabethania.firebaseapp.com",
+  projectId: "iglesiabethania",
+  storageBucket: "iglesiabethania.firebasestorage.app",
+  messagingSenderId: "794137626848",
+  appId: "1:794137626848:web:7cdbb3966a204cd749e885",
+  measurementId: "G-XNXFEETK18"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
 (function(){
 
-  /* =====================================================
-     CONFIGURACIÓN
-  ===================================================== */
   const MAX_CODIGOS = 1000;
-  const DIAS_VERDE = 14;   // <= 14 días: recurrente
-  const DIAS_AMARILLO = 60; // 15-60 días: ocasional; más de 60: inactivo
+  const DIAS_VERDE = 14;
+  const DIAS_AMARILLO = 60;
   const FOTO_MAX_DIM = 160;
   const FOTO_CALIDAD = 0.55;
-
   const AVATAR_COLORS = ['#2C4F7C','#2F9E44','#C2410C','#0E7490','#7C3AED','#B4550A'];
 
-  /* =====================================================
-     UTILIDADES
-  ===================================================== */
-  function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+  // Cache en memoria sincronizado en tiempo real con Firestore
+  let globalKids = [];
+  let globalRegistros = [];
 
-  function normalizar(str){
-    return (str || '').toString().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
-  }
-
+  function normalizar(str){ return (str || '').toString().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim(); }
   function hoyKey(){ return new Date().toLocaleDateString('sv-SE'); }
   function horaActual(){ return new Date().toLocaleTimeString('es-GT', {hour:'2-digit', minute:'2-digit'}); }
 
@@ -659,15 +864,11 @@
   function diffDias(fechaA, fechaB){
     const [ay,am,ad] = fechaA.split('-').map(Number);
     const [by,bm,bd] = fechaB.split('-').map(Number);
-    const da = new Date(ay, am-1, ad);
-    const db = new Date(by, bm-1, bd);
-    return Math.round((db-da) / 86400000);
+    return Math.round((new Date(by, bm-1, bd) - new Date(ay, am-1, ad)) / 86400000);
   }
 
   function iniciales(nombre, apellidos){
-    const a = (nombre||'').trim()[0] || '';
-    const b = (apellidos||'').trim()[0] || '';
-    return (a+b).toUpperCase();
+    return (((nombre||'').trim()[0]||'') + ((apellidos||'').trim()[0]||'')).toUpperCase();
   }
   function colorPara(id){
     let hash = 0;
@@ -679,37 +880,35 @@
   }
   function codStr(codigo){ return (codigo!=null) ? '#'+String(codigo).padStart(3,'0') : '—'; }
 
-  /* =====================================================
-     ALMACENAMIENTO
-  ===================================================== */
-  const KEY_KIDS = 'mi_kids_v2';
-  const KEY_REGISTROS = 'mi_registros_v2';
+  // =====================================================
+  // ESCUCHADORES EN TIEMPO REAL (FIRESTORE REAL-TIME)
+  // =====================================================
+  db.collection('kids').onSnapshot(snapshot => {
+    globalKids = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    renderListaRegistrados();
+    actualizarCajaCodigos();
+    poblarSelectCodigos();
+    renderCheckin();
+    renderCheckout();
+    renderTV();
+    renderReporte();
+  });
 
-  function getKids(){ return JSON.parse(localStorage.getItem(KEY_KIDS) || '[]'); }
-  function saveKids(arr){
-    try{ localStorage.setItem(KEY_KIDS, JSON.stringify(arr)); return true; }
-    catch(e){
-      alert('No se pudo guardar: el almacenamiento del navegador está lleno (esto puede pasar por acumular muchas fotos). Intenta quitar alguna foto o eliminar un registro y vuelve a intentar.');
-      return false;
-    }
-  }
-  function getRegistros(){ return JSON.parse(localStorage.getItem(KEY_REGISTROS) || '[]'); }
-  function saveRegistros(arr){
-    try{ localStorage.setItem(KEY_REGISTROS, JSON.stringify(arr)); return true; }
-    catch(e){
-      alert('No se pudo guardar el registro: el almacenamiento del navegador está lleno.');
-      return false;
-    }
-  }
+  db.collection('registros').onSnapshot(snapshot => {
+    globalRegistros = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    renderCheckin();
+    renderCheckout();
+    renderTV();
+    renderReporte();
+    actualizarBadgeAdentro();
+  });
 
-  function kidsActivos(){ return getKids().filter(k=>!k.archivado); }
+  function kidsActivos(){ return globalKids.filter(k=>!k.archivado); }
 
-  /* =====================================================
-     CÓDIGOS 1-1000
-  ===================================================== */
-  function codigosUsados(){
-    return new Set(kidsActivos().filter(k=>k.codigo!=null).map(k=>k.codigo));
-  }
+  // =====================================================
+  // GESTIÓN DE CÓDIGOS
+  // =====================================================
+  function codigosUsados(){ return new Set(kidsActivos().filter(k=>k.codigo!=null).map(k=>k.codigo)); }
   function codigosDisponibles(){
     const usados = codigosUsados();
     const libres = [];
@@ -724,7 +923,7 @@
     disponibles.sort((a,b)=>a-b);
 
     if(disponibles.length===0){
-      sel.innerHTML = '<option value="">No hay códigos libres</option>';
+      sel.innerHTML = '<option value="">Sin códigos libres</option>';
       sel.disabled = true;
       return;
     }
@@ -736,7 +935,7 @@
   function actualizarCajaCodigos(){
     const usados = codigosUsados().size;
     const libres = MAX_CODIGOS - usados;
-    document.getElementById('codigosUsadosTxt').textContent = `${usados} / ${MAX_CODIGOS} códigos usados`;
+    document.getElementById('codigosUsadosTxt').textContent = `${usados} / ${MAX_CODIGOS} usados`;
     document.getElementById('codigosLibresTxt').textContent = `${libres} libres`;
     const pct = Math.round((usados/MAX_CODIGOS)*100);
     const barra = document.getElementById('codigosBarra');
@@ -755,14 +954,14 @@
   }
 
   document.getElementById('btnIrInactivos').addEventListener('click', ()=>{
-    document.querySelector('.nav-pill[data-tab="registro"]').click();
+    irATab('registro');
     document.querySelector('.chip[data-filtro="rojo"]').click();
     document.getElementById('listaRegistrados').scrollIntoView({behavior:'smooth'});
   });
 
-  /* =====================================================
-     FOTOS: redimensionar a miniatura (para no llenar localStorage)
-  ===================================================== */
+  // =====================================================
+  // MANEJO DE FOTOS
+  // =====================================================
   function archivoAFoto(file){
     return new Promise((resolve, reject)=>{
       if(!file){ resolve(null); return; }
@@ -778,10 +977,10 @@
           canvas.getContext('2d').drawImage(img, 0, 0, w, h);
           resolve(canvas.toDataURL('image/jpeg', FOTO_CALIDAD));
         };
-        img.onerror = ()=> reject(new Error('No se pudo leer la imagen'));
+        img.onerror = ()=> reject(new Error('Error imagen'));
         img.src = ev.target.result;
       };
-      reader.onerror = ()=> reject(new Error('No se pudo leer el archivo'));
+      reader.onerror = ()=> reject(new Error('Error archivo'));
       reader.readAsDataURL(file);
     });
   }
@@ -800,13 +999,10 @@
         preview.style.backgroundImage = `url(${valorActual})`;
         preview.innerHTML = '';
         quitarBtn.classList.remove('d-none');
-      }catch(e){
-        alert('No se pudo procesar la foto.');
-      }
+      }catch(e){ alert('Error al cargar la foto.'); }
     });
     quitarBtn.addEventListener('click', function(){
-      valorActual = null;
-      input.value = '';
+      valorActual = null; input.value = '';
       preview.style.backgroundImage = '';
       preview.innerHTML = '<i class="bi bi-camera"></i>';
       quitarBtn.classList.add('d-none');
@@ -832,59 +1028,23 @@
   const fotoNinoPicker = conectarFotoPicker('regFotoNino','previewFotoNino','quitarFotoNino');
   const fotoPadrePicker = conectarFotoPicker('regFotoPadre','previewFotoPadre','quitarFotoPadre');
 
-  /* =====================================================
-     DATOS DE EJEMPLO
-  ===================================================== */
-  function sembrarDatos(){
-    if(localStorage.getItem(KEY_KIDS)) return;
-
-    const hoy = hoyKey();
-    const hace10 = new Date(); hace10.setDate(hace10.getDate()-10);
-    const hace40 = new Date(); hace40.setDate(hace40.getDate()-40);
-    const hace90 = new Date(); hace90.setDate(hace90.getDate()-90);
-    const fmt = d => d.toLocaleDateString('sv-SE');
-
-    const kids = [
-      {id:uid(), codigo:1, nombre:'Mateo', apellidos:'Ramírez López', edad:5, alergias:'Ninguna', padre:'Ana López', telefono:'5511-2233', autorizado:'Ana López (mamá)', fotoNino:null, fotoPadre:null, archivado:false},
-      {id:uid(), codigo:2, nombre:'Sofía', apellidos:'Gómez Pérez', edad:7, alergias:'Alergia al maní', padre:'Carlos Gómez', telefono:'4422-8890', autorizado:'Carlos Gómez (papá) o Marta Pérez (abuela)', fotoNino:null, fotoPadre:null, archivado:false},
-      {id:uid(), codigo:3, nombre:'Juan Pablo', apellidos:'Hernández Sic', edad:4, alergias:'', padre:'Lucía Sic', telefono:'3300-4455', autorizado:'Lucía Sic (mamá)', fotoNino:null, fotoPadre:null, archivado:false},
-      {id:uid(), codigo:4, nombre:'Valentina', apellidos:'De León Us', edad:6, alergias:'Usa inhalador para el asma', padre:'Pedro De León', telefono:'5588-1122', autorizado:'Pedro De León (papá)', fotoNino:null, fotoPadre:null, archivado:false},
-      {id:uid(), codigo:5, nombre:'Diego', apellidos:'Morales Tuy', edad:8, alergias:'Ninguna', padre:'Rosa Tuy', telefono:'4411-7766', autorizado:'Rosa Tuy (mamá) o José Morales (papá)', fotoNino:null, fotoPadre:null, archivado:false},
-      {id:uid(), codigo:6, nombre:'Camila', apellidos:'Xitumul Pox', edad:3, alergias:'Alergia a la lactosa', padre:'Marisol Pox', telefono:'3344-9988', autorizado:'Marisol Pox (mamá)', fotoNino:null, fotoPadre:null, archivado:false},
-      {id:uid(), codigo:7, nombre:'Emilio', apellidos:'Coy Batz', edad:6, alergias:'', padre:'Fernando Coy', telefono:'5522-3344', autorizado:'Fernando Coy (papá)', fotoNino:null, fotoPadre:null, archivado:false}
-    ];
-    saveKids(kids);
-
-    const registros = [
-      {id:uid(), kidId:kids[0].id, codigo:kids[0].codigo, fecha:hoy, horaEntrada:'09:02', horaSalida:null, estado:'activo'},
-      {id:uid(), kidId:kids[2].id, codigo:kids[2].codigo, fecha:hoy, horaEntrada:'09:05', horaSalida:null, estado:'activo'},
-      {id:uid(), kidId:kids[4].id, codigo:kids[4].codigo, fecha:hoy, horaEntrada:'08:50', horaSalida:'09:10', estado:'salio'},
-      {id:uid(), kidId:kids[0].id, codigo:kids[0].codigo, fecha:fmt(hace10), horaEntrada:'09:00', horaSalida:'10:30', estado:'salio'},
-      {id:uid(), kidId:kids[1].id, codigo:kids[1].codigo, fecha:fmt(hace40), horaEntrada:'09:10', horaSalida:'10:20', estado:'salio'},
-      {id:uid(), kidId:kids[6].id, codigo:kids[6].codigo, fecha:fmt(hace90), horaEntrada:'09:15', horaSalida:'10:25', estado:'salio'}
-      // Juan Pablo, Valentina y Camila quedan como "Nuevos" (sin asistencias previas) a propósito.
-    ];
-    saveRegistros(registros);
-  }
-  sembrarDatos();
-
-  /* =====================================================
-     SEMÁFORO
-  ===================================================== */
+  // =====================================================
+  // SEMÁFORO
+  // =====================================================
   function semaforoDe(kidId){
-    const regs = getRegistros().filter(r=>r.kidId===kidId);
+    const regs = globalRegistros.filter(r=>r.kidId===kidId);
     if(regs.length===0) return {color:'gris', label:'Nuevo'};
     let ultima = regs[0].fecha;
     regs.forEach(r=>{ if(r.fecha>ultima) ultima = r.fecha; });
     const dias = diffDias(ultima, hoyKey());
     if(dias<=DIAS_VERDE) return {color:'verde', label:'Recurrente'};
     if(dias<=DIAS_AMARILLO) return {color:'amarillo', label:'Ocasional'};
-    return {color:'rojo', label:'Inactivo (2+ meses)'};
+    return {color:'rojo', label:'Inactivo'};
   }
 
-  /* =====================================================
-     TOAST
-  ===================================================== */
+  // =====================================================
+  // TOAST NOTIFICACIONES
+  // =====================================================
   const toastEl = document.getElementById('toastApp');
   let toastTimer = null;
   function mostrarToast(mensaje, tipo){
@@ -894,16 +1054,24 @@
     toastTimer = setTimeout(()=>{ toastEl.classList.remove('show'); }, 2400);
   }
 
-  /* =====================================================
-     NAVEGACIÓN ENTRE PESTAÑAS
-  ===================================================== */
+  // =====================================================
+  // NAVEGACIÓN
+  // =====================================================
   const pills = document.querySelectorAll('.nav-pill');
   const panes = {
+    inicio: document.getElementById('tab-inicio'),
     registro: document.getElementById('tab-registro'),
     checkin: document.getElementById('tab-checkin'),
     checkout: document.getElementById('tab-checkout'),
+    estados: document.getElementById('tab-estados'),
     reporte: document.getElementById('tab-reporte')
   };
+
+  window.irATab = function(tabName){
+    const btn = document.querySelector(`.nav-pill[data-tab="${tabName}"]`);
+    if(btn) btn.click();
+  };
+
   pills.forEach(p=>{
     p.addEventListener('click', ()=>{
       pills.forEach(x=>x.classList.remove('active'));
@@ -914,14 +1082,15 @@
       if(p.dataset.tab==='checkout'){ renderCheckout(); }
       if(p.dataset.tab==='reporte'){ renderReporte(); }
       if(p.dataset.tab==='registro'){ renderListaRegistrados(); actualizarCajaCodigos(); poblarSelectCodigos(); }
+      if(p.dataset.tab==='estados'){ renderTV(); }
     });
   });
 
   document.getElementById('fechaHoyTexto').textContent = fechaLegible(hoyKey());
 
-  /* =====================================================
-     REGISTRO DE NIÑOS
-  ===================================================== */
+  // =====================================================
+  // REGISTRO DE NIÑOS (FIRESTORE)
+  // =====================================================
   const formRegistro = document.getElementById('formRegistro');
   formRegistro.addEventListener('submit', async function(e){
     e.preventDefault();
@@ -929,7 +1098,6 @@
     if(!codigoSel){ alert('No hay código disponible.'); return; }
 
     const kid = {
-      id: uid(),
       codigo: parseInt(codigoSel,10),
       nombre: document.getElementById('regNombre').value.trim(),
       apellidos: document.getElementById('regApellidos').value.trim(),
@@ -940,20 +1108,18 @@
       autorizado: document.getElementById('regAutorizado').value.trim(),
       fotoNino: fotoNinoPicker.get(),
       fotoPadre: fotoPadrePicker.get(),
-      archivado: false
+      archivado: false,
+      creadoEn: firebase.firestore.FieldValue.serverTimestamp()
     };
 
-    const kids = getKids();
-    kids.unshift(kid);
-    if(!saveKids(kids)) return;
-
-    formRegistro.reset();
-    fotoNinoPicker.reset();
-    fotoPadrePicker.reset();
-    poblarSelectCodigos();
-    renderListaRegistrados();
-    actualizarCajaCodigos();
-    mostrarToast('<i class="bi bi-check-circle-fill"></i> '+escapeHtml(kid.nombre)+' se registró con el código '+codStr(kid.codigo), 'success');
+    try {
+      await db.collection('kids').add(kid);
+      formRegistro.reset();
+      fotoNinoPicker.reset();
+      mostrarToast('<i class="bi bi-check-circle-fill"></i> '+escapeHtml(kid.nombre)+' guardado en la nube', 'success');
+    } catch(err) {
+      alert("Error al guardar en la nube: " + err.message);
+    }
   });
 
   function renderListaRegistrados(){
@@ -961,7 +1127,7 @@
     const filtro = normalizar(document.getElementById('buscarRegistrados').value);
     const filtroSemaforo = document.querySelector('.chip.active')?.dataset.filtro || 'todos';
     const kids = kidsActivos();
-    document.getElementById('totalRegistradosTxt').textContent = kids.length + (kids.length===1 ? ' niño en el sistema' : ' niños en el sistema');
+    document.getElementById('totalRegistradosTxt').textContent = kids.length + ' niños en el sistema';
 
     let filtrados = kids.filter(k=>{
       if(!filtro) return true;
@@ -987,8 +1153,7 @@
         </div>
         <div class="kid-info">
           <div class="kid-name"><span class="codigo-badge">${codStr(k.codigo)}</span> ${escapeHtml(k.nombre)} ${escapeHtml(k.apellidos)}</div>
-          <div class="kid-meta">${k.edad} años · Padre/Tutor: ${escapeHtml(k.padre)} · ${escapeHtml(k.telefono)}</div>
-          ${k.alergias ? `<div class="kid-tags"><span class="tag tag-allergy"><i class="bi bi-exclamation-triangle-fill"></i> ${escapeHtml(k.alergias)}</span></div>` : ''}
+          <div class="kid-meta">${k.edad} años · Padre: ${escapeHtml(k.padre)}</div>
         </div>
         <i class="bi bi-chevron-right text-muted"></i>
       </div>`;
@@ -997,10 +1162,8 @@
 
   document.getElementById('listaRegistrados').addEventListener('click', function(e){
     const card = e.target.closest('[data-perfil]');
-    if(!card) return;
-    abrirPerfil(card.dataset.perfil);
+    if(card) abrirPerfil(card.dataset.perfil);
   });
-
   document.getElementById('buscarRegistrados').addEventListener('input', renderListaRegistrados);
   document.querySelectorAll('.chip').forEach(chip=>{
     chip.addEventListener('click', ()=>{
@@ -1010,226 +1173,49 @@
     });
   });
 
-  /* =====================================================
-     MODAL PERFIL / CRUD
-  ===================================================== */
-  const modalPerfilEl = document.getElementById('modalPerfil');
-  const modalPerfil = new bootstrap.Modal(modalPerfilEl);
-  let perfilKidIdActual = null;
-
+  // =====================================================
+  // MODAL PERFIL
+  // =====================================================
+  const modalPerfil = new bootstrap.Modal(document.getElementById('modalPerfil'));
   function abrirPerfil(kidId){
-    perfilKidIdActual = kidId;
-    document.getElementById('modalPerfilTitulo').textContent = 'Perfil del niño';
     renderPerfilVista(kidId);
     modalPerfil.show();
   }
 
-  function historialDe(kidId){
-    return getRegistros().filter(r=>r.kidId===kidId).sort((a,b)=> (b.fecha+b.horaEntrada).localeCompare(a.fecha+a.horaEntrada));
-  }
-
   function renderPerfilVista(kidId){
-    const k = getKids().find(x=>x.id===kidId);
+    const k = globalKids.find(x=>x.id===kidId);
     const body = document.getElementById('modalPerfilBody');
-    if(!k){ body.innerHTML = '<p class="text-muted">Este niño ya no existe.</p>'; return; }
-
+    if(!k) return;
     const sem = semaforoDe(k.id);
-    const hist = historialDe(k.id).slice(0,8);
 
     body.innerHTML = `
-      ${k.archivado ? '<div class="alert alert-secondary py-2 mb-3"><i class="bi bi-archive"></i> Este niño está <strong>archivado</strong> (su código fue liberado).</div>' : ''}
-
       <div class="perfil-fotos">
-        <div>
-          <div class="perfil-foto" style="${k.fotoNino?`background-image:url(${k.fotoNino})`:''}">${k.fotoNino?'':'<i class=\"bi bi-person\"></i>'}</div>
-          <div class="perfil-foto-label">Niño</div>
-        </div>
-        <div>
-          <div class="perfil-foto" style="${k.fotoPadre?`background-image:url(${k.fotoPadre})`:''}">${k.fotoPadre?'':'<i class=\"bi bi-person\"></i>'}</div>
-          <div class="perfil-foto-label">Padre/Encargado</div>
-        </div>
+        <div class="perfil-foto" style="${k.fotoNino?`background-image:url(${k.fotoNino})`:''}">${k.fotoNino?'':'<i class="bi bi-person"></i>'}</div>
         <div class="ms-auto text-end">
-          <div class="codigo-badge" style="font-size:1rem; padding:.3rem .6rem;">${codStr(k.codigo)}</div>
-          <div class="mt-2"><span class="semaforo-pill ${sem.color}"><i class="bi bi-circle-fill" style="font-size:.55rem;"></i> ${sem.label}</span></div>
+          <div class="codigo-badge" style="font-size:1.1rem;">${codStr(k.codigo)}</div>
+          <div class="mt-2"><span class="semaforo-pill ${sem.color}">${sem.label}</span></div>
         </div>
       </div>
-
-      <h5 class="mb-2">${escapeHtml(k.nombre)} ${escapeHtml(k.apellidos)}</h5>
-      <div class="row">
-        <div class="col-6 campo-lectura"><div class="lbl">Edad</div><div class="val">${escapeHtml(String(k.edad))} años</div></div>
-        <div class="col-6 campo-lectura"><div class="lbl">Teléfono</div><div class="val">${escapeHtml(k.telefono)}</div></div>
-        <div class="col-12 campo-lectura"><div class="lbl">Padre/Tutor</div><div class="val">${escapeHtml(k.padre)}</div></div>
-        <div class="col-12 campo-lectura"><div class="lbl">Autorizado para retirar</div><div class="val">${escapeHtml(k.autorizado)}</div></div>
-        <div class="col-12 campo-lectura"><div class="lbl">Alergias / Notas médicas</div><div class="val">${k.alergias ? escapeHtml(k.alergias) : 'Ninguna registrada'}</div></div>
-      </div>
-
-      <div class="mt-3">
-        <div class="lbl fw-semibold mb-1" style="font-size:.8rem; color:var(--muted);">Últimas asistencias</div>
-        <div class="historial-mini border rounded">
-          <table class="table table-sm mb-0">
-            <thead><tr><th>Fecha</th><th>Entrada</th><th>Salida</th></tr></thead>
-            <tbody>
-              ${hist.length ? hist.map(r=>`<tr><td>${r.fecha}</td><td>${r.horaEntrada||'-'}</td><td>${r.horaSalida||'-'}</td></tr>`).join('') : '<tr><td colspan="3" class="text-muted text-center py-2">Sin asistencias registradas</td></tr>'}
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="d-flex flex-wrap gap-2 mt-3">
-        <button class="btn btn-primary-app flex-fill" id="btnEditarPerfil"><i class="bi bi-pencil"></i> Editar</button>
-        ${k.archivado
-          ? `<button class="btn btn-outline-success flex-fill" id="btnReactivar"><i class="bi bi-arrow-repeat"></i> Reactivar con nuevo código</button>`
-          : `<button class="btn btn-outline-warning flex-fill" id="btnLiberarCodigo"><i class="bi bi-unlock"></i> Liberar código</button>`
-        }
-        <button class="btn btn-outline-danger flex-fill" id="btnEliminarPerfil"><i class="bi bi-trash"></i> Eliminar niño</button>
-      </div>
+      <h5>${escapeHtml(k.nombre)} ${escapeHtml(k.apellidos)}</h5>
+      <p class="text-muted mb-3">${k.edad} años · Tel: ${escapeHtml(k.telefono)}</p>
+      <div class="mb-2"><strong>Padre/Tutor:</strong> ${escapeHtml(k.padre)}</div>
+      <div class="mb-2"><strong>Autorizado retiros:</strong> ${escapeHtml(k.autorizado)}</div>
+      <div class="mb-3"><strong>Alergias/Notas:</strong> ${escapeHtml(k.alergias||'Ninguna')}</div>
+      <button class="btn btn-outline-danger w-100" id="btnLiberarCodigo"><i class="bi bi-unlock"></i> Liberar Código</button>
     `;
 
-    document.getElementById('btnEditarPerfil').addEventListener('click', ()=> renderPerfilEdicion(k.id));
-
-    const btnLiberar = document.getElementById('btnLiberarCodigo');
-    if(btnLiberar){
-      btnLiberar.addEventListener('click', ()=>{
-        const msg = sem.color==='rojo'
-          ? `¿Liberar el código ${codStr(k.codigo)} de ${k.nombre}? El niño quedará archivado (se conserva su historial) y el código vuelve a estar disponible para uno nuevo.`
-          : `${k.nombre} no está en rojo todavía (semáforo: ${sem.label}). ¿Seguro que quieres liberar su código de todas formas?`;
-        if(!confirm(msg)) return;
-        const kids = getKids();
-        const idx = kids.findIndex(x=>x.id===k.id);
-        kids[idx].codigo = null;
-        kids[idx].archivado = true;
-        if(!saveKids(kids)) return;
-        modalPerfil.hide();
-        renderListaRegistrados(); renderCheckin(); renderCheckout(); actualizarCajaCodigos();
-        mostrarToast('<i class="bi bi-unlock"></i> Código liberado. '+escapeHtml(k.nombre)+' quedó archivado.', 'success');
-      });
-    }
-
-    const btnReactivar = document.getElementById('btnReactivar');
-    if(btnReactivar){
-      btnReactivar.addEventListener('click', ()=>{
-        const libres = codigosDisponibles();
-        if(libres.length===0){ alert('No hay códigos disponibles para reactivar a este niño.'); return; }
-        const nuevo = libres[0];
-        if(!confirm(`¿Reactivar a ${k.nombre} con el nuevo código ${codStr(nuevo)}?`)) return;
-        const kids = getKids();
-        const idx = kids.findIndex(x=>x.id===k.id);
-        kids[idx].codigo = nuevo;
-        kids[idx].archivado = false;
-        if(!saveKids(kids)) return;
-        modalPerfil.hide();
-        renderListaRegistrados(); renderCheckin(); renderCheckout(); actualizarCajaCodigos();
-        mostrarToast('<i class="bi bi-arrow-repeat"></i> '+escapeHtml(k.nombre)+' reactivado con '+codStr(nuevo), 'success');
-      });
-    }
-
-    document.getElementById('btnEliminarPerfil').addEventListener('click', ()=>{
-      if(!confirm(`¿Eliminar completamente a ${k.nombre}? Esto borra también todo su historial de asistencias. Esta acción no se puede deshacer.`)) return;
-      const kids = getKids().filter(x=>x.id!==k.id);
-      const registros = getRegistros().filter(r=>r.kidId!==k.id);
-      if(!saveKids(kids)) return;
-      saveRegistros(registros);
+    document.getElementById('btnLiberarCodigo').addEventListener('click', async ()=>{
+      if(!confirm(`¿Liberar código de ${k.nombre}?`)) return;
+      await db.collection('kids').doc(k.id).update({ codigo: null, archivado: true });
       modalPerfil.hide();
-      renderListaRegistrados(); renderCheckin(); renderCheckout(); renderReporte(); actualizarCajaCodigos();
-      mostrarToast('<i class="bi bi-trash"></i> Niño eliminado del sistema', 'danger');
     });
   }
 
-  function renderPerfilEdicion(kidId){
-    const k = getKids().find(x=>x.id===kidId);
-    const body = document.getElementById('modalPerfilBody');
-    const disponibles = codigosDisponibles();
-    if(k.codigo!=null && !disponibles.includes(k.codigo)) disponibles.unshift(k.codigo);
-    disponibles.sort((a,b)=>a-b);
-
-    body.innerHTML = `
-      <div class="row g-3">
-        <div class="col-12 col-sm-5">
-          <label class="form-label">Código</label>
-          <select class="form-select" id="editCodigo" ${k.archivado?'disabled':''}>
-            ${k.archivado ? '<option value="">Archivado (sin código)</option>' : disponibles.map(n=>`<option value="${n}" ${n===k.codigo?'selected':''}>${codStr(n)}</option>`).join('')}
-          </select>
-        </div>
-        <div class="col-12 col-sm-7">
-          <label class="form-label">Edad</label>
-          <input type="number" min="0" max="17" class="form-control" id="editEdad" value="${escapeHtml(String(k.edad))}">
-        </div>
-        <div class="col-6"><label class="form-label">Nombre</label><input type="text" class="form-control" id="editNombre" value="${escapeHtml(k.nombre)}"></div>
-        <div class="col-6"><label class="form-label">Apellidos</label><input type="text" class="form-control" id="editApellidos" value="${escapeHtml(k.apellidos)}"></div>
-
-        <div class="col-12 col-sm-6">
-          <label class="form-label">Foto del niño</label>
-          <div class="foto-picker">
-            <div class="foto-preview" id="editPreviewNino" style="${k.fotoNino?`background-image:url(${k.fotoNino})`:''}">${k.fotoNino?'':'<i class="bi bi-camera"></i>'}</div>
-            <div class="foto-btns">
-              <input type="file" accept="image/*" capture="environment" class="form-control form-control-sm" id="editFotoNino">
-              <button type="button" class="btn btn-sm btn-outline-secondary ${k.fotoNino?'':'d-none'}" id="editQuitarNino">Quitar foto</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6">
-          <label class="form-label">Foto del padre/encargado</label>
-          <div class="foto-picker">
-            <div class="foto-preview" id="editPreviewPadre" style="${k.fotoPadre?`background-image:url(${k.fotoPadre})`:''}">${k.fotoPadre?'':'<i class="bi bi-camera"></i>'}</div>
-            <div class="foto-btns">
-              <input type="file" accept="image/*" capture="environment" class="form-control form-control-sm" id="editFotoPadre">
-              <button type="button" class="btn btn-sm btn-outline-secondary ${k.fotoPadre?'':'d-none'}" id="editQuitarPadre">Quitar foto</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-6"><label class="form-label">Padre/Tutor</label><input type="text" class="form-control" id="editPadre" value="${escapeHtml(k.padre)}"></div>
-        <div class="col-6"><label class="form-label">Teléfono</label><input type="tel" class="form-control" id="editTelefono" value="${escapeHtml(k.telefono)}"></div>
-        <div class="col-12"><label class="form-label">Autorizado para retirar</label><input type="text" class="form-control" id="editAutorizado" value="${escapeHtml(k.autorizado)}"></div>
-        <div class="col-12"><label class="form-label">Alergias / Notas médicas</label><textarea class="form-control" id="editAlergias" rows="2">${escapeHtml(k.alergias)}</textarea></div>
-      </div>
-      <div class="d-flex gap-2 mt-3">
-        <button class="btn btn-outline-secondary flex-fill" id="btnCancelarEdicion">Cancelar</button>
-        <button class="btn btn-primary-app flex-fill" id="btnGuardarEdicion"><i class="bi bi-check-lg"></i> Guardar cambios</button>
-      </div>
-    `;
-
-    const editFotoNino = conectarFotoPicker('editFotoNino','editPreviewNino','editQuitarNino');
-    const editFotoPadre = conectarFotoPicker('editFotoPadre','editPreviewPadre','editQuitarPadre');
-    editFotoNino.set(k.fotoNino);
-    editFotoPadre.set(k.fotoPadre);
-
-    document.getElementById('btnCancelarEdicion').addEventListener('click', ()=> renderPerfilVista(k.id));
-
-    document.getElementById('btnGuardarEdicion').addEventListener('click', ()=>{
-      const kids = getKids();
-      const idx = kids.findIndex(x=>x.id===k.id);
-      if(!k.archivado){
-        const nuevoCodigo = document.getElementById('editCodigo').value;
-        kids[idx].codigo = nuevoCodigo ? parseInt(nuevoCodigo,10) : kids[idx].codigo;
-      }
-      kids[idx].nombre = document.getElementById('editNombre').value.trim();
-      kids[idx].apellidos = document.getElementById('editApellidos').value.trim();
-      kids[idx].edad = document.getElementById('editEdad').value;
-      kids[idx].padre = document.getElementById('editPadre').value.trim();
-      kids[idx].telefono = document.getElementById('editTelefono').value.trim();
-      kids[idx].autorizado = document.getElementById('editAutorizado').value.trim();
-      kids[idx].alergias = document.getElementById('editAlergias').value.trim();
-      kids[idx].fotoNino = editFotoNino.get();
-      kids[idx].fotoPadre = editFotoPadre.get();
-
-      if(!saveKids(kids)) return;
-      renderListaRegistrados(); renderCheckin(); renderCheckout(); actualizarCajaCodigos();
-      renderPerfilVista(k.id);
-      mostrarToast('<i class="bi bi-check-circle-fill"></i> Datos actualizados', 'success');
-    });
-  }
-
-  /* =====================================================
-     CHECK-IN
-  ===================================================== */
+  // =====================================================
+  // CHECK-IN (FIRESTORE)
+  // =====================================================
   function idsActivosHoy(){
-    const hoy = hoyKey();
-    return new Set(getRegistros().filter(r=>r.fecha===hoy && r.estado==='activo').map(r=>r.kidId));
-  }
-
-  function textoBusquedaKid(k){
-    return normalizar(k.nombre+' '+k.apellidos+' '+k.padre+' '+(k.codigo!=null?k.codigo:''));
+    return new Set(globalRegistros.filter(r=>r.fecha===hoyKey() && r.estado==='activo').map(r=>r.kidId));
   }
 
   function renderCheckin(){
@@ -1238,44 +1224,44 @@
     const activos = idsActivosHoy();
     const kids = kidsActivos().filter(k=>!activos.has(k.id));
 
-    const filtrados = filtro ? kids.filter(k=> textoBusquedaKid(k).includes(filtro)) : kids;
+    const filtrados = filtro ? kids.filter(k=> normalizar(k.nombre+' '+k.apellidos+' '+k.padre+' '+(k.codigo||'')).includes(filtro)) : kids;
     filtrados.sort((a,b)=> (a.codigo||9999) - (b.codigo||9999));
 
     if(filtrados.length===0){
-      cont.innerHTML = `<div class="empty-state"><i class="bi bi-emoji-smile"></i>${filtro ? 'No se encontró ningún niño con ese código o nombre.' : 'Todos los niños registrados ya están adentro.'}</div>`;
+      cont.innerHTML = `<div class="empty-state"><i class="bi bi-emoji-smile"></i>Sin resultados.</div>`;
       return;
     }
 
-    cont.innerHTML = filtrados.map(k=>{
-      const avatarStyle = k.fotoNino ? `background-image:url(${k.fotoNino})` : `background:${colorPara(k.id)}`;
-      return `
+    cont.innerHTML = filtrados.map(k=>`
       <div class="kid-card" style="cursor:default;">
-        <div class="kid-avatar" style="${avatarStyle}">${k.fotoNino ? '' : iniciales(k.nombre,k.apellidos)}</div>
+        <div class="kid-avatar" style="${k.fotoNino?`background-image:url(${k.fotoNino})`:`background:${colorPara(k.id)}`}">${k.fotoNino?'':iniciales(k.nombre,k.apellidos)}</div>
         <div class="kid-info">
           <div class="kid-name"><span class="codigo-badge">${codStr(k.codigo)}</span> ${escapeHtml(k.nombre)} ${escapeHtml(k.apellidos)}</div>
-          <div class="kid-meta">${k.edad} años · Padre/Tutor: ${escapeHtml(k.padre)}</div>
-          ${k.alergias ? `<div class="kid-tags"><span class="tag tag-allergy"><i class="bi bi-exclamation-triangle-fill"></i> ${escapeHtml(k.alergias)}</span></div>` : ''}
+          <div class="kid-meta">Padre: ${escapeHtml(k.padre)}</div>
         </div>
         <button class="btn-action btn-in" data-ingresar="${k.id}"><i class="bi bi-box-arrow-in-right"></i> Ingresar</button>
-      </div>`;
-    }).join('');
+      </div>`).join('');
   }
 
-  document.getElementById('listaCheckin').addEventListener('click', function(e){
+  document.getElementById('listaCheckin').addEventListener('click', async function(e){
     const btn = e.target.closest('[data-ingresar]');
     if(!btn) return;
     const kidId = btn.dataset.ingresar;
-    const kid = getKids().find(k=>k.id===kidId);
+    const kid = globalKids.find(k=>k.id===kidId);
     if(!kid) return;
 
     const hora = horaActual();
-    const registros = getRegistros();
-    registros.unshift({ id: uid(), kidId: kidId, codigo: kid.codigo, fecha: hoyKey(), horaEntrada: hora, horaSalida: null, estado: 'activo' });
-    if(!saveRegistros(registros)) return;
+    await db.collection('registros').add({
+      kidId: kidId,
+      codigo: kid.codigo,
+      fecha: hoyKey(),
+      horaEntrada: hora,
+      horaSalida: null,
+      estado: 'activo',
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    });
 
-    renderCheckin();
-    actualizarBadgeAdentro();
-    mostrarToast('<i class="bi bi-box-arrow-in-right"></i> '+escapeHtml(kid.nombre)+' ('+codStr(kid.codigo)+') ingresó a las '+hora, 'success');
+    mostrarToast('<i class="bi bi-box-arrow-in-right"></i> Ingreso registrado: '+escapeHtml(kid.nombre), 'success');
     mostrarBannerUltimoIngreso(kid, hora);
   });
 
@@ -1292,9 +1278,6 @@
     document.getElementById('btnImprimirTicket').addEventListener('click', ()=> imprimirTicket(kid, hora));
   }
 
-  /* =====================================================
-     TICKET IMPRIMIBLE (código físico para el padre)
-  ===================================================== */
   function imprimirTicket(kid, hora){
     const copia = (etiqueta)=>`
       <div class="ticket-copy">
@@ -1304,7 +1287,7 @@
         <div class="ticket-codigo">${codStr(kid.codigo)}</div>
         <div class="ticket-nombre">${escapeHtml(kid.nombre)} ${escapeHtml(kid.apellidos)}</div>
         <div class="ticket-hora">Entrada: ${hora}</div>
-        <div class="ticket-nota">Conserve este código: se usa para retirar al niño al salir.</div>
+        <div class="ticket-nota">Conserve este ticket para el retiro.</div>
       </div>`;
     document.getElementById('areaTicket').innerHTML = copia('COPIA PARA EL NIÑO') + copia('COPIA PARA EL PADRE/ENCARGADO');
     document.body.classList.add('imprimiendo-ticket');
@@ -1312,159 +1295,173 @@
   }
   window.addEventListener('afterprint', ()=> document.body.classList.remove('imprimiendo-ticket'));
 
-  /* =====================================================
-     CHECK-OUT
-  ===================================================== */
+  // =====================================================
+  // CHECK-OUT (FIRESTORE)
+  // =====================================================
   function renderCheckout(){
     const cont = document.getElementById('listaCheckout');
     const filtro = normalizar(document.getElementById('buscarCheckout').value);
     const hoy = hoyKey();
-    const kids = getKids();
-    const kidsMap = Object.fromEntries(kids.map(k=>[k.id,k]));
-
-    let activos = getRegistros().filter(r=>r.fecha===hoy && r.estado==='activo');
+    const kidsMap = Object.fromEntries(globalKids.map(k=>[k.id,k]));
+    let activos = globalRegistros.filter(r=>r.fecha===hoy && r.estado==='activo');
 
     if(filtro){
       activos = activos.filter(r=>{
         const k = kidsMap[r.kidId];
-        if(!k) return false;
-        return textoBusquedaKid(k).includes(filtro) || String(r.codigo).includes(filtro);
+        return k && (normalizar(k.nombre+' '+k.apellidos).includes(filtro) || String(r.codigo).includes(filtro));
       });
     }
-    activos.sort((a,b)=> (a.codigo||9999)-(b.codigo||9999));
 
     if(activos.length===0){
-      cont.innerHTML = `<div class="empty-state"><i class="bi bi-emoji-smile"></i>${filtro ? 'No se encontró ningún niño con ese código o nombre.' : 'No hay niños adentro en este momento.'}</div>`;
+      cont.innerHTML = `<div class="empty-state"><i class="bi bi-emoji-smile"></i>No hay niños adentro.</div>`;
       return;
     }
 
     cont.innerHTML = activos.map(r=>{
-      const k = kidsMap[r.kidId];
-      if(!k) return '';
-      const avatarStyle = k.fotoNino ? `background-image:url(${k.fotoNino})` : `background:${colorPara(k.id)}`;
+      const k = kidsMap[r.kidId] || {};
       return `
       <div class="kid-card" style="cursor:default;">
-        <div class="kid-avatar" style="${avatarStyle}">${k.fotoNino ? '' : iniciales(k.nombre,k.apellidos)}</div>
+        <div class="kid-avatar" style="${k.fotoNino?`background-image:url(${k.fotoNino})`:`background:${colorPara(r.kidId)}`}">${k.fotoNino?'':iniciales(k.nombre,k.apellidos)}</div>
         <div class="kid-info">
           <div class="kid-name"><span class="codigo-badge">${codStr(r.codigo)}</span> ${escapeHtml(k.nombre)} ${escapeHtml(k.apellidos)}</div>
-          <div class="kid-meta">Retira: ${escapeHtml(k.autorizado)}</div>
-          <div class="kid-tags">
-            <span class="tag tag-time"><i class="bi bi-clock"></i> Entró ${r.horaEntrada}</span>
-            ${k.alergias ? `<span class="tag tag-allergy"><i class="bi bi-exclamation-triangle-fill"></i> ${escapeHtml(k.alergias)}</span>` : ''}
-          </div>
+          <div class="kid-meta">Entró ${r.horaEntrada}</div>
         </div>
-        <button class="btn-action btn-out" data-salir="${r.id}"><i class="bi bi-box-arrow-right"></i> Dar Salida</button>
+        <button class="btn-action btn-out" data-salir="${r.id}"><i class="bi bi-box-arrow-right"></i> Salida</button>
       </div>`;
     }).join('');
   }
 
-  document.getElementById('listaCheckout').addEventListener('click', function(e){
+  document.getElementById('listaCheckout').addEventListener('click', async function(e){
     const btn = e.target.closest('[data-salir]');
     if(!btn) return;
     const regId = btn.dataset.salir;
-    const registros = getRegistros();
-    const reg = registros.find(r=>r.id===regId);
-    if(!reg) return;
-    reg.estado = 'salio';
-    reg.horaSalida = horaActual();
-    if(!saveRegistros(registros)) return;
 
-    const kid = getKids().find(k=>k.id===reg.kidId);
-    renderCheckout();
-    actualizarBadgeAdentro();
-    mostrarToast('<i class="bi bi-box-arrow-right"></i> '+(kid?escapeHtml(kid.nombre):'Niño')+' salió a las '+horaActual(), 'danger');
+    await db.collection('registros').doc(regId).update({
+      estado: 'salio',
+      horaSalida: horaActual()
+    });
+
+    mostrarToast('<i class="bi bi-box-arrow-right"></i> Salida registrada', 'danger');
   });
 
   document.getElementById('buscarCheckout').addEventListener('input', renderCheckout);
 
   function actualizarBadgeAdentro(){
-    const hoy = hoyKey();
-    const total = getRegistros().filter(r=>r.fecha===hoy && r.estado==='activo').length;
+    const total = globalRegistros.filter(r=>r.fecha===hoyKey() && r.estado==='activo').length;
     document.getElementById('badgeAdentro').textContent = total;
   }
 
-  /* =====================================================
-     REPORTE / HISTORIAL
-  ===================================================== */
+  // =====================================================
+  // PANTALLA TV (MONITOREO)
+  // =====================================================
+  function actualizarRelojTV(){
+    const now = new Date();
+    const reloj = document.getElementById('tvReloj');
+    if(reloj) reloj.textContent = now.toLocaleTimeString('es-GT');
+  }
+  setInterval(actualizarRelojTV, 1000);
+
+  function renderTV(){
+    const hoy = hoyKey();
+    const kidsMap = Object.fromEntries(globalKids.map(k=>[k.id,k]));
+    const todosHoy = globalRegistros.filter(r=>r.fecha===hoy);
+    const adentro = todosHoy.filter(r=>r.estado==='activo');
+    const salieron = todosHoy.filter(r=>r.estado==='salio');
+
+    document.getElementById('tvNumAdentro').textContent = adentro.length;
+    document.getElementById('tvNumSalieron').textContent = salieron.length;
+
+    const grid = document.getElementById('tvGridAdentro');
+    if(adentro.length===0){
+      grid.innerHTML = '<div class="text-muted py-4 fs-5">No hay niños dentro del área B-Kids actualmente.</div>';
+    } else {
+      grid.innerHTML = adentro.map(r=>{
+        const k = kidsMap[r.kidId] || {nombre:'Desconocido'};
+        return `
+        <div class="tv-kid-card">
+          <span class="tv-code">${codStr(r.codigo)}</span>
+          <div class="tv-name">${escapeHtml(k.nombre)} ${escapeHtml(k.apellidos||'')}</div>
+        </div>`;
+      }).join('');
+    }
+
+    const feed = document.getElementById('tvFeedActividad');
+    if(todosHoy.length===0){
+      feed.innerHTML = '<div class="text-muted py-4 text-center">Sin actividad registrada el día de hoy.</div>';
+    } else {
+      feed.innerHTML = todosHoy.slice(0, 15).map(r=>{
+        const k = kidsMap[r.kidId] || {nombre:'Desconocido'};
+        const esEntrada = r.estado==='activo';
+        return `
+        <div class="tv-feed-item">
+          <span class="${esEntrada?'tv-badge-in':'tv-badge-out'}">${esEntrada?'ENTRÓ':'SALIÓ'}</span>
+          <strong style="color:#F1F5F9;">${codStr(r.codigo)}</strong>
+          <span style="flex:1;">${escapeHtml(k.nombre)}</span>
+          <span style="color:#94A3B8; font-size:.85rem;">${esEntrada?r.horaEntrada:r.horaSalida}</span>
+        </div>`;
+      }).join('');
+    }
+  }
+
+  // =====================================================
+  // REPORTE
+  // =====================================================
   const inputFecha = document.getElementById('reporteFecha');
   inputFecha.value = hoyKey();
   inputFecha.addEventListener('change', renderReporte);
 
   function renderReporte(){
     const fecha = inputFecha.value || hoyKey();
-    const kids = getKids();
-    const kidsMap = Object.fromEntries(kids.map(k=>[k.id,k]));
-    const registros = getRegistros().filter(r=>r.fecha===fecha).sort((a,b)=> (a.horaEntrada||'').localeCompare(b.horaEntrada||''));
-
+    const kidsMap = Object.fromEntries(globalKids.map(k=>[k.id,k]));
+    const registros = globalRegistros.filter(r=>r.fecha===fecha);
     const tbody = document.getElementById('tablaReporte');
     const vacio = document.getElementById('reporteVacio');
     let adentro = 0, salieron = 0;
 
     if(registros.length===0){
-      tbody.innerHTML='';
-      vacio.classList.remove('d-none');
+      tbody.innerHTML=''; vacio.classList.remove('d-none');
     } else {
       vacio.classList.add('d-none');
       tbody.innerHTML = registros.map(r=>{
-        const k = kidsMap[r.kidId] || {nombre:'(eliminado)', apellidos:'', edad:'-', padre:'-', telefono:'-', autorizado:'-'};
+        const k = kidsMap[r.kidId] || {};
         if(r.estado==='activo') adentro++; else salieron++;
         return `
         <tr>
           <td><span class="codigo-badge">${codStr(r.codigo)}</span></td>
-          <td><strong>${escapeHtml(k.nombre)} ${escapeHtml(k.apellidos)}</strong></td>
-          <td>${escapeHtml(String(k.edad))}</td>
-          <td>${escapeHtml(k.padre)}</td>
-          <td>${escapeHtml(k.telefono)}</td>
-          <td>${escapeHtml(k.autorizado)}</td>
+          <td><strong>${escapeHtml(k.nombre||'')} ${escapeHtml(k.apellidos||'')}</strong></td>
+          <td>${k.edad||'-'}</td>
+          <td>${escapeHtml(k.padre||'-')}</td>
+          <td>${escapeHtml(k.telefono||'-')}</td>
+          <td>${escapeHtml(k.autorizado||'-')}</td>
           <td>${r.horaEntrada || '-'}</td>
           <td>${r.horaSalida || '-'}</td>
-          <td><span class="badge ${r.estado==='activo' ? 'badge-estado-in' : 'badge-estado-out'}">${r.estado==='activo' ? 'Adentro' : 'Salió'}</span></td>
+          <td><span class="badge ${r.estado==='activo'?'badge-estado-in':'badge-estado-out'}">${r.estado==='activo'?'Adentro':'Salió'}</span></td>
         </tr>`;
       }).join('');
     }
-
     document.getElementById('statTotal').textContent = registros.length;
     document.getElementById('statAdentro').textContent = adentro;
     document.getElementById('statSalieron').textContent = salieron;
   }
 
   document.getElementById('btnImprimir').addEventListener('click', ()=> window.print());
-
   document.getElementById('btnExportarCSV').addEventListener('click', function(){
     const fecha = inputFecha.value || hoyKey();
-    const kids = getKids();
-    const kidsMap = Object.fromEntries(kids.map(k=>[k.id,k]));
-    const registros = getRegistros().filter(r=>r.fecha===fecha);
+    const kidsMap = Object.fromEntries(globalKids.map(k=>[k.id,k]));
+    const registros = globalRegistros.filter(r=>r.fecha===fecha);
+    if(registros.length===0) return alert('Sin datos.');
 
-    if(registros.length===0){ mostrarToast('No hay datos para exportar en esta fecha', 'danger'); return; }
-
-    const encabezados = ['Codigo','Nombre','Apellidos','Edad','Padre/Tutor','Telefono','Autorizado a retirar','Alergias/Notas','Fecha','Hora Entrada','Hora Salida','Estado'];
     const filas = registros.map(r=>{
       const k = kidsMap[r.kidId] || {};
-      return [ r.codigo!=null?r.codigo:'', k.nombre||'', k.apellidos||'', k.edad||'', k.padre||'', k.telefono||'',
-        k.autorizado||'', k.alergias||'', r.fecha, r.horaEntrada||'', r.horaSalida||'', r.estado==='activo' ? 'Adentro' : 'Salio' ];
+      return [r.codigo, k.nombre, k.apellidos, k.edad, k.padre, k.telefono, r.fecha, r.horaEntrada, r.horaSalida, r.estado];
     });
-    function csvSafe(v){ return `"${String(v).replace(/"/g,'""')}"`; }
-    const csv = [encabezados, ...filas].map(fila=> fila.map(csvSafe).join(',')).join('\r\n');
-    const blob = new Blob(['\uFEFF'+csv], {type:'text/csv;charset=utf-8;'});
-    const url = URL.createObjectURL(blob);
+    const csv = ['Codigo,Nombre,Apellidos,Edad,Padre,Telefono,Fecha,Entrada,Salida,Estado', ...filas.map(f=>f.join(','))].join('\n');
+    const blob = new Blob(['\uFEFF'+csv], {type:'text/csv'});
     const a = document.createElement('a');
-    a.href = url; a.download = `reporte-bkids-${fecha}.csv`;
-    document.body.appendChild(a); a.click(); document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    mostrarToast('<i class="bi bi-file-earmark-spreadsheet"></i> Reporte exportado', 'success');
+    a.href = URL.createObjectURL(blob);
+    a.download = `reporte-${fecha}.csv`;
+    a.click();
   });
-
-  /* =====================================================
-     INICIO
-  ===================================================== */
-  poblarSelectCodigos();
-  renderListaRegistrados();
-  renderCheckin();
-  renderCheckout();
-  renderReporte();
-  actualizarBadgeAdentro();
-  actualizarCajaCodigos();
 
 })();
 </script>
