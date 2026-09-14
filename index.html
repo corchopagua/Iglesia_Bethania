@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>Iglesia Bethania · Área B-Kids</title>
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+<!-- Tipografías -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy:#1E3A5F;
+    --navy-light:#2C4F7C;
+    --orange:#F2994A;
+    --bg:#F5F7FA;
+    --surface:#FFFFFF;
+    --ink:#1B1F27;
+    --muted:#667085;
+    --border:#E4E7EC;
+    --success:#2F9E44;
+    --success-dark:#227A34;
+    --danger:#E0393E;
+    --danger-dark:#B4262B;
+    --warn:#E0A200;
+    --warn-bg:#FFF6DE;
+    --radius:14px;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:16px;
+    -webkit-tap-highlight-color:transparent;
+    padding-bottom:2.5rem;
+  }
+  h1,h2,h3,h4,h5,.brand,.nav-pill,.btn,.stat-num{
+    font-family:'Poppins',system-ui,sans-serif;
+  }
+
+  /* ---------- Encabezado ---------- */
+  .topbar{
+    background:var(--navy);
+    color:#fff;
+    padding:.9rem 1rem;
+  }
+  .topbar .brand{
+    font-weight:700;
+    font-size:1.15rem;
+    letter-spacing:.2px;
+    display:flex;
+    align-items:center;
+    gap:.6rem;
+  }
+  .topbar .brand .bi{
+    background:var(--orange);
+    color:var(--navy);
+    border-radius:10px;
+    padding:.35rem .45rem;
+    font-size:1.1rem;
+  }
+  .topbar .subtitle{
+    color:#B9C7DA;
+    font-size:.82rem;
+    margin-top:.1rem;
+  }
+
+  /* ---------- Navegación por pestañas ---------- */
+  .tab-shell{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:var(--bg);
+    padding:.75rem 1rem .5rem;
+    border-bottom:1px solid var(--border);
+  }
+  .nav-pill-group{
+    display:flex;
+    gap:.5rem;
+    overflow-x:auto;
+    padding-bottom:2px;
+  }
+  .nav-pill-group::-webkit-scrollbar{display:none;}
+  .nav-pill{
+    flex:1 1 0;
+    white-space:nowrap;
+    background:var(--surface);
+    color:var(--muted);
+    font-weight:600;
+    font-size:.92rem;
+    padding:.85rem .9rem;
+    border-radius:12px;
+    border:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:.45rem;
+    transition:background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .nav-pill .bi{font-size:1.05rem;}
+  .nav-pill.active{
+    background:var(--navy);
+    border-color:var(--navy);
+    color:#fff;
+  }
+  .nav-pill .badge-count{
+    background:var(--orange);
+    color:var(--navy);
+    font-size:.72rem;
+    font-weight:700;
+    border-radius:20px;
+    padding:.1rem .45rem;
+  }
+  .nav-pill.active .badge-count{background:rgba(255,255,255,.85);}
+
+  .container-app{
+    max-width:920px;
+    margin:0 auto;
+    padding:1.1rem 1rem 2rem;
+  }
+
+  .card-panel{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:1.25rem;
+  }
+
+  .section-title{font-weight:700; color:var(--navy); margin-bottom:.25rem;}
+  .section-hint{color:var(--muted); font-size:.88rem; margin-bottom:1.1rem;}
+
+  label.form-label{font-weight:600; font-size:.88rem; color:var(--ink);}
+  .form-control, .form-select{
+    padding:.7rem .85rem;
+    border-radius:10px;
+    border:1px solid var(--border);
+    font-size:1rem;
+  }
+  .form-control:focus, .form-select:focus{
+    border-color:var(--navy-light);
+    box-shadow:0 0 0 .2rem rgba(44,79,124,.15);
+  }
+
+  /* ---------- Buscador ---------- */
+  .search-wrap{position:relative; margin-bottom:.85rem;}
+  .search-wrap .bi-search{
+    position:absolute; left:.9rem; top:50%; transform:translateY(-50%); color:var(--muted);
+  }
+  .search-wrap input{padding-left:2.5rem; height:3.1rem; font-size:1.05rem;}
+
+  /* ---------- Chips de filtro semáforo ---------- */
+  .chip-row{display:flex; gap:.4rem; flex-wrap:wrap; margin-bottom:1rem;}
+  .chip{
+    border:1px solid var(--border);
+    background:var(--surface);
+    color:var(--muted);
+    font-size:.82rem;
+    font-weight:600;
+    padding:.4rem .8rem;
+    border-radius:20px;
+  }
+  .chip.active{background:var(--navy); color:#fff; border-color:var(--navy);}
+
+  /* ---------- Tarjetas de niños ---------- */
+  .kid-card{
+    display:flex;
+    align-items:center;
+    gap:.85rem;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:.8rem .9rem;
+    margin-bottom:.65rem;
+    cursor:pointer;
+  }
+  .kid-avatar{
+    flex:0 0 auto;
+    width:50px; height:50px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    color:#fff; font-weight:700; font-size:1rem;
+    overflow:hidden;
+    position:relative;
+    background-size:cover;
+    background-position:center;
+    border:2px solid #fff;
+    box-shadow:0 0 0 1px var(--border);
+  }
+  .semaforo-dot{
+    position:absolute;
+    bottom:-1px; right:-1px;
+    width:13px; height:13px;
+    border-radius:50%;
+    border:2px solid #fff;
+  }
+  .dot-verde{background:var(--success);}
+  .dot-amarillo{background:var(--warn);}
+  .dot-rojo{background:var(--danger);}
+  .dot-gris{background:#9AA4B2;}
+
+  .kid-info{flex:1 1 auto; min-width:0;}
+  .kid-name{
+    font-weight:700; font-size:1rem; color:var(--ink);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    display:flex; align-items:center; gap:.4rem;
+  }
+  .codigo-badge{
+    background:#EAF0F8; color:var(--navy);
+    font-family:'Poppins',sans-serif;
+    font-weight:700; font-size:.72rem;
+    border-radius:6px; padding:.05rem .4rem;
+    flex:0 0 auto;
+  }
+  .kid-meta{
+    color:var(--muted); font-size:.82rem;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .kid-tags{margin-top:.25rem; display:flex; gap:.3rem; flex-wrap:wrap;}
+  .tag{font-size:.72rem; font-weight:600; border-radius:20px; padding:.1rem .5rem;}
+  .tag-allergy{background:#FCEBD9; color:#B4550A;}
+  .tag-time{background:#E8EEF6; color:var(--navy);}
+
+  .btn-action{
+    flex:0 0 auto;
+    border:none;
+    font-weight:700;
+    font-size:.92rem;
+    padding:.75rem 1.05rem;
+    border-radius:10px;
+    color:#fff;
+    display:flex; align-items:center; gap:.4rem;
+    min-height:48px;
+  }
+  .btn-in{background:var(--success);}
+  .btn-in:active{background:var(--success-dark);}
+  .btn-out{background:var(--danger);}
+  .btn-out:active{background:var(--danger-dark);}
+  .btn-action .bi{font-size:1.1rem;}
+
+  .empty-state{text-align:center; color:var(--muted); padding:2.2rem 1rem;}
+  .empty-state .bi{font-size:2.2rem; color:var(--border); display:block; margin-bottom:.5rem;}
+
+  /* ---------- Estadísticas / disponibilidad de códigos ---------- */
+  .stat-row{display:flex; gap:.6rem; margin-bottom:1rem;}
+  .stat-box{
+    flex:1; background:var(--surface); border:1px solid var(--border);
+    border-radius:12px; padding:.75rem .5rem; text-align:center;
+  }
+  .stat-num{font-weight:800; font-size:1.4rem; color:var(--navy);}
+  .stat-label{font-size:.74rem; color:var(--muted); font-weight:600;}
+
+  .codigos-box{
+    background:#EEF2F8;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:.9rem 1rem;
+    margin-bottom:1rem;
+  }
+  .codigos-box .top-line{display:flex; justify-content:space-between; font-weight:700; color:var(--navy); font-size:.9rem; margin-bottom:.4rem;}
+  .progress{height:8px; border-radius:20px;}
+  .alerta-lleno{
+    background:#FDEAEA; border:1px solid #F3C2C2; color:var(--danger-dark);
+    border-radius:12px; padding:.85rem 1rem; margin-bottom:1rem; font-size:.88rem;
+  }
+
+  /* ---------- Botón principal ---------- */
+  .btn-primary-app{
+    background:var(--navy); border:none; color:#fff; font-weight:700;
+    padding:.85rem 1.1rem; border-radius:10px; min-height:50px;
+  }
+  .btn-primary-app:hover, .btn-primary-app:active{background:var(--navy-light); color:#fff;}
+  .btn-primary-app:disabled{background:#A9B4C2;}
+
+  /* ---------- Fotos en formularios ---------- */
+  .foto-picker{
+    display:flex; align-items:center; gap:.75rem;
+    border:1px dashed var(--border);
+    border-radius:12px;
+    padding:.7rem;
+  }
+  .foto-preview{
+    width:64px; height:64px; border-radius:10px;
+    background:#EEF1F5 center/cover no-repeat;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--muted); font-size:1.4rem;
+    flex:0 0 auto;
+  }
+  .foto-picker .foto-btns{display:flex; flex-direction:column; gap:.3rem; flex:1;}
+
+  /* ---------- Tabla de reporte ---------- */
+  .table-report{font-size:.85rem;}
+  .table-report th{background:#F0F3F8; color:var(--navy); font-weight:700; white-space:nowrap; border-bottom:none;}
+  .table-report td{vertical-align:middle;}
+  .badge-estado-in{background:#E4F6E8; color:var(--success-dark); font-weight:700;}
+  .badge-estado-out{background:#F3F4F6; color:var(--muted); font-weight:700;}
+
+  .list-registrados{max-height:420px; overflow-y:auto;}
+
+  /* ---------- Banner último ingreso (para imprimir ticket) ---------- */
+  .banner-ultimo{
+    background:var(--warn-bg);
+    border:1px solid #F0DFA0;
+    border-radius:12px;
+    padding:.8rem .9rem;
+    margin-bottom:1rem;
+    display:flex;
+    align-items:center;
+    gap:.7rem;
+    flex-wrap:wrap;
+  }
+  .banner-ultimo .txt{flex:1; font-size:.9rem;}
+  .banner-ultimo strong{color:var(--navy);}
+
+  /* ---------- Toast ---------- */
+  .toast-app{
+    position:fixed; left:50%; bottom:1.2rem; transform:translateX(-50%) translateY(20px);
+    background:var(--navy); color:#fff; padding:.75rem 1.1rem; border-radius:12px;
+    font-weight:600; font-size:.92rem; box-shadow:0 8px 24px rgba(0,0,0,.18);
+    z-index:1050; opacity:0; pointer-events:none;
+    transition:opacity .2s ease, transform .2s ease;
+    display:flex; align-items:center; gap:.5rem; max-width:92vw;
+  }
+  .toast-app.show{opacity:1; transform:translateX(-50%) translateY(0);}
+  .toast-app.toast-success{background:var(--success-dark);}
+  .toast-app.toast-danger{background:var(--danger-dark);}
+
+  /* ---------- Modal de perfil ---------- */
+  .perfil-fotos{display:flex; gap:1rem; margin-bottom:1rem;}
+  .perfil-foto{
+    width:88px; height:88px; border-radius:14px;
+    background:#EEF1F5 center/cover no-repeat;
+    display:flex; align-items:center; justify-content:center;
+    color:var(--muted); font-size:1.8rem; flex:0 0 auto;
+  }
+  .perfil-foto-label{font-size:.72rem; color:var(--muted); text-align:center; margin-top:.25rem; font-weight:600;}
+  .semaforo-pill{
+    display:inline-flex; align-items:center; gap:.4rem;
+    font-size:.8rem; font-weight:700; padding:.25rem .7rem; border-radius:20px;
+  }
+  .semaforo-pill.verde{background:#E4F6E8; color:var(--success-dark);}
+  .semaforo-pill.amarillo{background:var(--warn-bg); color:#8A6400;}
+  .semaforo-pill.rojo{background:#FDEAEA; color:var(--danger-dark);}
+  .semaforo-pill.gris{background:#EEF0F3; color:var(--muted);}
+  .campo-lectura{padding:.4rem 0; border-bottom:1px solid #F0F1F4;}
+  .campo-lectura .lbl{font-size:.74rem; color:var(--muted); font-weight:600; text-transform:none;}
+  .campo-lectura .val{font-size:.95rem; color:var(--ink); font-weight:600;}
+  .historial-mini{max-height:180px; overflow-y:auto; font-size:.82rem;}
+  .historial-mini table{margin-bottom:0;}
+
+  @media (max-width:420px){
+    .nav-pill span.txt{display:none;}
+    .nav-pill{padding:.85rem .5rem;}
+    .kid-meta{font-size:.76rem;}
+  }
+
+  /* ---------- Ticket imprimible ---------- */
+  #areaTicket{display:none;}
+  body.imprimiendo-ticket #areaTicket{display:block;}
+  .ticket-copy{
+    border:2px dashed var(--navy);
+    border-radius:14px;
+    padding:1.3rem;
+    max-width:380px;
+    margin:1.2rem auto;
+    text-align:center;
+  }
+  .ticket-iglesia{font-weight:700; color:var(--navy); font-size:1rem;}
+  .ticket-sub{color:var(--muted); font-size:.8rem; margin-bottom:.6rem;}
+  .ticket-etiqueta{font-size:.78rem; color:var(--muted); font-weight:700; letter-spacing:.5px;}
+  .ticket-codigo{font-size:3.2rem; font-weight:800; color:var(--navy); line-height:1;}
+  .ticket-nombre{font-size:1.15rem; font-weight:700; margin-top:.3rem;}
+  .ticket-hora{font-size:.85rem; color:var(--muted); margin-top:.4rem;}
+  .ticket-nota{font-size:.75rem; color:var(--muted); margin-top:.6rem;}
+
+  /* ---------- Impresión ---------- */
+  @media print{
+    body.imprimiendo-ticket .topbar,
+    body.imprimiendo-ticket .tab-shell,
+    body.imprimiendo-ticket .container-app,
+    body.imprimiendo-ticket .toast-app{display:none !important;}
+
+    body:not(.imprimiendo-ticket) .topbar,
+    body:not(.imprimiendo-ticket) .tab-shell,
+    body:not(.imprimiendo-ticket) .no-print,
+    body:not(.imprimiendo-ticket) .toast-app{display:none !important;}
+    body:not(.imprimiendo-ticket){background:#fff;}
+    body:not(.imprimiendo-ticket) .container-app{max-width:100%; padding:0;}
+    body:not(.imprimiendo-ticket) .card-panel{border:none; padding:0;}
+    .table-report th{background:#eee !important; -webkit-print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= ENCABEZADO ================= -->
+<div class="topbar">
+  <div class="brand"><i class="bi bi-heart-fill"></i> Iglesia Bethania · Área B-Kids</div>
+  <div class="subtitle">Control de ingreso y salida de niños · <span id="fechaHoyTexto"></span></div>
+</div>
+
+<!-- ================= PESTAÑAS ================= -->
+<div class="tab-shell">
+  <div class="nav-pill-group" role="tablist">
+    <button class="nav-pill active" data-tab="registro" type="button">
+      <i class="bi bi-person-plus"></i><span class="txt">Registro</span>
+    </button>
+    <button class="nav-pill" data-tab="checkin" type="button">
+      <i class="bi bi-box-arrow-in-right"></i><span class="txt">Check&#8209;In</span>
+    </button>
+    <button class="nav-pill" data-tab="checkout" type="button">
+      <i class="bi bi-box-arrow-right"></i><span class="txt">Check&#8209;Out</span>
+      <span class="badge-count" id="badgeAdentro">0</span>
+    </button>
+    <button class="nav-pill" data-tab="reporte" type="button">
+      <i class="bi bi-clipboard-data"></i><span class="txt">Reporte</span>
+    </button>
+  </div>
+</div>
+
+<div class="container-app">
+
+  <!-- ================= TAB: REGISTRO ================= -->
+  <div class="tab-pane" id="tab-registro">
+
+    <div class="codigos-box">
+      <div class="top-line">
+        <span id="codigosUsadosTxt">0 / 1000 códigos usados</span>
+        <span id="codigosLibresTxt">1000 libres</span>
+      </div>
+      <div class="progress"><div class="progress-bar" id="codigosBarra" style="width:0%"></div></div>
+    </div>
+    <div id="alertaLlenoRegistro" class="alerta-lleno d-none">
+      <i class="bi bi-exclamation-triangle-fill"></i>
+      Ya se usaron los 1000 códigos disponibles. Para registrar un niño nuevo, primero deben <strong>liberar el código</strong> de un niño en 🔴 rojo (inactivo hace más de 2 meses).
+      <button class="btn btn-sm btn-outline-danger mt-2 w-100" id="btnIrInactivos">Ver niños inactivos (🔴)</button>
+    </div>
+
+    <div class="card-panel mb-3">
+      <div class="section-title"><i class="bi bi-person-plus"></i> Registrar niño</div>
+      <div class="section-hint">Se hace una sola vez por niño. El código que se le asigne es el que se imprime y se entrega físicamente al padre en cada Check&#8209;In.</div>
+
+      <form id="formRegistro">
+        <div class="row g-3">
+          <div class="col-12 col-sm-5">
+            <label class="form-label">Código asignado *</label>
+            <select class="form-select" id="regCodigo" required></select>
+          </div>
+          <div class="col-12 col-sm-7">
+            <label class="form-label">Edad *</label>
+            <input type="number" min="0" max="17" class="form-control" id="regEdad" required>
+          </div>
+          <div class="col-6">
+            <label class="form-label">Nombre *</label>
+            <input type="text" class="form-control" id="regNombre" required>
+          </div>
+          <div class="col-6">
+            <label class="form-label">Apellidos *</label>
+            <input type="text" class="form-control" id="regApellidos" required>
+          </div>
+
+          <div class="col-12 col-sm-6">
+            <label class="form-label">Foto del niño</label>
+            <div class="foto-picker">
+              <div class="foto-preview" id="previewFotoNino"><i class="bi bi-camera"></i></div>
+              <div class="foto-btns">
+                <input type="file" accept="image/*" capture="environment" class="form-control form-control-sm" id="regFotoNino">
+                <button type="button" class="btn btn-sm btn-outline-secondary d-none" id="quitarFotoNino">Quitar foto</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <label class="form-label">Foto del padre/encargado</label>
+            <div class="foto-picker">
+              <div class="foto-preview" id="previewFotoPadre"><i class="bi bi-camera"></i></div>
+              <div class="foto-btns">
+                <input type="file" accept="image/*" capture="environment" class="form-control form-control-sm" id="regFotoPadre">
+                <button type="button" class="btn btn-sm btn-outline-secondary d-none" id="quitarFotoPadre">Quitar foto</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6">
+            <label class="form-label">Nombre del padre/tutor *</label>
+            <input type="text" class="form-control" id="regPadre" required>
+          </div>
+          <div class="col-6">
+            <label class="form-label">Teléfono *</label>
+            <input type="tel" class="form-control" id="regTelefono" required>
+          </div>
+          <div class="col-12">
+            <label class="form-label">Persona autorizada para retirar al niño *</label>
+            <input type="text" class="form-control" id="regAutorizado" placeholder="Ej. el mismo padre, abuela, tío..." required>
+          </div>
+          <div class="col-12">
+            <label class="form-label">Alergias / Notas médicas</label>
+            <textarea class="form-control" id="regAlergias" rows="2" placeholder="Ej. alergia al maní, usa inhalador, ninguna..."></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary-app w-100 mt-3" id="btnGuardarRegistro">
+          <i class="bi bi-check-lg"></i> Guardar niño
+        </button>
+      </form>
+    </div>
+
+    <div class="card-panel">
+      <div class="section-title"><i class="bi bi-people"></i> Niños registrados</div>
+      <div class="section-hint" id="totalRegistradosTxt">0 niños en el sistema</div>
+      <div class="search-wrap">
+        <i class="bi bi-search"></i>
+        <input type="text" class="form-control" id="buscarRegistrados" placeholder="Buscar por código, nombre o padre...">
+      </div>
+      <div class="chip-row" id="chipsSemaforo">
+        <button class="chip active" data-filtro="todos" type="button">Todos</button>
+        <button class="chip" data-filtro="verde" type="button">🟢 Recurrentes</button>
+        <button class="chip" data-filtro="amarillo" type="button">🟡 Ocasionales</button>
+        <button class="chip" data-filtro="rojo" type="button">🔴 Inactivos</button>
+        <button class="chip" data-filtro="gris" type="button">⚪ Nuevos</button>
+      </div>
+      <div id="listaRegistrados" class="list-registrados"></div>
+    </div>
+  </div>
+
+  <!-- ================= TAB: CHECK-IN ================= -->
+  <div class="tab-pane d-none" id="tab-checkin">
+    <div class="card-panel">
+      <div class="section-title"><i class="bi bi-box-arrow-in-right"></i> Entrada rápida</div>
+      <div class="section-hint">Escribe el código, el nombre del niño o del papá para encontrarlo al instante.</div>
+
+      <div class="banner-ultimo d-none no-print" id="bannerUltimoIngreso"></div>
+
+      <div class="search-wrap">
+        <i class="bi bi-search"></i>
+        <input type="text" class="form-control" id="buscarCheckin" placeholder="Código, nombre del niño o del papá..." autofocus>
+      </div>
+      <div id="listaCheckin"></div>
+    </div>
+  </div>
+
+  <!-- ================= TAB: CHECK-OUT ================= -->
+  <div class="tab-pane d-none" id="tab-checkout">
+    <div class="card-panel">
+      <div class="section-title"><i class="bi bi-box-arrow-right"></i> Salida</div>
+      <div class="section-hint">Pide el código físico al padre/encargado y búscalo aquí para dar la salida.</div>
+      <div class="search-wrap">
+        <i class="bi bi-search"></i>
+        <input type="text" class="form-control" id="buscarCheckout" placeholder="Código físico o nombre...">
+      </div>
+      <div id="listaCheckout"></div>
+    </div>
+  </div>
+
+  <!-- ================= TAB: REPORTE ================= -->
+  <div class="tab-pane d-none" id="tab-reporte">
+    <div class="card-panel">
+      <div class="d-flex justify-content-between align-items-end flex-wrap gap-2 mb-3">
+        <div>
+          <div class="section-title mb-1"><i class="bi bi-clipboard-data"></i> Reporte del día</div>
+          <div class="section-hint mb-0">Historial de entradas y salidas.</div>
+        </div>
+        <div>
+          <label class="form-label mb-1">Fecha</label>
+          <input type="date" class="form-control" id="reporteFecha">
+        </div>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-box"><div class="stat-num" id="statTotal">0</div><div class="stat-label">Registros hoy</div></div>
+        <div class="stat-box"><div class="stat-num" id="statAdentro">0</div><div class="stat-label">Adentro</div></div>
+        <div class="stat-box"><div class="stat-num" id="statSalieron">0</div><div class="stat-label">Ya salieron</div></div>
+      </div>
+
+      <div class="d-flex gap-2 mb-3 no-print">
+        <button class="btn btn-primary-app flex-fill" id="btnExportarCSV">
+          <i class="bi bi-file-earmark-spreadsheet"></i> Exportar a Excel (CSV)
+        </button>
+        <button class="btn btn-outline-secondary flex-fill" id="btnImprimir">
+          <i class="bi bi-printer"></i> Imprimir
+        </button>
+      </div>
+
+      <div class="table-responsive">
+        <table class="table table-report align-middle">
+          <thead>
+            <tr>
+              <th>Código</th><th>Niño</th><th>Edad</th><th>Padre/Tutor</th><th>Teléfono</th>
+              <th>Autorizado</th><th>Entrada</th><th>Salida</th><th>Estado</th>
+            </tr>
+          </thead>
+          <tbody id="tablaReporte"></tbody>
+        </table>
+      </div>
+      <div id="reporteVacio" class="empty-state d-none">
+        <i class="bi bi-inbox"></i> No hay registros para esta fecha.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ================= MODAL PERFIL / CRUD ================= -->
+<div class="modal fade" id="modalPerfil" tabindex="-1">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalPerfilTitulo">Perfil del niño</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="modalPerfilBody"><!-- contenido dinámico --></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast-app" id="toastApp"></div>
+
+<!-- ================= ÁREA DE TICKET (solo aparece al imprimir) ================= -->
+<div id="areaTicket"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(function(){
+
+  /* =====================================================
+     CONFIGURACIÓN
+  ===================================================== */
+  const MAX_CODIGOS = 1000;
+  const DIAS_VERDE = 14;   // <= 14 días: recurrente
+  const DIAS_AMARILLO = 60; // 15-60 días: ocasional; más de 60: inactivo
+  const FOTO_MAX_DIM = 160;
+  const FOTO_CALIDAD = 0.55;
+
+  const AVATAR_COLORS = ['#2C4F7C','#2F9E44','#C2410C','#0E7490','#7C3AED','#B4550A'];
+
+  /* =====================================================
+     UTILIDADES
+  ===================================================== */
+  function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+
+  function normalizar(str){
+    return (str || '').toString().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+  }
+
+  function hoyKey(){ return new Date().toLocaleDateString('sv-SE'); }
+  function horaActual(){ return new Date().toLocaleTimeString('es-GT', {hour:'2-digit', minute:'2-digit'}); }
+
+  function fechaLegible(fechaKey){
+    const [y,m,d] = fechaKey.split('-').map(Number);
+    const dt = new Date(y, m-1, d);
+    return dt.toLocaleDateString('es-GT', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
+  }
+
+  function diffDias(fechaA, fechaB){
+    const [ay,am,ad] = fechaA.split('-').map(Number);
+    const [by,bm,bd] = fechaB.split('-').map(Number);
+    const da = new Date(ay, am-1, ad);
+    const db = new Date(by, bm-1, bd);
+    return Math.round((db-da) / 86400000);
+  }
+
+  function iniciales(nombre, apellidos){
+    const a = (nombre||'').trim()[0] || '';
+    const b = (apellidos||'').trim()[0] || '';
+    return (a+b).toUpperCase();
+  }
+  function colorPara(id){
+    let hash = 0;
+    for(let i=0;i<id.length;i++){ hash = id.charCodeAt(i) + ((hash<<5)-hash); }
+    return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
+  }
+  function escapeHtml(str){
+    return (str||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+  function codStr(codigo){ return (codigo!=null) ? '#'+String(codigo).padStart(3,'0') : '—'; }
+
+  /* =====================================================
+     ALMACENAMIENTO
+  ===================================================== */
+  const KEY_KIDS = 'mi_kids_v2';
+  const KEY_REGISTROS = 'mi_registros_v2';
+
+  function getKids(){ return JSON.parse(localStorage.getItem(KEY_KIDS) || '[]'); }
+  function saveKids(arr){
+    try{ localStorage.setItem(KEY_KIDS, JSON.stringify(arr)); return true; }
+    catch(e){
+      alert('No se pudo guardar: el almacenamiento del navegador está lleno (esto puede pasar por acumular muchas fotos). Intenta quitar alguna foto o eliminar un registro y vuelve a intentar.');
+      return false;
+    }
+  }
+  function getRegistros(){ return JSON.parse(localStorage.getItem(KEY_REGISTROS) || '[]'); }
+  function saveRegistros(arr){
+    try{ localStorage.setItem(KEY_REGISTROS, JSON.stringify(arr)); return true; }
+    catch(e){
+      alert('No se pudo guardar el registro: el almacenamiento del navegador está lleno.');
+      return false;
+    }
+  }
+
+  function kidsActivos(){ return getKids().filter(k=>!k.archivado); }
+
+  /* =====================================================
+     CÓDIGOS 1-1000
+  ===================================================== */
+  function codigosUsados(){
+    return new Set(kidsActivos().filter(k=>k.codigo!=null).map(k=>k.codigo));
+  }
+  function codigosDisponibles(){
+    const usados = codigosUsados();
+    const libres = [];
+    for(let i=1;i<=MAX_CODIGOS;i++){ if(!usados.has(i)) libres.push(i); }
+    return libres;
+  }
+
+  function poblarSelectCodigos(codigoActualPreservar){
+    const sel = document.getElementById('regCodigo');
+    const disponibles = codigosDisponibles();
+    if(codigoActualPreservar!=null && !disponibles.includes(codigoActualPreservar)) disponibles.unshift(codigoActualPreservar);
+    disponibles.sort((a,b)=>a-b);
+
+    if(disponibles.length===0){
+      sel.innerHTML = '<option value="">No hay códigos libres</option>';
+      sel.disabled = true;
+      return;
+    }
+    sel.disabled = false;
+    sel.innerHTML = disponibles.map(n=>`<option value="${n}">${codStr(n)}</option>`).join('');
+    if(codigoActualPreservar!=null) sel.value = codigoActualPreservar;
+  }
+
+  function actualizarCajaCodigos(){
+    const usados = codigosUsados().size;
+    const libres = MAX_CODIGOS - usados;
+    document.getElementById('codigosUsadosTxt').textContent = `${usados} / ${MAX_CODIGOS} códigos usados`;
+    document.getElementById('codigosLibresTxt').textContent = `${libres} libres`;
+    const pct = Math.round((usados/MAX_CODIGOS)*100);
+    const barra = document.getElementById('codigosBarra');
+    barra.style.width = pct+'%';
+    barra.className = 'progress-bar ' + (pct>=95 ? 'bg-danger' : pct>=80 ? 'bg-warning' : 'bg-success');
+
+    const alerta = document.getElementById('alertaLlenoRegistro');
+    const btnGuardar = document.getElementById('btnGuardarRegistro');
+    if(libres<=0){
+      alerta.classList.remove('d-none');
+      btnGuardar.disabled = true;
+    } else {
+      alerta.classList.add('d-none');
+      btnGuardar.disabled = false;
+    }
+  }
+
+  document.getElementById('btnIrInactivos').addEventListener('click', ()=>{
+    document.querySelector('.nav-pill[data-tab="registro"]').click();
+    document.querySelector('.chip[data-filtro="rojo"]').click();
+    document.getElementById('listaRegistrados').scrollIntoView({behavior:'smooth'});
+  });
+
+  /* =====================================================
+     FOTOS: redimensionar a miniatura (para no llenar localStorage)
+  ===================================================== */
+  function archivoAFoto(file){
+    return new Promise((resolve, reject)=>{
+      if(!file){ resolve(null); return; }
+      const reader = new FileReader();
+      reader.onload = function(ev){
+        const img = new Image();
+        img.onload = function(){
+          let w = img.width, h = img.height;
+          if(w>h){ if(w>FOTO_MAX_DIM){ h = Math.round(h*(FOTO_MAX_DIM/w)); w = FOTO_MAX_DIM; } }
+          else { if(h>FOTO_MAX_DIM){ w = Math.round(w*(FOTO_MAX_DIM/h)); h = FOTO_MAX_DIM; } }
+          const canvas = document.createElement('canvas');
+          canvas.width = w; canvas.height = h;
+          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+          resolve(canvas.toDataURL('image/jpeg', FOTO_CALIDAD));
+        };
+        img.onerror = ()=> reject(new Error('No se pudo leer la imagen'));
+        img.src = ev.target.result;
+      };
+      reader.onerror = ()=> reject(new Error('No se pudo leer el archivo'));
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function conectarFotoPicker(inputId, previewId, quitarBtnId){
+    let valorActual = null;
+    const input = document.getElementById(inputId);
+    const preview = document.getElementById(previewId);
+    const quitarBtn = document.getElementById(quitarBtnId);
+
+    input.addEventListener('change', async function(){
+      const file = input.files[0];
+      if(!file) return;
+      try{
+        valorActual = await archivoAFoto(file);
+        preview.style.backgroundImage = `url(${valorActual})`;
+        preview.innerHTML = '';
+        quitarBtn.classList.remove('d-none');
+      }catch(e){
+        alert('No se pudo procesar la foto.');
+      }
+    });
+    quitarBtn.addEventListener('click', function(){
+      valorActual = null;
+      input.value = '';
+      preview.style.backgroundImage = '';
+      preview.innerHTML = '<i class="bi bi-camera"></i>';
+      quitarBtn.classList.add('d-none');
+    });
+    return {
+      get: ()=> valorActual,
+      set: (dataUrl)=>{
+        valorActual = dataUrl || null;
+        if(dataUrl){
+          preview.style.backgroundImage = `url(${dataUrl})`;
+          preview.innerHTML = '';
+          quitarBtn.classList.remove('d-none');
+        } else {
+          preview.style.backgroundImage = '';
+          preview.innerHTML = '<i class="bi bi-camera"></i>';
+          quitarBtn.classList.add('d-none');
+        }
+      },
+      reset: function(){ this.set(null); input.value=''; }
+    };
+  }
+
+  const fotoNinoPicker = conectarFotoPicker('regFotoNino','previewFotoNino','quitarFotoNino');
+  const fotoPadrePicker = conectarFotoPicker('regFotoPadre','previewFotoPadre','quitarFotoPadre');
+
+  /* =====================================================
+     DATOS DE EJEMPLO
+  ===================================================== */
+  function sembrarDatos(){
+    if(localStorage.getItem(KEY_KIDS)) return;
+
+    const hoy = hoyKey();
+    const hace10 = new Date(); hace10.setDate(hace10.getDate()-10);
+    const hace40 = new Date(); hace40.setDate(hace40.getDate()-40);
+    const hace90 = new Date(); hace90.setDate(hace90.getDate()-90);
+    const fmt = d => d.toLocaleDateString('sv-SE');
+
+    const kids = [
+      {id:uid(), codigo:1, nombre:'Mateo', apellidos:'Ramírez López', edad:5, alergias:'Ninguna', padre:'Ana López', telefono:'5511-2233', autorizado:'Ana López (mamá)', fotoNino:null, fotoPadre:null, archivado:false},
+      {id:uid(), codigo:2, nombre:'Sofía', apellidos:'Gómez Pérez', edad:7, alergias:'Alergia al maní', padre:'Carlos Gómez', telefono:'4422-8890', autorizado:'Carlos Gómez (papá) o Marta Pérez (abuela)', fotoNino:null, fotoPadre:null, archivado:false},
+      {id:uid(), codigo:3, nombre:'Juan Pablo', apellidos:'Hernández Sic', edad:4, alergias:'', padre:'Lucía Sic', telefono:'3300-4455', autorizado:'Lucía Sic (mamá)', fotoNino:null, fotoPadre:null, archivado:false},
+      {id:uid(), codigo:4, nombre:'Valentina', apellidos:'De León Us', edad:6, alergias:'Usa inhalador para el asma', padre:'Pedro De León', telefono:'5588-1122', autorizado:'Pedro De León (papá)', fotoNino:null, fotoPadre:null, archivado:false},
+      {id:uid(), codigo:5, nombre:'Diego', apellidos:'Morales Tuy', edad:8, alergias:'Ninguna', padre:'Rosa Tuy', telefono:'4411-7766', autorizado:'Rosa Tuy (mamá) o José Morales (papá)', fotoNino:null, fotoPadre:null, archivado:false},
+      {id:uid(), codigo:6, nombre:'Camila', apellidos:'Xitumul Pox', edad:3, alergias:'Alergia a la lactosa', padre:'Marisol Pox', telefono:'3344-9988', autorizado:'Marisol Pox (mamá)', fotoNino:null, fotoPadre:null, archivado:false},
+      {id:uid(), codigo:7, nombre:'Emilio', apellidos:'Coy Batz', edad:6, alergias:'', padre:'Fernando Coy', telefono:'5522-3344', autorizado:'Fernando Coy (papá)', fotoNino:null, fotoPadre:null, archivado:false}
+    ];
+    saveKids(kids);
+
+    const registros = [
+      {id:uid(), kidId:kids[0].id, codigo:kids[0].codigo, fecha:hoy, horaEntrada:'09:02', horaSalida:null, estado:'activo'},
+      {id:uid(), kidId:kids[2].id, codigo:kids[2].codigo, fecha:hoy, horaEntrada:'09:05', horaSalida:null, estado:'activo'},
+      {id:uid(), kidId:kids[4].id, codigo:kids[4].codigo, fecha:hoy, horaEntrada:'08:50', horaSalida:'09:10', estado:'salio'},
+      {id:uid(), kidId:kids[0].id, codigo:kids[0].codigo, fecha:fmt(hace10), horaEntrada:'09:00', horaSalida:'10:30', estado:'salio'},
+      {id:uid(), kidId:kids[1].id, codigo:kids[1].codigo, fecha:fmt(hace40), horaEntrada:'09:10', horaSalida:'10:20', estado:'salio'},
+      {id:uid(), kidId:kids[6].id, codigo:kids[6].codigo, fecha:fmt(hace90), horaEntrada:'09:15', horaSalida:'10:25', estado:'salio'}
+      // Juan Pablo, Valentina y Camila quedan como "Nuevos" (sin asistencias previas) a propósito.
+    ];
+    saveRegistros(registros);
+  }
+  sembrarDatos();
+
+  /* =====================================================
+     SEMÁFORO
+  ===================================================== */
+  function semaforoDe(kidId){
+    const regs = getRegistros().filter(r=>r.kidId===kidId);
+    if(regs.length===0) return {color:'gris', label:'Nuevo'};
+    let ultima = regs[0].fecha;
+    regs.forEach(r=>{ if(r.fecha>ultima) ultima = r.fecha; });
+    const dias = diffDias(ultima, hoyKey());
+    if(dias<=DIAS_VERDE) return {color:'verde', label:'Recurrente'};
+    if(dias<=DIAS_AMARILLO) return {color:'amarillo', label:'Ocasional'};
+    return {color:'rojo', label:'Inactivo (2+ meses)'};
+  }
+
+  /* =====================================================
+     TOAST
+  ===================================================== */
+  const toastEl = document.getElementById('toastApp');
+  let toastTimer = null;
+  function mostrarToast(mensaje, tipo){
+    toastEl.className = 'toast-app show' + (tipo ? ' toast-'+tipo : '');
+    toastEl.innerHTML = mensaje;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=>{ toastEl.classList.remove('show'); }, 2400);
+  }
+
+  /* =====================================================
+     NAVEGACIÓN ENTRE PESTAÑAS
+  ===================================================== */
+  const pills = document.querySelectorAll('.nav-pill');
+  const panes = {
+    registro: document.getElementById('tab-registro'),
+    checkin: document.getElementById('tab-checkin'),
+    checkout: document.getElementById('tab-checkout'),
+    reporte: document.getElementById('tab-reporte')
+  };
+  pills.forEach(p=>{
+    p.addEventListener('click', ()=>{
+      pills.forEach(x=>x.classList.remove('active'));
+      p.classList.add('active');
+      Object.values(panes).forEach(el=>el.classList.add('d-none'));
+      panes[p.dataset.tab].classList.remove('d-none');
+      if(p.dataset.tab==='checkin'){ document.getElementById('buscarCheckin').focus(); renderCheckin(); }
+      if(p.dataset.tab==='checkout'){ renderCheckout(); }
+      if(p.dataset.tab==='reporte'){ renderReporte(); }
+      if(p.dataset.tab==='registro'){ renderListaRegistrados(); actualizarCajaCodigos(); poblarSelectCodigos(); }
+    });
+  });
+
+  document.getElementById('fechaHoyTexto').textContent = fechaLegible(hoyKey());
+
+  /* =====================================================
+     REGISTRO DE NIÑOS
+  ===================================================== */
+  const formRegistro = document.getElementById('formRegistro');
+  formRegistro.addEventListener('submit', async function(e){
+    e.preventDefault();
+    const codigoSel = document.getElementById('regCodigo').value;
+    if(!codigoSel){ alert('No hay código disponible.'); return; }
+
+    const kid = {
+      id: uid(),
+      codigo: parseInt(codigoSel,10),
+      nombre: document.getElementById('regNombre').value.trim(),
+      apellidos: document.getElementById('regApellidos').value.trim(),
+      edad: document.getElementById('regEdad').value,
+      alergias: document.getElementById('regAlergias').value.trim(),
+      padre: document.getElementById('regPadre').value.trim(),
+      telefono: document.getElementById('regTelefono').value.trim(),
+      autorizado: document.getElementById('regAutorizado').value.trim(),
+      fotoNino: fotoNinoPicker.get(),
+      fotoPadre: fotoPadrePicker.get(),
+      archivado: false
+    };
+
+    const kids = getKids();
+    kids.unshift(kid);
+    if(!saveKids(kids)) return;
+
+    formRegistro.reset();
+    fotoNinoPicker.reset();
+    fotoPadrePicker.reset();
+    poblarSelectCodigos();
+    renderListaRegistrados();
+    actualizarCajaCodigos();
+    mostrarToast('<i class="bi bi-check-circle-fill"></i> '+escapeHtml(kid.nombre)+' se registró con el código '+codStr(kid.codigo), 'success');
+  });
+
+  function renderListaRegistrados(){
+    const cont = document.getElementById('listaRegistrados');
+    const filtro = normalizar(document.getElementById('buscarRegistrados').value);
+    const filtroSemaforo = document.querySelector('.chip.active')?.dataset.filtro || 'todos';
+    const kids = kidsActivos();
+    document.getElementById('totalRegistradosTxt').textContent = kids.length + (kids.length===1 ? ' niño en el sistema' : ' niños en el sistema');
+
+    let filtrados = kids.filter(k=>{
+      if(!filtro) return true;
+      return normalizar(k.nombre+' '+k.apellidos+' '+k.padre+' '+(k.codigo!=null?k.codigo:'')).includes(filtro);
+    });
+
+    filtrados = filtrados.filter(k=> filtroSemaforo==='todos' || semaforoDe(k.id).color===filtroSemaforo);
+    filtrados.sort((a,b)=> (a.codigo||9999) - (b.codigo||9999));
+
+    if(filtrados.length===0){
+      cont.innerHTML = '<div class="empty-state"><i class="bi bi-inbox"></i>Sin resultados.</div>';
+      return;
+    }
+
+    cont.innerHTML = filtrados.map(k=>{
+      const sem = semaforoDe(k.id);
+      const avatarStyle = k.fotoNino ? `background-image:url(${k.fotoNino})` : `background:${colorPara(k.id)}`;
+      return `
+      <div class="kid-card" data-perfil="${k.id}">
+        <div class="kid-avatar" style="${avatarStyle}">
+          ${k.fotoNino ? '' : iniciales(k.nombre,k.apellidos)}
+          <span class="semaforo-dot dot-${sem.color}" title="${sem.label}"></span>
+        </div>
+        <div class="kid-info">
+          <div class="kid-name"><span class="codigo-badge">${codStr(k.codigo)}</span> ${escapeHtml(k.nombre)} ${escapeHtml(k.apellidos)}</div>
+          <div class="kid-meta">${k.edad} años · Padre/Tutor: ${escapeHtml(k.padre)} · ${escapeHtml(k.telefono)}</div>
+          ${k.alergias ? `<div class="kid-tags"><span class="tag tag-allergy"><i class="bi bi-exclamation-triangle-fill"></i> ${escapeHtml(k.alergias)}</span></div>` : ''}
+        </div>
+        <i class="bi bi-chevron-right text-muted"></i>
+      </div>`;
+    }).join('');
+  }
+
+  document.getElementById('listaRegistrados').addEventListener('click', function(e){
+    const card = e.target.closest('[data-perfil]');
+    if(!card) return;
+    abrirPerfil(card.dataset.perfil);
+  });
+
+  document.getElementById('buscarRegistrados').addEventListener('input', renderListaRegistrados);
+  document.querySelectorAll('.chip').forEach(chip=>{
+    chip.addEventListener('click', ()=>{
+      document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+      chip.classList.add('active');
+      renderListaRegistrados();
+    });
+  });
+
+  /* =====================================================
+     MODAL PERFIL / CRUD
+  ===================================================== */
+  const modalPerfilEl = document.getElementById('modalPerfil');
+  const modalPerfil = new bootstrap.Modal(modalPerfilEl);
+  let perfilKidIdActual = null;
+
+  function abrirPerfil(kidId){
+    perfilKidIdActual = kidId;
+    document.getElementById('modalPerfilTitulo').textContent = 'Perfil del niño';
+    renderPerfilVista(kidId);
+    modalPerfil.show();
+  }
+
+  function historialDe(kidId){
+    return getRegistros().filter(r=>r.kidId===kidId).sort((a,b)=> (b.fecha+b.horaEntrada).localeCompare(a.fecha+a.horaEntrada));
+  }
+
+  function renderPerfilVista(kidId){
+    const k = getKids().find(x=>x.id===kidId);
+    const body = document.getElementById('modalPerfilBody');
+    if(!k){ body.innerHTML = '<p class="text-muted">Este niño ya no existe.</p>'; return; }
+
+    const sem = semaforoDe(k.id);
+    const hist = historialDe(k.id).slice(0,8);
+
+    body.innerHTML = `
+      ${k.archivado ? '<div class="alert alert-secondary py-2 mb-3"><i class="bi bi-archive"></i> Este niño está <strong>archivado</strong> (su código fue liberado).</div>' : ''}
+
+      <div class="perfil-fotos">
+        <div>
+          <div class="perfil-foto" style="${k.fotoNino?`background-image:url(${k.fotoNino})`:''}">${k.fotoNino?'':'<i class=\"bi bi-person\"></i>'}</div>
+          <div class="perfil-foto-label">Niño</div>
+        </div>
+        <div>
+          <div class="perfil-foto" style="${k.fotoPadre?`background-image:url(${k.fotoPadre})`:''}">${k.fotoPadre?'':'<i class=\"bi bi-person\"></i>'}</div>
+          <div class="perfil-foto-label">Padre/Encargado</div>
+        </div>
+        <div class="ms-auto text-end">
+          <div class="codigo-badge" style="font-size:1rem; padding:.3rem .6rem;">${codStr(k.codigo)}</div>
+          <div class="mt-2"><span class="semaforo-pill ${sem.color}"><i class="bi bi-circle-fill" style="font-size:.55rem;"></i> ${sem.label}</span></div>
+        </div>
+      </div>
+
+      <h5 class="mb-2">${escapeHtml(k.nombre)} ${escapeHtml(k.apellidos)}</h5>
+      <div class="row">
+        <div class="col-6 campo-lectura"><div class="lbl">Edad</div><div class="val">${escapeHtml(String(k.edad))} años</div></div>
+        <div class="col-6 campo-lectura"><div class="lbl">Teléfono</div><div class="val">${escapeHtml(k.telefono)}</div></div>
+        <div class="col-12 campo-lectura"><div class="lbl">Padre/Tutor</div><div class="val">${escapeHtml(k.padre)}</div></div>
+        <div class="col-12 campo-lectura"><div class="lbl">Autorizado para retirar</div><div class="val">${escapeHtml(k.autorizado)}</div></div>
+        <div class="col-12 campo-lectura"><div class="lbl">Alergias / Notas médicas</div><div class="val">${k.alergias ? escapeHtml(k.alergias) : 'Ninguna registrada'}</div></div>
+      </div>
+
+      <div class="mt-3">
+        <div class="lbl fw-semibold mb-1" style="font-size:.8rem; color:var(--muted);">Últimas asistencias</div>
+        <div class="historial-mini border rounded">
+          <table class="table table-sm mb-0">
+            <thead><tr><th>Fecha</th><th>Entrada</th><th>Salida</th></tr></thead>
+            <tbody>
+              ${hist.length ? hist.map(r=>`<tr><td>${r.fecha}</td><td>${r.horaEntrada||'-'}</td><td>${r.horaSalida||'-'}</td></tr>`).join('') : '<tr><td colspan="3" class="text-muted text-center py-2">Sin asistencias registradas</td></tr>'}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="d-flex flex-wrap gap-2 mt-3">
+        <button class="btn btn-primary-app flex-fill" id="btnEditarPerfil"><i class="bi bi-pencil"></i> Editar</button>
+        ${k.archivado
+          ? `<button class="btn btn-outline-success flex-fill" id="btnReactivar"><i class="bi bi-arrow-repeat"></i> Reactivar con nuevo código</button>`
+          : `<button class="btn btn-outline-warning flex-fill" id="btnLiberarCodigo"><i class="bi bi-unlock"></i> Liberar código</button>`
+        }
+        <button class="btn btn-outline-danger flex-fill" id="btnEliminarPerfil"><i class="bi bi-trash"></i> Eliminar niño</button>
+      </div>
+    `;
+
+    document.getElementById('btnEditarPerfil').addEventListener('click', ()=> renderPerfilEdicion(k.id));
+
+    const btnLiberar = document.getElementById('btnLiberarCodigo');
+    if(btnLiberar){
+      btnLiberar.addEventListener('click', ()=>{
+        const msg = sem.color==='rojo'
+          ? `¿Liberar el código ${codStr(k.codigo)} de ${k.nombre}? El niño quedará archivado (se conserva su historial) y el código vuelve a estar disponible para uno nuevo.`
+          : `${k.nombre} no está en rojo todavía (semáforo: ${sem.label}). ¿Seguro que quieres liberar su código de todas formas?`;
+        if(!confirm(msg)) return;
+        const kids = getKids();
+        const idx = kids.findIndex(x=>x.id===k.id);
+        kids[idx].codigo = null;
+        kids[idx].archivado = true;
+        if(!saveKids(kids)) return;
+        modalPerfil.hide();
+        renderListaRegistrados(); renderCheckin(); renderCheckout(); actualizarCajaCodigos();
+        mostrarToast('<i class="bi bi-unlock"></i> Código liberado. '+escapeHtml(k.nombre)+' quedó archivado.', 'success');
+      });
+    }
+
+    const btnReactivar = document.getElementById('btnReactivar');
+    if(btnReactivar){
+      btnReactivar.addEventListener('click', ()=>{
+        const libres = codigosDisponibles();
+        if(libres.length===0){ alert('No hay códigos disponibles para reactivar a este niño.'); return; }
+        const nuevo = libres[0];
+        if(!confirm(`¿Reactivar a ${k.nombre} con el nuevo código ${codStr(nuevo)}?`)) return;
+        const kids = getKids();
+        const idx = kids.findIndex(x=>x.id===k.id);
+        kids[idx].codigo = nuevo;
+        kids[idx].archivado = false;
+        if(!saveKids(kids)) return;
+        modalPerfil.hide();
+        renderListaRegistrados(); renderCheckin(); renderCheckout(); actualizarCajaCodigos();
+        mostrarToast('<i class="bi bi-arrow-repeat"></i> '+escapeHtml(k.nombre)+' reactivado con '+codStr(nuevo), 'success');
+      });
+    }
+
+    document.getElementById('btnEliminarPerfil').addEventListener('click', ()=>{
+      if(!confirm(`¿Eliminar completamente a ${k.nombre}? Esto borra también todo su historial de asistencias. Esta acción no se puede deshacer.`)) return;
+      const kids = getKids().filter(x=>x.id!==k.id);
+      const registros = getRegistros().filter(r=>r.kidId!==k.id);
+      if(!saveKids(kids)) return;
+      saveRegistros(registros);
+      modalPerfil.hide();
+      renderListaRegistrados(); renderCheckin(); renderCheckout(); renderReporte(); actualizarCajaCodigos();
+      mostrarToast('<i class="bi bi-trash"></i> Niño eliminado del sistema', 'danger');
+    });
+  }
+
+  function renderPerfilEdicion(kidId){
+    const k = getKids().find(x=>x.id===kidId);
+    const body = document.getElementById('modalPerfilBody');
+    const disponibles = codigosDisponibles();
+    if(k.codigo!=null && !disponibles.includes(k.codigo)) disponibles.unshift(k.codigo);
+    disponibles.sort((a,b)=>a-b);
+
+    body.innerHTML = `
+      <div class="row g-3">
+        <div class="col-12 col-sm-5">
+          <label class="form-label">Código</label>
+          <select class="form-select" id="editCodigo" ${k.archivado?'disabled':''}>
+            ${k.archivado ? '<option value="">Archivado (sin código)</option>' : disponibles.map(n=>`<option value="${n}" ${n===k.codigo?'selected':''}>${codStr(n)}</option>`).join('')}
+          </select>
+        </div>
+        <div class="col-12 col-sm-7">
+          <label class="form-label">Edad</label>
+          <input type="number" min="0" max="17" class="form-control" id="editEdad" value="${escapeHtml(String(k.edad))}">
+        </div>
+        <div class="col-6"><label class="form-label">Nombre</label><input type="text" class="form-control" id="editNombre" value="${escapeHtml(k.nombre)}"></div>
+        <div class="col-6"><label class="form-label">Apellidos</label><input type="text" class="form-control" id="editApellidos" value="${escapeHtml(k.apellidos)}"></div>
+
+        <div class="col-12 col-sm-6">
+          <label class="form-label">Foto del niño</label>
+          <div class="foto-picker">
+            <div class="foto-preview" id="editPreviewNino" style="${k.fotoNino?`background-image:url(${k.fotoNino})`:''}">${k.fotoNino?'':'<i class="bi bi-camera"></i>'}</div>
+            <div class="foto-btns">
+              <input type="file" accept="image/*" capture="environment" class="form-control form-control-sm" id="editFotoNino">
+              <button type="button" class="btn btn-sm btn-outline-secondary ${k.fotoNino?'':'d-none'}" id="editQuitarNino">Quitar foto</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <label class="form-label">Foto del padre/encargado</label>
+          <div class="foto-picker">
+            <div class="foto-preview" id="editPreviewPadre" style="${k.fotoPadre?`background-image:url(${k.fotoPadre})`:''}">${k.fotoPadre?'':'<i class="bi bi-camera"></i>'}</div>
+            <div class="foto-btns">
+              <input type="file" accept="image/*" capture="environment" class="form-control form-control-sm" id="editFotoPadre">
+              <button type="button" class="btn btn-sm btn-outline-secondary ${k.fotoPadre?'':'d-none'}" id="editQuitarPadre">Quitar foto</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6"><label class="form-label">Padre/Tutor</label><input type="text" class="form-control" id="editPadre" value="${escapeHtml(k.padre)}"></div>
+        <div class="col-6"><label class="form-label">Teléfono</label><input type="tel" class="form-control" id="editTelefono" value="${escapeHtml(k.telefono)}"></div>
+        <div class="col-12"><label class="form-label">Autorizado para retirar</label><input type="text" class="form-control" id="editAutorizado" value="${escapeHtml(k.autorizado)}"></div>
+        <div class="col-12"><label class="form-label">Alergias / Notas médicas</label><textarea class="form-control" id="editAlergias" rows="2">${escapeHtml(k.alergias)}</textarea></div>
+      </div>
+      <div class="d-flex gap-2 mt-3">
+        <button class="btn btn-outline-secondary flex-fill" id="btnCancelarEdicion">Cancelar</button>
+        <button class="btn btn-primary-app flex-fill" id="btnGuardarEdicion"><i class="bi bi-check-lg"></i> Guardar cambios</button>
+      </div>
+    `;
+
+    const editFotoNino = conectarFotoPicker('editFotoNino','editPreviewNino','editQuitarNino');
+    const editFotoPadre = conectarFotoPicker('editFotoPadre','editPreviewPadre','editQuitarPadre');
+    editFotoNino.set(k.fotoNino);
+    editFotoPadre.set(k.fotoPadre);
+
+    document.getElementById('btnCancelarEdicion').addEventListener('click', ()=> renderPerfilVista(k.id));
+
+    document.getElementById('btnGuardarEdicion').addEventListener('click', ()=>{
+      const kids = getKids();
+      const idx = kids.findIndex(x=>x.id===k.id);
+      if(!k.archivado){
+        const nuevoCodigo = document.getElementById('editCodigo').value;
+        kids[idx].codigo = nuevoCodigo ? parseInt(nuevoCodigo,10) : kids[idx].codigo;
+      }
+      kids[idx].nombre = document.getElementById('editNombre').value.trim();
+      kids[idx].apellidos = document.getElementById('editApellidos').value.trim();
+      kids[idx].edad = document.getElementById('editEdad').value;
+      kids[idx].padre = document.getElementById('editPadre').value.trim();
+      kids[idx].telefono = document.getElementById('editTelefono').value.trim();
+      kids[idx].autorizado = document.getElementById('editAutorizado').value.trim();
+      kids[idx].alergias = document.getElementById('editAlergias').value.trim();
+      kids[idx].fotoNino = editFotoNino.get();
+      kids[idx].fotoPadre = editFotoPadre.get();
+
+      if(!saveKids(kids)) return;
+      renderListaRegistrados(); renderCheckin(); renderCheckout(); actualizarCajaCodigos();
+      renderPerfilVista(k.id);
+      mostrarToast('<i class="bi bi-check-circle-fill"></i> Datos actualizados', 'success');
+    });
+  }
+
+  /* =====================================================
+     CHECK-IN
+  ===================================================== */
+  function idsActivosHoy(){
+    const hoy = hoyKey();
+    return new Set(getRegistros().filter(r=>r.fecha===hoy && r.estado==='activo').map(r=>r.kidId));
+  }
+
+  function textoBusquedaKid(k){
+    return normalizar(k.nombre+' '+k.apellidos+' '+k.padre+' '+(k.codigo!=null?k.codigo:''));
+  }
+
+  function renderCheckin(){
+    const cont = document.getElementById('listaCheckin');
+    const filtro = normalizar(document.getElementById('buscarCheckin').value);
+    const activos = idsActivosHoy();
+    const kids = kidsActivos().filter(k=>!activos.has(k.id));
+
+    const filtrados = filtro ? kids.filter(k=> textoBusquedaKid(k).includes(filtro)) : kids;
+    filtrados.sort((a,b)=> (a.codigo||9999) - (b.codigo||9999));
+
+    if(filtrados.length===0){
+      cont.innerHTML = `<div class="empty-state"><i class="bi bi-emoji-smile"></i>${filtro ? 'No se encontró ningún niño con ese código o nombre.' : 'Todos los niños registrados ya están adentro.'}</div>`;
+      return;
+    }
+
+    cont.innerHTML = filtrados.map(k=>{
+      const avatarStyle = k.fotoNino ? `background-image:url(${k.fotoNino})` : `background:${colorPara(k.id)}`;
+      return `
+      <div class="kid-card" style="cursor:default;">
+        <div class="kid-avatar" style="${avatarStyle}">${k.fotoNino ? '' : iniciales(k.nombre,k.apellidos)}</div>
+        <div class="kid-info">
+          <div class="kid-name"><span class="codigo-badge">${codStr(k.codigo)}</span> ${escapeHtml(k.nombre)} ${escapeHtml(k.apellidos)}</div>
+          <div class="kid-meta">${k.edad} años · Padre/Tutor: ${escapeHtml(k.padre)}</div>
+          ${k.alergias ? `<div class="kid-tags"><span class="tag tag-allergy"><i class="bi bi-exclamation-triangle-fill"></i> ${escapeHtml(k.alergias)}</span></div>` : ''}
+        </div>
+        <button class="btn-action btn-in" data-ingresar="${k.id}"><i class="bi bi-box-arrow-in-right"></i> Ingresar</button>
+      </div>`;
+    }).join('');
+  }
+
+  document.getElementById('listaCheckin').addEventListener('click', function(e){
+    const btn = e.target.closest('[data-ingresar]');
+    if(!btn) return;
+    const kidId = btn.dataset.ingresar;
+    const kid = getKids().find(k=>k.id===kidId);
+    if(!kid) return;
+
+    const hora = horaActual();
+    const registros = getRegistros();
+    registros.unshift({ id: uid(), kidId: kidId, codigo: kid.codigo, fecha: hoyKey(), horaEntrada: hora, horaSalida: null, estado: 'activo' });
+    if(!saveRegistros(registros)) return;
+
+    renderCheckin();
+    actualizarBadgeAdentro();
+    mostrarToast('<i class="bi bi-box-arrow-in-right"></i> '+escapeHtml(kid.nombre)+' ('+codStr(kid.codigo)+') ingresó a las '+hora, 'success');
+    mostrarBannerUltimoIngreso(kid, hora);
+  });
+
+  document.getElementById('buscarCheckin').addEventListener('input', renderCheckin);
+
+  function mostrarBannerUltimoIngreso(kid, hora){
+    const banner = document.getElementById('bannerUltimoIngreso');
+    banner.classList.remove('d-none');
+    banner.innerHTML = `
+      <i class="bi bi-check-circle-fill text-success fs-4"></i>
+      <div class="txt"><strong>${escapeHtml(kid.nombre)}</strong> (${codStr(kid.codigo)}) ingresó a las ${hora}.</div>
+      <button class="btn btn-sm btn-primary-app" id="btnImprimirTicket"><i class="bi bi-printer"></i> Imprimir ticket</button>
+    `;
+    document.getElementById('btnImprimirTicket').addEventListener('click', ()=> imprimirTicket(kid, hora));
+  }
+
+  /* =====================================================
+     TICKET IMPRIMIBLE (código físico para el padre)
+  ===================================================== */
+  function imprimirTicket(kid, hora){
+    const copia = (etiqueta)=>`
+      <div class="ticket-copy">
+        <div class="ticket-iglesia">Iglesia Bethania · Área B-Kids</div>
+        <div class="ticket-sub">${fechaLegible(hoyKey())}</div>
+        <div class="ticket-etiqueta">${etiqueta}</div>
+        <div class="ticket-codigo">${codStr(kid.codigo)}</div>
+        <div class="ticket-nombre">${escapeHtml(kid.nombre)} ${escapeHtml(kid.apellidos)}</div>
+        <div class="ticket-hora">Entrada: ${hora}</div>
+        <div class="ticket-nota">Conserve este código: se usa para retirar al niño al salir.</div>
+      </div>`;
+    document.getElementById('areaTicket').innerHTML = copia('COPIA PARA EL NIÑO') + copia('COPIA PARA EL PADRE/ENCARGADO');
+    document.body.classList.add('imprimiendo-ticket');
+    window.print();
+  }
+  window.addEventListener('afterprint', ()=> document.body.classList.remove('imprimiendo-ticket'));
+
+  /* =====================================================
+     CHECK-OUT
+  ===================================================== */
+  function renderCheckout(){
+    const cont = document.getElementById('listaCheckout');
+    const filtro = normalizar(document.getElementById('buscarCheckout').value);
+    const hoy = hoyKey();
+    const kids = getKids();
+    const kidsMap = Object.fromEntries(kids.map(k=>[k.id,k]));
+
+    let activos = getRegistros().filter(r=>r.fecha===hoy && r.estado==='activo');
+
+    if(filtro){
+      activos = activos.filter(r=>{
+        const k = kidsMap[r.kidId];
+        if(!k) return false;
+        return textoBusquedaKid(k).includes(filtro) || String(r.codigo).includes(filtro);
+      });
+    }
+    activos.sort((a,b)=> (a.codigo||9999)-(b.codigo||9999));
+
+    if(activos.length===0){
+      cont.innerHTML = `<div class="empty-state"><i class="bi bi-emoji-smile"></i>${filtro ? 'No se encontró ningún niño con ese código o nombre.' : 'No hay niños adentro en este momento.'}</div>`;
+      return;
+    }
+
+    cont.innerHTML = activos.map(r=>{
+      const k = kidsMap[r.kidId];
+      if(!k) return '';
+      const avatarStyle = k.fotoNino ? `background-image:url(${k.fotoNino})` : `background:${colorPara(k.id)}`;
+      return `
+      <div class="kid-card" style="cursor:default;">
+        <div class="kid-avatar" style="${avatarStyle}">${k.fotoNino ? '' : iniciales(k.nombre,k.apellidos)}</div>
+        <div class="kid-info">
+          <div class="kid-name"><span class="codigo-badge">${codStr(r.codigo)}</span> ${escapeHtml(k.nombre)} ${escapeHtml(k.apellidos)}</div>
+          <div class="kid-meta">Retira: ${escapeHtml(k.autorizado)}</div>
+          <div class="kid-tags">
+            <span class="tag tag-time"><i class="bi bi-clock"></i> Entró ${r.horaEntrada}</span>
+            ${k.alergias ? `<span class="tag tag-allergy"><i class="bi bi-exclamation-triangle-fill"></i> ${escapeHtml(k.alergias)}</span>` : ''}
+          </div>
+        </div>
+        <button class="btn-action btn-out" data-salir="${r.id}"><i class="bi bi-box-arrow-right"></i> Dar Salida</button>
+      </div>`;
+    }).join('');
+  }
+
+  document.getElementById('listaCheckout').addEventListener('click', function(e){
+    const btn = e.target.closest('[data-salir]');
+    if(!btn) return;
+    const regId = btn.dataset.salir;
+    const registros = getRegistros();
+    const reg = registros.find(r=>r.id===regId);
+    if(!reg) return;
+    reg.estado = 'salio';
+    reg.horaSalida = horaActual();
+    if(!saveRegistros(registros)) return;
+
+    const kid = getKids().find(k=>k.id===reg.kidId);
+    renderCheckout();
+    actualizarBadgeAdentro();
+    mostrarToast('<i class="bi bi-box-arrow-right"></i> '+(kid?escapeHtml(kid.nombre):'Niño')+' salió a las '+horaActual(), 'danger');
+  });
+
+  document.getElementById('buscarCheckout').addEventListener('input', renderCheckout);
+
+  function actualizarBadgeAdentro(){
+    const hoy = hoyKey();
+    const total = getRegistros().filter(r=>r.fecha===hoy && r.estado==='activo').length;
+    document.getElementById('badgeAdentro').textContent = total;
+  }
+
+  /* =====================================================
+     REPORTE / HISTORIAL
+  ===================================================== */
+  const inputFecha = document.getElementById('reporteFecha');
+  inputFecha.value = hoyKey();
+  inputFecha.addEventListener('change', renderReporte);
+
+  function renderReporte(){
+    const fecha = inputFecha.value || hoyKey();
+    const kids = getKids();
+    const kidsMap = Object.fromEntries(kids.map(k=>[k.id,k]));
+    const registros = getRegistros().filter(r=>r.fecha===fecha).sort((a,b)=> (a.horaEntrada||'').localeCompare(b.horaEntrada||''));
+
+    const tbody = document.getElementById('tablaReporte');
+    const vacio = document.getElementById('reporteVacio');
+    let adentro = 0, salieron = 0;
+
+    if(registros.length===0){
+      tbody.innerHTML='';
+      vacio.classList.remove('d-none');
+    } else {
+      vacio.classList.add('d-none');
+      tbody.innerHTML = registros.map(r=>{
+        const k = kidsMap[r.kidId] || {nombre:'(eliminado)', apellidos:'', edad:'-', padre:'-', telefono:'-', autorizado:'-'};
+        if(r.estado==='activo') adentro++; else salieron++;
+        return `
+        <tr>
+          <td><span class="codigo-badge">${codStr(r.codigo)}</span></td>
+          <td><strong>${escapeHtml(k.nombre)} ${escapeHtml(k.apellidos)}</strong></td>
+          <td>${escapeHtml(String(k.edad))}</td>
+          <td>${escapeHtml(k.padre)}</td>
+          <td>${escapeHtml(k.telefono)}</td>
+          <td>${escapeHtml(k.autorizado)}</td>
+          <td>${r.horaEntrada || '-'}</td>
+          <td>${r.horaSalida || '-'}</td>
+          <td><span class="badge ${r.estado==='activo' ? 'badge-estado-in' : 'badge-estado-out'}">${r.estado==='activo' ? 'Adentro' : 'Salió'}</span></td>
+        </tr>`;
+      }).join('');
+    }
+
+    document.getElementById('statTotal').textContent = registros.length;
+    document.getElementById('statAdentro').textContent = adentro;
+    document.getElementById('statSalieron').textContent = salieron;
+  }
+
+  document.getElementById('btnImprimir').addEventListener('click', ()=> window.print());
+
+  document.getElementById('btnExportarCSV').addEventListener('click', function(){
+    const fecha = inputFecha.value || hoyKey();
+    const kids = getKids();
+    const kidsMap = Object.fromEntries(kids.map(k=>[k.id,k]));
+    const registros = getRegistros().filter(r=>r.fecha===fecha);
+
+    if(registros.length===0){ mostrarToast('No hay datos para exportar en esta fecha', 'danger'); return; }
+
+    const encabezados = ['Codigo','Nombre','Apellidos','Edad','Padre/Tutor','Telefono','Autorizado a retirar','Alergias/Notas','Fecha','Hora Entrada','Hora Salida','Estado'];
+    const filas = registros.map(r=>{
+      const k = kidsMap[r.kidId] || {};
+      return [ r.codigo!=null?r.codigo:'', k.nombre||'', k.apellidos||'', k.edad||'', k.padre||'', k.telefono||'',
+        k.autorizado||'', k.alergias||'', r.fecha, r.horaEntrada||'', r.horaSalida||'', r.estado==='activo' ? 'Adentro' : 'Salio' ];
+    });
+    function csvSafe(v){ return `"${String(v).replace(/"/g,'""')}"`; }
+    const csv = [encabezados, ...filas].map(fila=> fila.map(csvSafe).join(',')).join('\r\n');
+    const blob = new Blob(['\uFEFF'+csv], {type:'text/csv;charset=utf-8;'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = `reporte-bkids-${fecha}.csv`;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    mostrarToast('<i class="bi bi-file-earmark-spreadsheet"></i> Reporte exportado', 'success');
+  });
+
+  /* =====================================================
+     INICIO
+  ===================================================== */
+  poblarSelectCodigos();
+  renderListaRegistrados();
+  renderCheckin();
+  renderCheckout();
+  renderReporte();
+  actualizarBadgeAdentro();
+  actualizarCajaCodigos();
+
+})();
+</script>
+</body>
+</html>
