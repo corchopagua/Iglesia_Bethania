@@ -970,7 +970,8 @@ const auth = firebase.auth();
         await db.collection('usuarios').doc(user.uid).set(currentUserData);
       }
 
-      if(currentUserData.rol === 'admin'){
+      const rolUsuario = (currentUserData.rol || currentUserData.Rol || '').toLowerCase();
+if(rolUsuario === 'admin'){
         document.getElementById('tabBtnUsuarios').classList.remove('d-none');
         cargarUsuariosAdmin();
       } else {
