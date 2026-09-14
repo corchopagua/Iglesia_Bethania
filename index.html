@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>Iglesia Bethania · Área B-Kids</title>
 
-<!-- Bootstrap 5 -->
+<!-- BOOTSTRAP 5 Y ICONOS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
-<!-- Tipografías -->
+<!-- TIPOGRAFÍAS GOOGLE -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -46,11 +46,14 @@
     font-family:'Poppins',system-ui,sans-serif;
   }
 
-  /* Header */
+  /* BARRA SUPERIOR (TOPBAR) */
   .topbar{
     background:var(--navy);
     color:#fff;
     padding:.9rem 1rem;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
   }
   .topbar .brand{
     font-weight:700;
@@ -72,8 +75,14 @@
     font-size:.82rem;
     margin-top:.1rem;
   }
+  .user-badge-bar{
+    display:flex;
+    align-items:center;
+    gap:.6rem;
+    font-size:.85rem;
+  }
 
-  /* Navigation */
+  /* NAVEGACIÓN SUPERIOR (TABS) */
   .tab-shell{
     position:sticky;
     top:0;
@@ -149,14 +158,39 @@
     box-shadow:0 0 0 .2rem rgba(44,79,124,.15);
   }
 
-  /* Search */
+  /* SCREEN AUTH / LOGIN OVERLAY */
+  .auth-overlay{
+    position:fixed;
+    inset:0;
+    background:var(--navy);
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:1rem;
+  }
+  .auth-card{
+    background:#fff;
+    border-radius:20px;
+    padding:2.5rem 2rem;
+    width:100%;
+    max-width:400px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.2);
+    text-align:center;
+  }
+  .auth-card .brand-icon{
+    font-size:2.5rem;
+    color:var(--orange);
+    margin-bottom:.5rem;
+  }
+
+  /* TARJETAS DE NIÑOS Y SEMÁFORO */
   .search-wrap{position:relative; margin-bottom:.85rem;}
   .search-wrap .bi-search{
     position:absolute; left:.9rem; top:50%; transform:translateY(-50%); color:var(--muted);
   }
   .search-wrap input{padding-left:2.5rem; height:3.1rem; font-size:1.05rem;}
 
-  /* Chips */
   .chip-row{display:flex; gap:.4rem; flex-wrap:wrap; margin-bottom:1rem;}
   .chip{
     border:1px solid var(--border);
@@ -169,7 +203,6 @@
   }
   .chip.active{background:var(--navy); color:#fff; border-color:var(--navy);}
 
-  /* Kid Cards */
   .kid-card{
     display:flex;
     align-items:center;
@@ -243,7 +276,6 @@
   .empty-state{text-align:center; color:var(--muted); padding:2.2rem 1rem;}
   .empty-state .bi{font-size:2.2rem; color:var(--border); display:block; margin-bottom:.5rem;}
 
-  /* Stats */
   .stat-row{display:flex; gap:.6rem; margin-bottom:1rem;}
   .stat-box{
     flex:1; background:var(--surface); border:1px solid var(--border);
@@ -266,7 +298,6 @@
     border-radius:12px; padding:.85rem 1rem; margin-bottom:1rem; font-size:.88rem;
   }
 
-  /* Buttons */
   .btn-primary-app{
     background:var(--navy); border:none; color:#fff; font-weight:700;
     padding:.85rem 1.1rem; border-radius:10px; min-height:50px;
@@ -274,7 +305,6 @@
   .btn-primary-app:hover, .btn-primary-app:active{background:var(--navy-light); color:#fff;}
   .btn-primary-app:disabled{background:#A9B4C2;}
 
-  /* Photo Picker */
   .foto-picker{
     display:flex; align-items:center; gap:.75rem;
     border:1px dashed var(--border);
@@ -290,7 +320,6 @@
   }
   .foto-picker .foto-btns{display:flex; flex-direction:column; gap:.3rem; flex:1;}
 
-  /* Table */
   .table-report{font-size:.85rem;}
   .table-report th{background:#F0F3F8; color:var(--navy); font-weight:700; white-space:nowrap; border-bottom:none;}
   .table-report td{vertical-align:middle;}
@@ -299,7 +328,6 @@
 
   .list-registrados{max-height:420px; overflow-y:auto;}
 
-  /* Banner */
   .banner-ultimo{
     background:var(--warn-bg);
     border:1px solid #F0DFA0;
@@ -314,7 +342,6 @@
   .banner-ultimo .txt{flex:1; font-size:.9rem;}
   .banner-ultimo strong{color:var(--navy);}
 
-  /* Toast */
   .toast-app{
     position:fixed; left:50%; bottom:1.2rem; transform:translateX(-50%) translateY(20px);
     background:var(--navy); color:#fff; padding:.75rem 1.1rem; border-radius:12px;
@@ -327,13 +354,13 @@
   .toast-app.toast-success{background:var(--success-dark);}
   .toast-app.toast-danger{background:var(--danger-dark);}
 
-  /* Profile */
-  .perfil-fotos{display:flex; gap:1rem; margin-bottom:1rem;}
+  .perfil-fotos{display:flex; gap:1rem; margin-bottom:1rem; align-items:center;}
   .perfil-foto{
     width:88px; height:88px; border-radius:14px;
     background:#EEF1F5 center/cover no-repeat;
     display:flex; align-items:center; justify-content:center;
     color:var(--muted); font-size:1.8rem; flex:0 0 auto;
+    border: 2px solid var(--border);
   }
   .semaforo-pill{
     display:inline-flex; align-items:center; gap:.4rem;
@@ -344,62 +371,46 @@
   .semaforo-pill.rojo{background:#FDEAEA; color:var(--danger-dark);}
   .semaforo-pill.gris{background:#EEF0F3; color:var(--muted);}
 
-  /* Home */
+  /* INICIO CENTRADO */
+  .welcome-container{
+    min-height:65vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
   .welcome-hero{
     background:linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
     color:#fff;
-    border-radius:var(--radius);
-    padding:2.5rem 1.5rem;
+    border-radius:24px;
+    padding:4.5rem 2rem;
     text-align:center;
-    margin-bottom:1.5rem;
-    box-shadow:0 10px 30px rgba(30,58,95,0.15);
+    width:100%;
+    box-shadow:0 15px 35px rgba(30,58,95,0.18);
   }
-  .welcome-hero h1{font-weight:800; font-size:2rem; margin-bottom:.5rem;}
-  .welcome-hero p{color:#B9C7DA; max-width:600px; margin:0 auto; font-size:1.05rem;}
-  
-  .home-card-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
-    gap:1rem;
+  .welcome-hero .hero-icon{
+    font-size:3.5rem;
+    color:var(--orange);
+    margin-bottom:1rem;
+    display:inline-block;
   }
-  .home-card{
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:1.5rem;
-    text-align:left;
-    cursor:pointer;
-    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-    display:flex;
-    flex-direction:column;
-    gap:1rem;
+  .welcome-hero h1{
+    font-weight:800;
+    font-size:2.8rem;
+    margin-bottom:.5rem;
+    letter-spacing:-0.5px;
   }
-  .home-card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 8px 20px rgba(0,0,0,0.06);
-    border-color:var(--navy-light);
+  .welcome-hero p{
+    color:#B9C7DA;
+    font-size:1.1rem;
+    margin-bottom:0;
   }
-  .home-card-icon{
-    width:52px; height:52px;
-    border-radius:12px;
-    display:flex; align-items:center; justify-content:center;
-    font-size:1.6rem;
-  }
-  .icon-blue{background:#EAF0F8; color:var(--navy);}
-  .icon-green{background:#E4F6E8; color:var(--success-dark);}
-  .icon-red{background:#FDEAEA; color:var(--danger-dark);}
-  .icon-purple{background:#F3E8FF; color:#7C3AED;}
-  .icon-dark{background:#1E293B; color:#38BDF8;}
 
-  .home-card h3{font-size:1.15rem; font-weight:700; margin:0; color:var(--navy);}
-  .home-card p{font-size:.85rem; color:var(--muted); margin:0;}
-
-  /* Monitor TV */
+  /* MONITOR TV */
   .tv-container{
     background:#0F172A;
     color:#F8FAFC;
     border-radius:var(--radius);
-    padding:2rem 1.5rem;
+    padding:1.5rem;
     min-height:80vh;
   }
   .tv-header{
@@ -407,68 +418,76 @@
     justify-content:space-between;
     align-items:center;
     border-bottom:2px solid #334155;
-    padding-bottom:1.2rem;
-    margin-bottom:1.5rem;
+    padding-bottom:1rem;
+    margin-bottom:1.2rem;
+    flex-wrap:wrap;
+    gap:.5rem;
   }
-  .tv-title{font-size:1.8rem; font-weight:800; color:#38BDF8; display:flex; align-items:center; gap:.7rem;}
-  .tv-clock{font-size:1.4rem; font-weight:700; color:#94A3B8; font-family:monospace;}
+  .tv-title{font-size:1.5rem; font-weight:800; color:#38BDF8; display:flex; align-items:center; gap:.7rem;}
+  .tv-clock{font-size:1.3rem; font-weight:700; color:#94A3B8; font-family:monospace;}
 
   .tv-stat-card{
     background:#1E293B;
     border:1px solid #334155;
     border-radius:16px;
-    padding:1.5rem;
+    padding:1.2rem;
     text-align:center;
   }
-  .tv-num{font-size:3.5rem; font-weight:800; line-height:1;}
+  .tv-num{font-size:3rem; font-weight:800; line-height:1;}
   .tv-num-green{color:#4ADE80;}
   .tv-num-red{color:#F87171;}
-  .tv-label{font-size:1rem; color:#94A3B8; font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-top:.5rem;}
+  .tv-label{font-size:.85rem; color:#94A3B8; font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-top:.4rem;}
 
   .tv-section-title{
-    font-size:1.25rem; font-weight:700; color:#F1F5F9; margin-bottom:1rem; display:flex; align-items:center; gap:.5rem;
+    font-size:1.15rem; font-weight:700; color:#F1F5F9; margin-bottom:.8rem; display:flex; align-items:center; gap:.5rem;
   }
   .tv-grid-adentro{
     display:grid;
-    grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
-    gap:.85rem;
+    grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
+    gap:.75rem;
     max-height:450px;
     overflow-y:auto;
-    padding-right:5px;
+    padding-right:4px;
   }
   .tv-kid-card{
     background:#1E293B;
     border-left:4px solid #4ADE80;
     border-radius:10px;
-    padding:.8rem 1rem;
+    padding:.6rem .8rem;
     display:flex;
     align-items:center;
-    gap:.8rem;
+    gap:.65rem;
   }
-  .tv-code{background:#334155; color:#38BDF8; font-weight:800; font-size:1.1rem; padding:.2rem .6rem; border-radius:6px;}
-  .tv-name{font-weight:700; font-size:1.05rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .tv-avatar{
+    width:42px; height:42px; border-radius:50%;
+    background:#334155 center/cover no-repeat;
+    display:flex; align-items:center; justify-content:center;
+    color:#F1F5F9; font-weight:700; font-size:.85rem;
+    flex:0 0 auto; border:1px solid #475569;
+  }
+  .tv-code{background:#334155; color:#38BDF8; font-weight:800; font-size:.9rem; padding:.15rem .45rem; border-radius:6px;}
+  .tv-name{font-weight:700; font-size:.95rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color:#F8FAFC;}
 
   .tv-feed{
     background:#1E293B;
     border:1px solid #334155;
     border-radius:16px;
-    padding:1rem;
+    padding:.8rem;
     max-height:450px;
     overflow-y:auto;
   }
   .tv-feed-item{
-    padding:.75rem .5rem;
+    padding:.6rem .4rem;
     border-bottom:1px solid #334155;
     display:flex;
     align-items:center;
-    gap:.8rem;
-    font-size:.95rem;
+    gap:.6rem;
+    font-size:.9rem;
   }
   .tv-feed-item:last-child{border-bottom:none;}
-  .tv-badge-in{background:rgba(74,222,128,0.15); color:#4ADE80; padding:.2rem .6rem; border-radius:6px; font-weight:700; font-size:.8rem;}
-  .tv-badge-out{background:rgba(248,113,113,0.15); color:#F87171; padding:.2rem .6rem; border-radius:6px; font-weight:700; font-size:.8rem;}
+  .tv-badge-in{background:rgba(74,222,128,0.15); color:#4ADE80; padding:.2rem .5rem; border-radius:6px; font-weight:700; font-size:.75rem;}
+  .tv-badge-out{background:rgba(248,113,113,0.15); color:#F87171; padding:.2rem .5rem; border-radius:6px; font-weight:700; font-size:.75rem;}
 
-  /* Ticket */
   #areaTicket{display:none;}
   body.imprimiendo-ticket #areaTicket{display:block;}
   .ticket-copy{
@@ -506,11 +525,47 @@
 </head>
 <body>
 
-<div class="topbar">
-  <div class="brand"><i class="bi bi-heart-fill"></i> Iglesia Bethania · Área B-Kids</div>
-  <div class="subtitle">Control de ingreso y salida de niños · <span id="fechaHoyTexto"></span></div>
+<!-- PANTALLA DE AUTH / INICIO DE SESIÓN -->
+<div id="authScreen" class="auth-overlay">
+  <div class="auth-card">
+    <div class="brand-icon"><i class="bi bi-heart-fill"></i></div>
+    <h4 class="fw-bold mb-1">B-Kids Control</h4>
+    <p class="text-muted small mb-4" id="authTitle">Ingresa tus credenciales para continuar</p>
+    
+    <form id="formAuth">
+      <div class="text-start mb-3" id="groupNombreAuth" style="display:none;">
+        <label class="form-label">Nombre completo</label>
+        <input type="text" id="authNombre" class="form-control" placeholder="Ej. Juan Pérez">
+      </div>
+      <div class="text-start mb-3">
+        <label class="form-label">Correo electrónico</label>
+        <input type="email" id="authEmail" class="form-control" required placeholder="correo@iglesia.com">
+      </div>
+      <div class="text-start mb-3">
+        <label class="form-label">Contraseña</label>
+        <input type="password" id="authPassword" class="form-control" required placeholder="******">
+      </div>
+      <button type="submit" class="btn btn-primary-app w-100" id="btnSubmitAuth">Iniciar Sesión</button>
+    </form>
+    
+    <hr class="my-3">
+    <button type="button" class="btn btn-link btn-sm text-decoration-none" id="btnToggleAuthMode">¿No tienes cuenta? Regístrate</button>
+  </div>
 </div>
 
+<!-- ENCABEZADO PRINCIPAL DE LA APLICACIÓN -->
+<div class="topbar">
+  <div>
+    <div class="brand"><i class="bi bi-heart-fill"></i> Iglesia Bethania · Área B-Kids</div>
+    <div class="subtitle">Control de ingreso y salida · <span id="fechaHoyTexto"></span></div>
+  </div>
+  <div class="user-badge-bar">
+    <span id="userEmailTxt" class="d-none d-md-inline fw-semibold"></span>
+    <button class="btn btn-sm btn-outline-light" id="btnLogout" title="Cerrar Sesión"><i class="bi bi-box-arrow-right"></i> Salir</button>
+  </div>
+</div>
+
+<!-- MENÚ DE NAVEGACIÓN SUPERIOR (PESTAÑAS) -->
 <div class="tab-shell">
   <div class="nav-pill-group" role="tablist">
     <button class="nav-pill active" data-tab="inicio" type="button">
@@ -532,62 +587,26 @@
     <button class="nav-pill" data-tab="reporte" type="button">
       <i class="bi bi-clipboard-data"></i><span class="txt">Reporte</span>
     </button>
+    <button class="nav-pill d-none" id="tabBtnUsuarios" data-tab="usuarios" type="button">
+      <i class="bi bi-shield-lock"></i><span class="txt">Usuarios (Admin)</span>
+    </button>
   </div>
 </div>
 
 <div class="container-app">
 
-  <!-- HOME -->
+  <!-- PESTAÑA 1: INICIO CENTRADO -->
   <div class="tab-pane" id="tab-inicio">
-    <div class="welcome-hero">
-      <h1>¡Bienvenidos a B-Kids!</h1>
-      <p>Sistema integrado en la nube para control de asistencia y monitoreo en tiempo real de Iglesia Bethania.</p>
-    </div>
-
-    <div class="home-card-grid">
-      <div class="home-card" onclick="irATab('registro')">
-        <div class="home-card-icon icon-blue"><i class="bi bi-person-plus-fill"></i></div>
-        <div>
-          <h3>Registro de Niños</h3>
-          <p>Asigna un código único (1-1000) e ingresa fotos y datos de contacto.</p>
-        </div>
-      </div>
-
-      <div class="home-card" onclick="irATab('checkin')">
-        <div class="home-card-icon icon-green"><i class="bi bi-box-arrow-in-right"></i></div>
-        <div>
-          <h3>Check-In (Entrada)</h3>
-          <p>Busca rápidamente al niño para ingresarlo e imprimir el ticket del papá.</p>
-        </div>
-      </div>
-
-      <div class="home-card" onclick="irATab('checkout')">
-        <div class="home-card-icon icon-red"><i class="bi bi-box-arrow-right"></i></div>
-        <div>
-          <h3>Check-Out (Salida)</h3>
-          <p>Valida el código entregado por el padre y autoriza la salida segura.</p>
-        </div>
-      </div>
-
-      <div class="home-card" onclick="irATab('estados')">
-        <div class="home-card-icon icon-dark"><i class="bi bi-tv-fill"></i></div>
-        <div>
-          <h3>Pantalla TV (Estados)</h3>
-          <p>Modo de monitoreo gigante en tiempo real diseñado para televisores.</p>
-        </div>
-      </div>
-
-      <div class="home-card" onclick="irATab('reporte')">
-        <div class="home-card-icon icon-purple"><i class="bi bi-bar-chart-line-fill"></i></div>
-        <div>
-          <h3>Reportes y Excel</h3>
-          <p>Consulta el historial diario de asistencias y exporta datos fácilmente.</p>
-        </div>
+    <div class="welcome-container">
+      <div class="welcome-hero">
+        <div class="hero-icon"><i class="bi bi-heart-fill"></i></div>
+        <h1>Bienvenidos a la app de B-Kids</h1>
+        <p>Sistema de gestión, control de asistencias e ingreso seguro.</p>
       </div>
     </div>
   </div>
 
-  <!-- REGISTRO -->
+  <!-- PESTAÑA 2: REGISTRO -->
   <div class="tab-pane d-none" id="tab-registro">
     <div class="codigos-box">
       <div class="top-line">
@@ -598,7 +617,7 @@
     </div>
     <div id="alertaLlenoRegistro" class="alerta-lleno d-none">
       <i class="bi bi-exclamation-triangle-fill"></i>
-      Ya se usaron los 1000 códigos disponibles. Para registrar un niño nuevo, liberá un código en 🔴 rojo.
+      Ya se usaron los 1000 códigos disponibles. Para registrar un niño nuevo, libera un código en 🔴 rojo.
       <button class="btn btn-sm btn-outline-danger mt-2 w-100" id="btnIrInactivos">Ver niños inactivos (🔴)</button>
     </div>
 
@@ -670,24 +689,32 @@
     </div>
 
     <div class="card-panel">
-      <div class="section-title"><i class="bi bi-people"></i> Niños registrados</div>
-      <div class="section-hint" id="totalRegistradosTxt">0 niños en el sistema</div>
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+        <div>
+          <div class="section-title"><i class="bi bi-people"></i> Niños registrados</div>
+          <div class="section-hint mb-0" id="totalRegistradosTxt">0 niños en el sistema</div>
+        </div>
+        <button class="btn btn-sm btn-outline-success" id="btnExportarBaseNinos">
+          <i class="bi bi-file-earmark-excel"></i> Exportar Listado
+        </button>
+      </div>
+
       <div class="search-wrap">
         <i class="bi bi-search"></i>
         <input type="text" class="form-control" id="buscarRegistrados" placeholder="Buscar por código, nombre o padre...">
       </div>
       <div class="chip-row" id="chipsSemaforo">
         <button class="chip active" data-filtro="todos" type="button">Todos</button>
+        <button class="chip" data-filtro="gris" type="button">⚪ Nuevos</button>
         <button class="chip" data-filtro="verde" type="button">🟢 Recurrentes</button>
         <button class="chip" data-filtro="amarillo" type="button">🟡 Ocasionales</button>
         <button class="chip" data-filtro="rojo" type="button">🔴 Inactivos</button>
-        <button class="chip" data-filtro="gris" type="button">⚪ Nuevos</button>
       </div>
       <div id="listaRegistrados" class="list-registrados"></div>
     </div>
   </div>
 
-  <!-- CHECK-IN -->
+  <!-- PESTAÑA 3: CHECK-IN -->
   <div class="tab-pane d-none" id="tab-checkin">
     <div class="card-panel">
       <div class="section-title"><i class="bi bi-box-arrow-in-right"></i> Entrada rápida</div>
@@ -703,7 +730,7 @@
     </div>
   </div>
 
-  <!-- CHECK-OUT -->
+  <!-- PESTAÑA 4: CHECK-OUT -->
   <div class="tab-pane d-none" id="tab-checkout">
     <div class="card-panel">
       <div class="section-title"><i class="bi bi-box-arrow-right"></i> Salida</div>
@@ -716,7 +743,7 @@
     </div>
   </div>
 
-  <!-- MONITOR TV -->
+  <!-- PESTAÑA 5: ESTADOS TV -->
   <div class="tab-pane d-none" id="tab-estados">
     <div class="tv-container">
       <div class="tv-header">
@@ -724,7 +751,7 @@
         <div class="tv-clock" id="tvReloj">00:00:00</div>
       </div>
 
-      <div class="row g-4 mb-4">
+      <div class="row g-3 mb-4">
         <div class="col-12 col-md-6">
           <div class="tv-stat-card">
             <div class="tv-num tv-num-green" id="tvNumAdentro">0</div>
@@ -752,7 +779,7 @@
     </div>
   </div>
 
-  <!-- REPORTE -->
+  <!-- PESTAÑA 6: REPORTE -->
   <div class="tab-pane d-none" id="tab-reporte">
     <div class="card-panel">
       <div class="d-flex justify-content-between align-items-end flex-wrap gap-2 mb-3">
@@ -798,6 +825,45 @@
     </div>
   </div>
 
+  <!-- PESTAÑA 7: GESTIÓN DE USUARIOS (SÓLO ADMIN) -->
+  <div class="tab-pane d-none" id="tab-usuarios">
+    <div class="card-panel mb-3">
+      <div class="section-title"><i class="bi bi-person-gear"></i> Crear Nuevo Usuario Encargado</div>
+      <div class="section-hint">Agrega a las personas del equipo que tendrán acceso al sistema.</div>
+      <form id="formAdminCrearUsuario">
+        <div class="row g-2">
+          <div class="col-12 col-md-4">
+            <label class="form-label">Nombre</label>
+            <input type="text" id="adminUserNombre" class="form-control" required placeholder="Ej. Maria Lopez">
+          </div>
+          <div class="col-12 col-md-4">
+            <label class="form-label">Correo electrónico</label>
+            <input type="email" id="adminUserEmail" class="form-control" required placeholder="maria@iglesia.com">
+          </div>
+          <div class="col-12 col-md-4">
+            <label class="form-label">Contraseña</label>
+            <input type="password" id="adminUserPass" class="form-control" required placeholder="******">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary-app w-100 mt-3">Registrar Usuario</button>
+      </form>
+    </div>
+
+    <div class="card-panel">
+      <div class="section-title"><i class="bi bi-people"></i> Usuarios Registrados</div>
+      <div class="table-responsive mt-3">
+        <table class="table align-middle">
+          <thead>
+            <tr>
+              <th>Nombre</th><th>Correo</th><th>Rol</th><th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tablaUsuariosAdmin"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <!-- MODAL PERFIL -->
@@ -805,7 +871,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Perfil del niño</h5>
+        <h5 class="modal-title">Perfil / Edición del niño</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body" id="modalPerfilBody"></div>
@@ -816,15 +882,13 @@
 <div class="toast-app" id="toastApp"></div>
 <div id="areaTicket"></div>
 
-<!-- LIBRERÍAS DE FIREBASE (Compat SDKs para HTML directo) -->
+<!-- FIREBASE JS -->
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-// =====================================================
-// INICIALIZACIÓN DE FIREBASE CON TUS CLAVES
-// =====================================================
 const firebaseConfig = {
   apiKey: "AIzaSyBwpTxcul2UGLPsMPBtRaYFFvakgHzky7c",
   authDomain: "iglesiabethania.firebaseapp.com",
@@ -837,31 +901,33 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
+const auth = firebase.auth();
 
 (function(){
 
   const MAX_CODIGOS = 1000;
-  const DIAS_VERDE = 14;
-  const DIAS_AMARILLO = 60;
   const FOTO_MAX_DIM = 160;
   const FOTO_CALIDAD = 0.55;
   const AVATAR_COLORS = ['#2C4F7C','#2F9E44','#C2410C','#0E7490','#7C3AED','#B4550A'];
 
-  // Cache en memoria sincronizado en tiempo real con Firestore
   let globalKids = [];
   let globalRegistros = [];
+  let currentUserData = null;
+  let isRegisterMode = false;
 
   function normalizar(str){ return (str || '').toString().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim(); }
   function hoyKey(){ return new Date().toLocaleDateString('sv-SE'); }
   function horaActual(){ return new Date().toLocaleTimeString('es-GT', {hour:'2-digit', minute:'2-digit'}); }
 
   function fechaLegible(fechaKey){
+    if(!fechaKey) return '—';
     const [y,m,d] = fechaKey.split('-').map(Number);
     const dt = new Date(y, m-1, d);
     return dt.toLocaleDateString('es-GT', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
   }
 
   function diffDias(fechaA, fechaB){
+    if(!fechaA || !fechaB) return 999;
     const [ay,am,ad] = fechaA.split('-').map(Number);
     const [by,bm,bd] = fechaB.split('-').map(Number);
     return Math.round((new Date(by, bm-1, bd) - new Date(ay, am-1, ad)) / 86400000);
@@ -872,7 +938,8 @@ const db = firebase.firestore();
   }
   function colorPara(id){
     let hash = 0;
-    for(let i=0;i<id.length;i++){ hash = id.charCodeAt(i) + ((hash<<5)-hash); }
+    const s = String(id||'');
+    for(let i=0;i<s.length;i++){ hash = s.charCodeAt(i) + ((hash<<5)-hash); }
     return AVATAR_COLORS[Math.abs(hash) % AVATAR_COLORS.length];
   }
   function escapeHtml(str){
@@ -881,8 +948,142 @@ const db = firebase.firestore();
   function codStr(codigo){ return (codigo!=null) ? '#'+String(codigo).padStart(3,'0') : '—'; }
 
   // =====================================================
-  // ESCUCHADORES EN TIEMPO REAL (FIRESTORE REAL-TIME)
+  // CONTROL DE SESIÓN Y USUARIOS (FIREBASE AUTH)
   // =====================================================
+  auth.onAuthStateChanged(async user => {
+    const authOverlay = document.getElementById('authScreen');
+    if(user){
+      document.getElementById('userEmailTxt').textContent = user.email;
+      authOverlay.classList.add('d-none');
+      
+      const doc = await db.collection('usuarios').doc(user.uid).get();
+      if(doc.exists()){
+        currentUserData = doc.data();
+      } else {
+        const usersSnap = await db.collection('usuarios').get();
+        const rolAsignado = usersSnap.empty ? 'admin' : 'encargado';
+        currentUserData = {
+          nombre: user.displayName || user.email.split('@')[0],
+          email: user.email,
+          rol: rolAsignado
+        };
+        await db.collection('usuarios').doc(user.uid).set(currentUserData);
+      }
+
+      if(currentUserData.rol === 'admin'){
+        document.getElementById('tabBtnUsuarios').classList.remove('d-none');
+        cargarUsuariosAdmin();
+      } else {
+        document.getElementById('tabBtnUsuarios').classList.add('d-none');
+      }
+
+    } else {
+      authOverlay.classList.remove('d-none');
+      currentUserData = null;
+    }
+  });
+
+  const formAuth = document.getElementById('formAuth');
+  const btnToggleAuthMode = document.getElementById('btnToggleAuthMode');
+  const groupNombreAuth = document.getElementById('groupNombreAuth');
+  const authTitle = document.getElementById('authTitle');
+  const btnSubmitAuth = document.getElementById('btnSubmitAuth');
+
+  btnToggleAuthMode.addEventListener('click', ()=>{
+    isRegisterMode = !isRegisterMode;
+    if(isRegisterMode){
+      groupNombreAuth.style.display = 'block';
+      authTitle.textContent = 'Crea tu cuenta para acceder';
+      btnSubmitAuth.textContent = 'Registrarse';
+      btnToggleAuthMode.textContent = '¿Ya tienes cuenta? Inicia sesión';
+    } else {
+      groupNombreAuth.style.display = 'none';
+      authTitle.textContent = 'Ingresa tus credenciales para continuar';
+      btnSubmitAuth.textContent = 'Iniciar Sesión';
+      btnToggleAuthMode.textContent = '¿No tienes cuenta? Regístrate';
+    }
+  });
+
+  formAuth.addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const email = document.getElementById('authEmail').value.trim();
+    const password = document.getElementById('authPassword').value;
+
+    try{
+      if(isRegisterMode){
+        const res = await auth.createUserWithEmailAndPassword(email, password);
+        const nombre = document.getElementById('authNombre').value.trim();
+        const usersSnap = await db.collection('usuarios').get();
+        const rol = usersSnap.empty ? 'admin' : 'encargado';
+        
+        await db.collection('usuarios').doc(res.user.uid).set({
+          nombre: nombre || email,
+          email: email,
+          rol: rol
+        });
+        mostrarToast('Cuenta creada con éxito', 'success');
+      } else {
+        await auth.signInWithEmailAndPassword(email, password);
+        mostrarToast('Sesión iniciada', 'success');
+      }
+    }catch(err){
+      alert('Error de autenticación: ' + err.message);
+    }
+  });
+
+  document.getElementById('btnLogout').addEventListener('click', ()=> auth.signOut());
+
+  // CRUD DE USUARIOS DESDE PANEL ADMIN
+  document.getElementById('formAdminCrearUsuario').addEventListener('submit', async (e)=>{
+    e.preventDefault();
+    const name = document.getElementById('adminUserNombre').value.trim();
+    const email = document.getElementById('adminUserEmail').value.trim();
+    const pass = document.getElementById('adminUserPass').value;
+
+    try{
+      const secondaryApp = firebase.initializeApp(firebaseConfig, "Secondary");
+      const res = await secondaryApp.auth().createUserWithEmailAndPassword(email, pass);
+      await db.collection('usuarios').doc(res.user.uid).set({
+        nombre: name,
+        email: email,
+        rol: 'encargado'
+      });
+      secondaryApp.delete();
+      document.getElementById('formAdminCrearUsuario').reset();
+      mostrarToast('Usuario encargado creado correctamente', 'success');
+      cargarUsuariosAdmin();
+    }catch(err){
+      alert('Error creando usuario: ' + err.message);
+    }
+  });
+
+  async function cargarUsuariosAdmin(){
+    const snap = await db.collection('usuarios').get();
+    const tbody = document.getElementById('tablaUsuariosAdmin');
+    tbody.innerHTML = snap.docs.map(doc=>{
+      const u = doc.data();
+      const uid = doc.id;
+      return `
+        <tr>
+          <td><strong>${escapeHtml(u.nombre)}</strong></td>
+          <td>${escapeHtml(u.email)}</td>
+          <td><span class="badge ${u.rol==='admin'?'bg-primary':'bg-secondary'}">${u.rol}</span></td>
+          <td>
+            <button class="btn btn-sm btn-outline-danger" onclick="eliminarUsuarioAdmin('${uid}')"><i class="bi bi-trash"></i></button>
+          </td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  window.eliminarUsuarioAdmin = async function(uid){
+    if(!confirm('¿Eliminar registro de usuario de la lista?')) return;
+    await db.collection('usuarios').doc(uid).delete();
+    cargarUsuariosAdmin();
+    mostrarToast('Usuario eliminado', 'danger');
+  };
+
+  // LISTENERS EN TIEMPO REAL
   db.collection('kids').onSnapshot(snapshot => {
     globalKids = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     renderListaRegistrados();
@@ -896,6 +1097,7 @@ const db = firebase.firestore();
 
   db.collection('registros').onSnapshot(snapshot => {
     globalRegistros = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    renderListaRegistrados();
     renderCheckin();
     renderCheckout();
     renderTV();
@@ -905,9 +1107,6 @@ const db = firebase.firestore();
 
   function kidsActivos(){ return globalKids.filter(k=>!k.archivado); }
 
-  // =====================================================
-  // GESTIÓN DE CÓDIGOS
-  // =====================================================
   function codigosUsados(){ return new Set(kidsActivos().filter(k=>k.codigo!=null).map(k=>k.codigo)); }
   function codigosDisponibles(){
     const usados = codigosUsados();
@@ -959,9 +1158,6 @@ const db = firebase.firestore();
     document.getElementById('listaRegistrados').scrollIntoView({behavior:'smooth'});
   });
 
-  // =====================================================
-  // MANEJO DE FOTOS
-  // =====================================================
   function archivoAFoto(file){
     return new Promise((resolve, reject)=>{
       if(!file){ resolve(null); return; }
@@ -1028,23 +1224,42 @@ const db = firebase.firestore();
   const fotoNinoPicker = conectarFotoPicker('regFotoNino','previewFotoNino','quitarFotoNino');
   const fotoPadrePicker = conectarFotoPicker('regFotoPadre','previewFotoPadre','quitarFotoPadre');
 
-  // =====================================================
-  // SEMÁFORO
-  // =====================================================
   function semaforoDe(kidId){
+    const kid = globalKids.find(k=>k.id===kidId);
+    const hoy = hoyKey();
+    
+    let fechaRegistro = hoy;
+    if(kid && kid.fechaRegistro){
+      fechaRegistro = kid.fechaRegistro;
+    } else if(kid && kid.creadoEn && kid.creadoEn.toDate){
+      fechaRegistro = kid.creadoEn.toDate().toISOString().split('T')[0];
+    }
+    const diasDesdeRegistro = diffDias(fechaRegistro, hoy);
+
+    if(diasDesdeRegistro <= 15){
+      return {color:'gris', label:'Nuevo'};
+    }
+
     const regs = globalRegistros.filter(r=>r.kidId===kidId);
-    if(regs.length===0) return {color:'gris', label:'Nuevo'};
-    let ultima = regs[0].fecha;
-    regs.forEach(r=>{ if(r.fecha>ultima) ultima = r.fecha; });
-    const dias = diffDias(ultima, hoyKey());
-    if(dias<=DIAS_VERDE) return {color:'verde', label:'Recurrente'};
-    if(dias<=DIAS_AMARILLO) return {color:'amarillo', label:'Ocasional'};
-    return {color:'rojo', label:'Inactivo'};
+    if(regs.length === 0){
+      return {color:'rojo', label:'Inactivo'};
+    }
+
+    let ultimaVisita = regs[0].fecha;
+    regs.forEach(r=>{ if(r.fecha > ultimaVisita) ultimaVisita = r.fecha; });
+    const diasSinAsistir = diffDias(ultimaVisita, hoy);
+
+    if(diasSinAsistir >= 90){
+      return {color:'rojo', label:'Inactivo'};
+    }
+
+    if(diasSinAsistir <= 21){
+      return {color:'verde', label:'Recurrente'};
+    } else {
+      return {color:'amarillo', label:'Ocasional'};
+    }
   }
 
-  // =====================================================
-  // TOAST NOTIFICACIONES
-  // =====================================================
   const toastEl = document.getElementById('toastApp');
   let toastTimer = null;
   function mostrarToast(mensaje, tipo){
@@ -1054,9 +1269,6 @@ const db = firebase.firestore();
     toastTimer = setTimeout(()=>{ toastEl.classList.remove('show'); }, 2400);
   }
 
-  // =====================================================
-  // NAVEGACIÓN
-  // =====================================================
   const pills = document.querySelectorAll('.nav-pill');
   const panes = {
     inicio: document.getElementById('tab-inicio'),
@@ -1064,7 +1276,8 @@ const db = firebase.firestore();
     checkin: document.getElementById('tab-checkin'),
     checkout: document.getElementById('tab-checkout'),
     estados: document.getElementById('tab-estados'),
-    reporte: document.getElementById('tab-reporte')
+    reporte: document.getElementById('tab-reporte'),
+    usuarios: document.getElementById('tab-usuarios')
   };
 
   window.irATab = function(tabName){
@@ -1083,14 +1296,12 @@ const db = firebase.firestore();
       if(p.dataset.tab==='reporte'){ renderReporte(); }
       if(p.dataset.tab==='registro'){ renderListaRegistrados(); actualizarCajaCodigos(); poblarSelectCodigos(); }
       if(p.dataset.tab==='estados'){ renderTV(); }
+      if(p.dataset.tab==='usuarios'){ cargarUsuariosAdmin(); }
     });
   });
 
   document.getElementById('fechaHoyTexto').textContent = fechaLegible(hoyKey());
 
-  // =====================================================
-  // REGISTRO DE NIÑOS (FIRESTORE)
-  // =====================================================
   const formRegistro = document.getElementById('formRegistro');
   formRegistro.addEventListener('submit', async function(e){
     e.preventDefault();
@@ -1108,6 +1319,7 @@ const db = firebase.firestore();
       autorizado: document.getElementById('regAutorizado').value.trim(),
       fotoNino: fotoNinoPicker.get(),
       fotoPadre: fotoPadrePicker.get(),
+      fechaRegistro: hoyKey(),
       archivado: false,
       creadoEn: firebase.firestore.FieldValue.serverTimestamp()
     };
@@ -1116,9 +1328,10 @@ const db = firebase.firestore();
       await db.collection('kids').add(kid);
       formRegistro.reset();
       fotoNinoPicker.reset();
-      mostrarToast('<i class="bi bi-check-circle-fill"></i> '+escapeHtml(kid.nombre)+' guardado en la nube', 'success');
+      fotoPadrePicker.reset();
+      mostrarToast('<i class="bi bi-check-circle-fill"></i> '+escapeHtml(kid.nombre)+' guardado exitosamente', 'success');
     } catch(err) {
-      alert("Error al guardar en la nube: " + err.message);
+      alert("Error al guardar: " + err.message);
     }
   });
 
@@ -1155,7 +1368,7 @@ const db = firebase.firestore();
           <div class="kid-name"><span class="codigo-badge">${codStr(k.codigo)}</span> ${escapeHtml(k.nombre)} ${escapeHtml(k.apellidos)}</div>
           <div class="kid-meta">${k.edad} años · Padre: ${escapeHtml(k.padre)}</div>
         </div>
-        <i class="bi bi-chevron-right text-muted"></i>
+        <i class="bi bi-pencil-square text-muted fs-5"></i>
       </div>`;
     }).join('');
   }
@@ -1173,10 +1386,32 @@ const db = firebase.firestore();
     });
   });
 
-  // =====================================================
-  // MODAL PERFIL
-  // =====================================================
+  document.getElementById('btnExportarBaseNinos').addEventListener('click', function(){
+    const kids = kidsActivos();
+    if(kids.length===0) return alert('No hay niños registrados.');
+
+    const filas = kids.map(k=>[
+      k.codigo || '',
+      `"${k.nombre || ''}"`,
+      `"${k.apellidos || ''}"`,
+      k.edad || '',
+      `"${k.padre || ''}"`,
+      `"${k.telefono || ''}"`,
+      `"${k.autorizado || ''}"`,
+      `"${k.alergias || 'Ninguna'}"`,
+      semaforoDe(k.id).label
+    ]);
+
+    const csv = ['Codigo,Nombre,Apellidos,Edad,Padre,Telefono,Autorizado,Alergias,EstadoSemaforo', ...filas.map(f=>f.join(','))].join('\n');
+    const blob = new Blob(['\uFEFF'+csv], {type:'text/csv;charset=utf-8;'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `listado-ninos-bkids-${hoyKey()}.csv`;
+    a.click();
+  });
+
   const modalPerfil = new bootstrap.Modal(document.getElementById('modalPerfil'));
+
   function abrirPerfil(kidId){
     renderPerfilVista(kidId);
     modalPerfil.show();
@@ -1189,31 +1424,111 @@ const db = firebase.firestore();
     const sem = semaforoDe(k.id);
 
     body.innerHTML = `
-      <div class="perfil-fotos">
-        <div class="perfil-foto" style="${k.fotoNino?`background-image:url(${k.fotoNino})`:''}">${k.fotoNino?'':'<i class="bi bi-person"></i>'}</div>
-        <div class="ms-auto text-end">
-          <div class="codigo-badge" style="font-size:1.1rem;">${codStr(k.codigo)}</div>
-          <div class="mt-2"><span class="semaforo-pill ${sem.color}">${sem.label}</span></div>
+      <form id="formEditKid">
+        <div class="perfil-fotos">
+          <div class="perfil-foto" id="editPreviewNino" style="${k.fotoNino?`background-image:url(${k.fotoNino})`:''}">${k.fotoNino?'':'<i class="bi bi-person"></i>'}</div>
+          <div>
+            <label class="form-label mb-1">Cambiar Foto del Niño</label>
+            <input type="file" accept="image/*" capture="environment" class="form-control form-control-sm" id="editInputFotoNino">
+          </div>
+          <div class="ms-auto text-end">
+            <div class="codigo-badge" style="font-size:1.1rem;">${codStr(k.codigo)}</div>
+            <div class="mt-2"><span class="semaforo-pill ${sem.color}">${sem.label}</span></div>
+          </div>
         </div>
-      </div>
-      <h5>${escapeHtml(k.nombre)} ${escapeHtml(k.apellidos)}</h5>
-      <p class="text-muted mb-3">${k.edad} años · Tel: ${escapeHtml(k.telefono)}</p>
-      <div class="mb-2"><strong>Padre/Tutor:</strong> ${escapeHtml(k.padre)}</div>
-      <div class="mb-2"><strong>Autorizado retiros:</strong> ${escapeHtml(k.autorizado)}</div>
-      <div class="mb-3"><strong>Alergias/Notas:</strong> ${escapeHtml(k.alergias||'Ninguna')}</div>
-      <button class="btn btn-outline-danger w-100" id="btnLiberarCodigo"><i class="bi bi-unlock"></i> Liberar Código</button>
+
+        <div class="row g-2">
+          <div class="col-6">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="editNombre" value="${escapeHtml(k.nombre)}" required>
+          </div>
+          <div class="col-6">
+            <label class="form-label">Apellidos</label>
+            <input type="text" class="form-control" id="editApellidos" value="${escapeHtml(k.apellidos)}" required>
+          </div>
+          <div class="col-4">
+            <label class="form-label">Edad</label>
+            <input type="number" class="form-control" id="editEdad" value="${k.edad}" required>
+          </div>
+          <div class="col-8">
+            <label class="form-label">Teléfono</label>
+            <input type="tel" class="form-control" id="editTelefono" value="${escapeHtml(k.telefono)}" required>
+          </div>
+          <div class="col-12">
+            <label class="form-label">Padre / Tutor</label>
+            <input type="text" class="form-control" id="editPadre" value="${escapeHtml(k.padre)}" required>
+          </div>
+          <div class="col-12">
+            <label class="form-label">Persona Autorizada</label>
+            <input type="text" class="form-control" id="editAutorizado" value="${escapeHtml(k.autorizado)}" required>
+          </div>
+          <div class="col-12">
+            <label class="form-label">Alergias / Notas</label>
+            <textarea class="form-control" id="editAlergias" rows="2">${escapeHtml(k.alergias||'')}</textarea>
+          </div>
+        </div>
+
+        <div class="d-flex gap-2 mt-3 flex-wrap">
+          <button type="submit" class="btn btn-success flex-fill"><i class="bi bi-save"></i> Guardar Cambios</button>
+          <button type="button" class="btn btn-outline-primary" id="btnImprimirCarnet"><i class="bi bi-printer"></i> Imprimir Código</button>
+          <button type="button" class="btn btn-outline-danger" id="btnLiberarCodigo"><i class="bi bi-unlock"></i> Liberar Código</button>
+        </div>
+      </form>
     `;
 
+    let nuevaFotoData = k.fotoNino;
+    document.getElementById('editInputFotoNino').addEventListener('change', async function(ev){
+      const f = ev.target.files[0];
+      if(f){
+        nuevaFotoData = await archivoAFoto(f);
+        document.getElementById('editPreviewNino').style.backgroundImage = `url(${nuevaFotoData})`;
+        document.getElementById('editPreviewNino').innerHTML = '';
+      }
+    });
+
+    document.getElementById('formEditKid').addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      await db.collection('kids').doc(k.id).update({
+        nombre: document.getElementById('editNombre').value.trim(),
+        apellidos: document.getElementById('editApellidos').value.trim(),
+        edad: document.getElementById('editEdad').value,
+        telefono: document.getElementById('editTelefono').value.trim(),
+        padre: document.getElementById('editPadre').value.trim(),
+        autorizado: document.getElementById('editAutorizado').value.trim(),
+        alergias: document.getElementById('editAlergias').value.trim(),
+        fotoNino: nuevaFotoData
+      });
+      mostrarToast('<i class="bi bi-check-circle-fill"></i> Datos actualizados', 'success');
+      modalPerfil.hide();
+    });
+
+    document.getElementById('btnImprimirCarnet').addEventListener('click', ()=>{
+      imprimirCarnetPadre(k);
+    });
+
     document.getElementById('btnLiberarCodigo').addEventListener('click', async ()=>{
-      if(!confirm(`¿Liberar código de ${k.nombre}?`)) return;
+      if(!confirm(`¿Seguro que deseas liberar el código de ${k.nombre}?`)) return;
       await db.collection('kids').doc(k.id).update({ codigo: null, archivado: true });
+      mostrarToast('Código liberado', 'danger');
       modalPerfil.hide();
     });
   }
 
-  // =====================================================
-  // CHECK-IN (FIRESTORE)
-  // =====================================================
+  function imprimirCarnetPadre(kid){
+    const tarjeta = `
+      <div class="ticket-copy">
+        <div class="ticket-iglesia">Iglesia Bethania · Área B-Kids</div>
+        <div class="ticket-etiqueta" style="margin-top:10px;">CÓDIGO PERMANENTE ASIGNADO</div>
+        <div class="ticket-codigo">${codStr(kid.codigo)}</div>
+        <div class="ticket-nombre">${escapeHtml(kid.nombre)} ${escapeHtml(kid.apellidos)}</div>
+        <div class="ticket-hora">Padre/Tutor: ${escapeHtml(kid.padre)}</div>
+        <div class="ticket-nota">Muestre o brinde este código en la entrada para el Check-In.</div>
+      </div>`;
+    document.getElementById('areaTicket').innerHTML = tarjeta;
+    document.body.classList.add('imprimiendo-ticket');
+    window.print();
+  }
+
   function idsActivosHoy(){
     return new Set(globalRegistros.filter(r=>r.fecha===hoyKey() && r.estado==='activo').map(r=>r.kidId));
   }
@@ -1295,9 +1610,6 @@ const db = firebase.firestore();
   }
   window.addEventListener('afterprint', ()=> document.body.classList.remove('imprimiendo-ticket'));
 
-  // =====================================================
-  // CHECK-OUT (FIRESTORE)
-  // =====================================================
   function renderCheckout(){
     const cont = document.getElementById('listaCheckout');
     const filtro = normalizar(document.getElementById('buscarCheckout').value);
@@ -1351,9 +1663,6 @@ const db = firebase.firestore();
     document.getElementById('badgeAdentro').textContent = total;
   }
 
-  // =====================================================
-  // PANTALLA TV (MONITOREO)
-  // =====================================================
   function actualizarRelojTV(){
     const now = new Date();
     const reloj = document.getElementById('tvReloj');
@@ -1377,10 +1686,18 @@ const db = firebase.firestore();
     } else {
       grid.innerHTML = adentro.map(r=>{
         const k = kidsMap[r.kidId] || {nombre:'Desconocido'};
+        const avatarStyle = k.fotoNino ? `background-image:url(${k.fotoNino})` : `background:${colorPara(r.kidId)}`;
         return `
         <div class="tv-kid-card">
-          <span class="tv-code">${codStr(r.codigo)}</span>
-          <div class="tv-name">${escapeHtml(k.nombre)} ${escapeHtml(k.apellidos||'')}</div>
+          <div class="tv-avatar" style="${avatarStyle}">
+            ${k.fotoNino ? '' : iniciales(k.nombre, k.apellidos)}
+          </div>
+          <div style="min-width:0; flex:1;">
+            <div style="display:flex; align-items:center; gap:.4rem; margin-bottom:.1rem;">
+              <span class="tv-code">${codStr(r.codigo)}</span>
+            </div>
+            <div class="tv-name">${escapeHtml(k.nombre)} ${escapeHtml(k.apellidos||'')}</div>
+          </div>
         </div>`;
       }).join('');
     }
@@ -1392,20 +1709,21 @@ const db = firebase.firestore();
       feed.innerHTML = todosHoy.slice(0, 15).map(r=>{
         const k = kidsMap[r.kidId] || {nombre:'Desconocido'};
         const esEntrada = r.estado==='activo';
+        const avatarStyle = k.fotoNino ? `background-image:url(${k.fotoNino})` : `background:${colorPara(r.kidId)}`;
         return `
         <div class="tv-feed-item">
           <span class="${esEntrada?'tv-badge-in':'tv-badge-out'}">${esEntrada?'ENTRÓ':'SALIÓ'}</span>
+          <div class="tv-avatar" style="width:32px; height:32px; font-size:.7rem; ${avatarStyle}">
+            ${k.fotoNino ? '' : iniciales(k.nombre, k.apellidos)}
+          </div>
           <strong style="color:#F1F5F9;">${codStr(r.codigo)}</strong>
-          <span style="flex:1;">${escapeHtml(k.nombre)}</span>
+          <span style="flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${escapeHtml(k.nombre)}</span>
           <span style="color:#94A3B8; font-size:.85rem;">${esEntrada?r.horaEntrada:r.horaSalida}</span>
         </div>`;
       }).join('');
     }
   }
 
-  // =====================================================
-  // REPORTE
-  // =====================================================
   const inputFecha = document.getElementById('reporteFecha');
   inputFecha.value = hoyKey();
   inputFecha.addEventListener('change', renderReporte);
@@ -1453,13 +1771,13 @@ const db = firebase.firestore();
 
     const filas = registros.map(r=>{
       const k = kidsMap[r.kidId] || {};
-      return [r.codigo, k.nombre, k.apellidos, k.edad, k.padre, k.telefono, r.fecha, r.horaEntrada, r.horaSalida, r.estado];
+      return [r.codigo, `"${k.nombre||''}"`, `"${k.apellidos||''}"`, k.edad, `"${k.padre||''}"`, `"${k.telefono||''}"`, r.fecha, r.horaEntrada, r.horaSalida, r.estado];
     });
     const csv = ['Codigo,Nombre,Apellidos,Edad,Padre,Telefono,Fecha,Entrada,Salida,Estado', ...filas.map(f=>f.join(','))].join('\n');
-    const blob = new Blob(['\uFEFF'+csv], {type:'text/csv'});
+    const blob = new Blob(['\uFEFF'+csv], {type:'text/csv;charset=utf-8;'});
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = `reporte-${fecha}.csv`;
+    a.download = `reporte-asistencia-${fecha}.csv`;
     a.click();
   });
 
