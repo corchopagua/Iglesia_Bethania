@@ -947,30 +947,40 @@ const auth = firebase.auth();
   }
   function codStr(codigo){ return (codigo!=null) ? '#'+String(codigo).padStart(3,'0') : '—'; }
 
-  // =====================================================
   // CONTROL DE SESIÓN Y USUARIOS (FIREBASE AUTH)
-  // =====================================================
   auth.onAuthStateChanged(async user => {
     const authOverlay = document.getElementById('authScreen');
     if(user){
       document.getElementById('userEmailTxt').textContent = user.email;
       authOverlay.classList.add('d-none');
       
-      const doc = await db.collection('usuarios').doc(user.uid).get();
-      if(doc.exists()){
-        currentUserData = doc.data();
+      const emailUser = user.email.toLowerCase();
+
+      // Busca el usuario por email o UID
+      const querySnap = await db.collection('usuarios').where('email', '==', user.email).get();
+      
+      if(!querySnap.empty){
+        currentUserData = querySnap.docs[0].data();
       } else {
-        const usersSnap = await db.collection('usuarios').get();
-        const rolAsignado = usersSnap.empty ? 'admin' : 'encargado';
-        currentUserData = {
-          nombre: user.displayName || user.email.split('@')[0],
-          email: user.email,
-          rol: rolAsignado
-        };
-        await db.collection('usuarios').doc(user.uid).set(currentUserData);
+        const docDirecto = await db.collection('usuarios').doc(user.uid).get();
+        if(docDirecto.exists()){
+          currentUserData = docDirecto.data();
+        } else {
+          currentUserData = {
+            nombre: user.displayName || user.email.split('@')[0],
+            email: user.email,
+            rol: 'admin'
+          };
+          await db.collection('usuarios').doc(user.uid).set(currentUserData);
+        }
       }
 
-      const rolUsuario = (currentUserData.rol || currentUserData.Rol || '').toLowerCase();
+      // Forzar rol admin para tu correo
+      if(emailUser === 'corcho1988@hotmail.com'){
+        currentUserData.rol = 'admin';
+      }
+
+      const rolUsuario = (currentUserData.rol || '').toLowerCase();
       if(rolUsuario === 'admin'){
         document.getElementById('tabBtnUsuarios').classList.remove('d-none');
         cargarUsuariosAdmin();
@@ -983,7 +993,6 @@ const auth = firebase.auth();
       currentUserData = null;
     }
   });
-
   const formAuth = document.getElementById('formAuth');
   const btnToggleAuthMode = document.getElementById('btnToggleAuthMode');
   const groupNombreAuth = document.getElementById('groupNombreAuth');
